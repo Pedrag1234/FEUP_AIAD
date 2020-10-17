@@ -1,7 +1,6 @@
 package amazon;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ItemStock {
 	
@@ -93,7 +92,18 @@ public class ItemStock {
 		}
 	}
 	
-	public void removeFromStock(int number) {
-	
+	public void removeFromStock(int number) throws NoStockException {
+		
+		if(this.stock - number < 0) {
+			throw new NoStockException();
+		}
+		else {
+			this.stock = this.stock - number;
+			
+			for (int i = 0; i < items.size(); i++) {
+				items.remove(i);
+			}
+			
+		}
 	}
 }
