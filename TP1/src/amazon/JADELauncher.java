@@ -13,7 +13,7 @@ public class JADELauncher {
 
 	public static void main(String[] args) {
 			
-		/*Runtime rt = Runtime.instance();
+		Runtime rt = Runtime.instance();
 
 		Profile p1 = new ProfileImpl();
 		ContainerController mainContainer = rt.createMainContainer(p1);
@@ -23,12 +23,12 @@ public class JADELauncher {
 
 		AgentController ac1;
 		try {
-			ac1 = mainContainer.acceptNewAgent("WareHouse", new Agent());
+			ac1 = mainContainer.acceptNewAgent("WareHouse", new Store());
 			ac1.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
 		}
-
+		
 		/*Object[] agentArgs = new Object[0];
 		AgentController ac2;
 		try {
