@@ -12,25 +12,24 @@ import jade.wrapper.StaleProxyException;
 public class JADELauncher {
 
 	public static void main(String[] args) {
-		Runtime rt = Runtime.instance();
+			
+		/*Runtime rt = Runtime.instance();
 
 		Profile p1 = new ProfileImpl();
-		//p1.setParameter(...);
 		ContainerController mainContainer = rt.createMainContainer(p1);
 		
 		Profile p2 = new ProfileImpl();
-		//p2.setParameter(...);
 		ContainerController container = rt.createAgentContainer(p2);
 
 		AgentController ac1;
 		try {
-			ac1 = mainContainer.acceptNewAgent("name1", new Agent());
+			ac1 = mainContainer.acceptNewAgent("WareHouse", new Agent());
 			ac1.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
 		}
 
-		Object[] agentArgs = new Object[0];
+		/*Object[] agentArgs = new Object[0];
 		AgentController ac2;
 		try {
 			ac2 = container.createNewAgent("name2", "jade.core.Agent", agentArgs);
@@ -45,7 +44,7 @@ public class JADELauncher {
 			ac3.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }

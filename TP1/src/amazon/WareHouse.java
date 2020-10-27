@@ -1,58 +1,101 @@
 package amazon;
 
-import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Set;
 
-import jade.core.Agent;
-
-public class WareHouse extends Agent {
+public class WareHouse {
 	
-	private static final long serialVersionUID = 1L;
-
-	private ArrayList<ItemStock> stock;
+	private Hashtable<String,ItemStock> stock;
 	
 	public WareHouse() {
-		setStock(new ArrayList<>());
-		
-		stock.add(new ItemStock(100, "book", 10.03));
-		stock.add(new ItemStock(200, "pen", 0.79));
+		setStock(new Hashtable<String,ItemStock>());
 	}
 	
-	public void setup() {
-		this.printStock();
-		
-		try {
-			
-			this.stock.get(0).removeFromStock(60);
-			
-		} catch (Exception e) {
-			
-			System.out.print("Not enough stock");
-			
-		}
-		this.printStock();
-		
-		try {
-			
-			this.stock.get(0).removeFromStock(60);
-			
-		} catch (Exception e) {
-			System.out.print("Not enough stock");
-		}
-		this.printStock();
-	}
-
-	public ArrayList<ItemStock> getStock() {
+	
+	public Hashtable<String,ItemStock> getStock() {
 		return stock;
 	}
 
-	public void setStock(ArrayList<ItemStock> stock) {
-		this.stock = stock;
+	public void setStock(Hashtable<String,ItemStock> hashtable) {
+		this.stock = hashtable;
 	}
 	
 	public void printStock() {
-		for (ItemStock itemStock : stock) {
-			System.out.print("Nº of items = "+itemStock.getStock() + " || type = " + itemStock.getType());
+		Set<Map.Entry<String,ItemStock>> entries = stock.entrySet();
+		
+		entries.forEach( entry ->{
+			System.out.println("Type : "+  entry.getValue().getType() + 
+					"|| Stock = " + entry.getValue().getStock() +
+					"|| Price = " + entry.getValue().getPrice());
+		} );
+		
+	}
+	
+	public void startPromotion(String itemName, int promoValue) throws NoStockException,ItemDoesntExist {
+		
+		if(stock.get(itemName) != null && stock.get(itemName).getStock() > 0) {
+			stock.get(itemName).startPromotion(promoValue);
 		}
+		else {
+			if(stock.get(itemName) != null) {
+				throw new ItemDoesntExist();
+			}
+			else {
+				throw new NoStockException();
+			}
+		}
+		
+	}
+	
+	public void endPromotion(String itemName) throws NoStockException,ItemDoesntExist {
+		
+		if(stock.get(itemName) != null && stock.get(itemName).getStock() > 0) {
+			stock.get(itemName).endPromotion();
+		}
+		else {
+			if(stock.get(itemName) != null) {
+				throw new ItemDoesntExist();
+			}
+			else {
+				throw new NoStockException();
+			}
+		}
+		
+	}
+	
+	
+	public void removeStock(String itemName, int number) throws NoStockException,ItemDoesntExist{
+		if(stock.get(itemName) != null) {
+			stock.get(itemName).removeFromStock(number);
+		}
+		else {
+			throw new ItemDoesntExist();
+		}
+	}
+	
+	
+	public void addStock(String itemName, int number) throws ItemDoesntExist{
+		if(stock.get(itemName) != null) {
+			stock.get(itemName).addToStock(number);;
+		}
+		else {
+			throw new ItemDoesntExist();
+		}
+	}
+	
+	public void addNewItemStock(int stockN, String type, double price) throws CantAddExistingItem{
+		if(stock.get(type) == null) {
+			stock.put(type,new ItemStock(stockN, type, price));
+		}
+		else {
+			throw new CantAddExistingItem();
+		}
+	}
+	
+	public void removeItemStock(String type) {
+		stock.remove(type);
 	}
 	
 }
