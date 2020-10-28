@@ -23,7 +23,7 @@ public class JADELauncher {
 
 		AgentController ac1;
 		try {
-			ac1 = mainContainer.acceptNewAgent("WareHouse", new Store());
+			ac1 = mainContainer.acceptNewAgent("WareHouse", new MainWarehouse());
 			ac1.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
@@ -45,6 +45,8 @@ public class JADELauncher {
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
 		}*/
+		
+		return;
 	}
 
 }

@@ -60,7 +60,7 @@ public class Store extends Agent {
 			int stock_sz = new Random().nextInt(150) + 50;
 			
 			try {
-				storeStorage.addNewItemStock(stock_sz, types[index], prices[index]);
+				storeStorage.addNewItemStock(new ItemStock(stock_sz, new Item(types[index], prices[index])));
 			} catch (CantAddExistingItem e) {
 				try {
 					storeStorage.addStock(types[index], stock_sz);

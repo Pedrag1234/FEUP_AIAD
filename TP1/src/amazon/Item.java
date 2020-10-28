@@ -18,6 +18,12 @@ public class Item {
 		setCurrentPrice(currentPrice);
 	}
 	
+	@Override
+	protected Item clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return (Item) super.clone();
+	}
+	
 	public String getType() {
 		return type;
 	}
