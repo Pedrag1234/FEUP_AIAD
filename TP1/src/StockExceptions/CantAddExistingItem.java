@@ -1,4 +1,4 @@
-package amazon;
+package StockExceptions;
 
 public class CantAddExistingItem extends Exception {
 	private static final long serialVersionUID = 1L;

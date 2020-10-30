@@ -1,4 +1,4 @@
-package amazon;
+package StockExceptions;
 
 public class NoStockException extends Exception {
 	
