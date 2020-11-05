@@ -52,11 +52,19 @@ public class MainWarehouse extends Agent {
 	private void generateWareHouseStock() {
 		for (int i = 0; i < types.length; i++) {
 			try {
-				wares.addNewItemStock(new ItemStock(100000, new Item(types[i], prices[i])));
+				wares.addNewItemStock(new Item(types[i], prices[i]), 100000);
 			} catch (CantAddExistingItem e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void print() {
+		this.warehouse.printStock();
+	}
+	
+	public void setup() {
+		this.warehouse.printStock();
 	}
 
 	public WareHouse getWares() {

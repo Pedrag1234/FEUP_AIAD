@@ -19,6 +19,21 @@ public class Item {
 	}
 	
 	@Override
+	public boolean equals(String s) {
+		if(s == type)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.type;
+	}
+	
+	@Override
 	protected Item clone() throws CloneNotSupportedException {
 		// TODO Auto-generated method stub
 		return (Item) super.clone();

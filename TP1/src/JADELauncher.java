@@ -1,4 +1,4 @@
-package amazon;
+
 
 import jade.core.Agent;
 import jade.core.Profile;
@@ -20,10 +20,18 @@ public class JADELauncher {
 		
 		Profile p2 = new ProfileImpl();
 		ContainerController container = rt.createAgentContainer(p2);
-
+		
+		MainWarehouse m = new MainWarehouse();
+		m.print();
+		
 		AgentController ac1;
 		try {
-			ac1 = mainContainer.acceptNewAgent("WareHouse", new MainWarehouse());
+			
+			
+			ac1 = mainContainer.acceptNewAgent("WareHouse", m);
+			
+			m.setup();
+			
 			ac1.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
@@ -45,8 +53,6 @@ public class JADELauncher {
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
 		}*/
-		
-		return;
 	}
 
 }

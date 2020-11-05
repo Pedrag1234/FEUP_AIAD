@@ -6,36 +6,43 @@ import java.util.Set;
 
 public class WareHouse {
 	
-	private Hashtable<String,ItemStock> stock;
+	private Hashtable<Item,Integer> stock;
 	
 	public WareHouse() {
-		setStock(new Hashtable<String,ItemStock>());
+		setStock(new Hashtable<Item,Integer>());
 	}
 	
 	
-	public Hashtable<String, ItemStock> getStock() {
+	public Hashtable<Item,Integer> getStock() {
 		return stock;
 	}
 
-	public void setStock(Hashtable<String, ItemStock> hashtable) {
+	public void setStock(Hashtable<Item,Integer> hashtable) {
 		this.stock = hashtable;
 	}
 	
 	public void printStock() {
-		Set<Entry<String, ItemStock>> entries = stock.entrySet();
+		Set<Entry<Item,Integer>> entries = stock.entrySet();
 		
 		entries.forEach( entry ->{
-			System.out.println("Type : "+  entry.getKey() + 
-					"|| Stock = " + entry.getValue().getStock() +
-					"|| Price = " + entry.getValue().getItem().getPrice());
+			System.out.println("Type : "+  entry.getKey().getType() + 
+					"|| Stock = " + entry.getValue() +
+					"|| Price = " + entry.getKey().getPrice());
 		} );
 		
 	}
 	
 	public void startPromotion(String itemName, int promoValue) throws ItemDoesntExist {
 		if(stock.get(itemName) != null){
-			stock.get(itemName).startPromotion(promoValue);
+			Set<Entry<Item,Integer>> entries = stock.entrySet();
+			
+			entries.forEach( entry ->{
+				if(entry.getKey().equals(itemName))
+					entry.getKey().applyPromotion(promoValue);
+			} );
+			
 		}
+		
 		else {
 			throw new ItemDoesntExist();
 		}
@@ -44,7 +51,13 @@ public class WareHouse {
 	public void endPromotion(String itemName) throws ItemDoesntExist {
 		
 		if(stock.get(itemName) != null){
-			stock.get(itemName).endPromotion();
+			Set<Entry<Item,Integer>> entries = stock.entrySet();
+			
+			entries.forEach( entry ->{
+				if(entry.getKey().equals(itemName))
+					entry.getKey().endPromotion();
+			} );
+			
 		}
 		else {
 			throw new ItemDoesntExist();
@@ -55,7 +68,7 @@ public class WareHouse {
 	
 	public void removeStock(String itemName, int number) throws NoStockException,ItemDoesntExist{
 		if(stock.get(itemName) != null){
-			stock.get(itemName).removeFromStock(number);
+			stock.remove();
 		}
 		else {
 			throw new ItemDoesntExist();
@@ -72,12 +85,12 @@ public class WareHouse {
 		}
 	}
 	
-	public void addNewItemStock(ItemStock s) throws CantAddExistingItem{
-		if(stock.get(s.getItem().getType()) != null){
+	public void addNewItemStock(String itemName, int number) throws CantAddExistingItem{
+		if(stock.get(itemName) != null){
 			throw new CantAddExistingItem();
 		}
 		else {
-			stock.put(s.getItem().getType(), s);
+			stock.put(itemName, number);
 		}
 	}
 	
