@@ -85,8 +85,8 @@ public class WareHouse {
 		}
 	}
 	
-	public void addNewItemStock(String itemName, int number) throws CantAddExistingItem{
-		if(stock.get(itemName) != null){
+	public void addNewItemStock(Item itemName, int number) throws CantAddExistingItem{
+		if(stock.get(itemName.getType()) != null){
 			throw new CantAddExistingItem();
 		}
 		else {

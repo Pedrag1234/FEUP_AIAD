@@ -1,6 +1,8 @@
 package amazon;
 
 import jade.core.Agent;
+import java.io.*;  
+import java.util.Scanner;  
 
 public class MainWarehouse extends Agent {
 
@@ -50,12 +52,15 @@ public class MainWarehouse extends Agent {
 	}
 	
 	private void generateWareHouseStock() {
-		for (int i = 0; i < types.length; i++) {
-			try {
-				wares.addNewItemStock(new Item(types[i], prices[i]), 100000);
-			} catch (CantAddExistingItem e) {
-				e.printStackTrace();
-			}
+		Scanner sc = new Scanner(new File("/docs/Stock.csv"));
+		sc.useDelimiter(","); 
+		
+		while(sc.hasNext()) {
+			String type = sc.next();
+			Float price = sc.next();
+			Integer stock = sc.next();
+			
+			wares.addNewItemStock(new Item(type,price),stock);
 		}
 	}
 	
