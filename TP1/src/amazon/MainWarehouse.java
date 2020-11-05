@@ -1,8 +1,9 @@
 package amazon;
 
 import jade.core.Agent;
-import java.io.*;  
-import java.util.Scanner;  
+import java.io.BufferedReader;  
+import java.io.FileReader;  
+import java.io.IOException;
 
 public class MainWarehouse extends Agent {
 
@@ -52,15 +53,19 @@ public class MainWarehouse extends Agent {
 	}
 	
 	private void generateWareHouseStock() {
-		Scanner sc = new Scanner(new File("/docs/Stock.csv"));
-		sc.useDelimiter(","); 
 		
-		while(sc.hasNext()) {
-			String type = sc.next();
-			Float price = sc.next();
-			Integer stock = sc.next();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("/docs/Stock.csv"));
+			String line = "";
+			String splitBy = ",";  
 			
-			wares.addNewItemStock(new Item(type,price),stock);
+			while((line = br.readLine()) != null) {
+				String[] items = line.split(",");
+				
+				wares.addNewItemStock(new Item(items[0],Float.parseFloat(items[1])),Integer.parseInt(items[2]));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
