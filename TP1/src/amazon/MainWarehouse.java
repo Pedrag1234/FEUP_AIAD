@@ -1,11 +1,8 @@
 package amazon;
 
 import jade.core.Agent;
-import java.io.BufferedReader;  
-import java.io.FileReader;  
-import java.io.IOException;
 
-import StockExceptions.CantAddExistingItem;
+import StockExceptions.*;
 
 public class MainWarehouse extends Agent {
 
@@ -56,23 +53,14 @@ public class MainWarehouse extends Agent {
 	
 	private void generateWareHouseStock() {
 		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("/docs/Stock.csv"));
-			String line = "";
-			String splitBy = ",";  
-			
-			while((line = br.readLine()) != null) {
-				String[] items = line.split(",");
-				
-				wares.addNewItemStock(new Item(items[0],Double.parseDouble(items[1])),Integer.parseInt(items[2]));
+		for(int i = 0; i < types.length; i++) {
+			try {
+				wares.addNewItemStock(new Item(types[i],prices[i]),100000);
+			} catch (CantAddExistingItem e) {
+				// TODO: handle exception
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (CantAddExistingItem e) {
-			e.printStackTrace();
 		}
+		
 	}
 	
 	public void print() {
@@ -80,7 +68,7 @@ public class MainWarehouse extends Agent {
 	}
 	
 	public void setup() {
-		this.wares.printStock();
+		//this.wares.printStock();
 	}
 
 	public WareHouse getWares() {
