@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;  
 import java.io.IOException;
 
+import StockExceptions.CantAddExistingItem;
+
 public class MainWarehouse extends Agent {
 
 	private static final long serialVersionUID = 4363918672967765440L;
@@ -62,19 +64,23 @@ public class MainWarehouse extends Agent {
 			while((line = br.readLine()) != null) {
 				String[] items = line.split(",");
 				
-				wares.addNewItemStock(new Item(items[0],Float.parseFloat(items[1])),Integer.parseInt(items[2]));
+				wares.addNewItemStock(new Item(items[0],Double.parseDouble(items[1])),Integer.parseInt(items[2]));
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (CantAddExistingItem e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void print() {
-		this.warehouse.printStock();
+		this.wares.printStock();
 	}
 	
 	public void setup() {
-		this.warehouse.printStock();
+		this.wares.printStock();
 	}
 
 	public WareHouse getWares() {

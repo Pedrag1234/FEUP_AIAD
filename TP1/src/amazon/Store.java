@@ -47,13 +47,13 @@ public class Store extends Agent {
 	public Store(){
 		this.setStoreStorage(new WareHouse());
 		
-		this.generateRandomStorage();
+		//this.generateRandomStorage();
 		
-		storeStorage.printStock();
+		//storeStorage.printStock();
 	}
 	
 	private void generateRandomStorage() {
-		int n_items = new Random().nextInt(types.length);
+		/*int n_items = new Random().nextInt(types.length);
 		
 		for (int i = 0; i < n_items; i++) {
 			int index = new Random().nextInt(types.length);
@@ -69,7 +69,7 @@ public class Store extends Agent {
 				}
 			}
 			
-		}
+		}*/
 	}
 
 	public WareHouse getStoreStorage() {

@@ -1,6 +1,6 @@
 
 
-import jade.core.Agent;
+import amazon.MainWarehouse;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -21,12 +21,12 @@ public class JADELauncher {
 		Profile p2 = new ProfileImpl();
 		ContainerController container = rt.createAgentContainer(p2);
 		
-		MainWarehouse m = new MainWarehouse();
-		m.print();
+		
 		
 		AgentController ac1;
 		try {
-			
+			MainWarehouse m = new MainWarehouse();
+			m.print();
 			
 			ac1 = mainContainer.acceptNewAgent("WareHouse", m);
 			

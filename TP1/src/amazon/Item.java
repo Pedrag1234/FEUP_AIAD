@@ -19,8 +19,8 @@ public class Item {
 	}
 	
 	@Override
-	public boolean equals(String s) {
-		if(s == type)
+	public boolean equals(Object s) {
+		if(((Item) s).getType() == type)
 			return true;
 		else
 			return false;
@@ -30,7 +30,7 @@ public class Item {
 	@Override
 	public int hashCode() {
 		// TODO Auto-generated method stub
-		return this.type;
+		return this.type.hashCode();
 	}
 	
 	@Override

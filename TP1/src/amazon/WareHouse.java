@@ -4,6 +4,8 @@ import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import StockExceptions.*;
+
 public class WareHouse {
 	
 	private Hashtable<Item,Integer> stock;
@@ -32,7 +34,7 @@ public class WareHouse {
 		
 	}
 	
-	public void startPromotion(String itemName, int promoValue) throws ItemDoesntExist {
+	public void startPromotion(Item itemName, int promoValue) throws ItemDoesntExist {
 		if(stock.get(itemName) != null){
 			Set<Entry<Item,Integer>> entries = stock.entrySet();
 			
@@ -48,7 +50,7 @@ public class WareHouse {
 		}
 	}
 	
-	public void endPromotion(String itemName) throws ItemDoesntExist {
+	public void endPromotion(Item itemName) throws ItemDoesntExist {
 		
 		if(stock.get(itemName) != null){
 			Set<Entry<Item,Integer>> entries = stock.entrySet();
@@ -66,9 +68,9 @@ public class WareHouse {
 	}
 	
 	
-	public void removeStock(String itemName, int number) throws NoStockException,ItemDoesntExist{
+	public void removeStock(Item itemName, int number) throws NoStockException,ItemDoesntExist{
 		if(stock.get(itemName) != null){
-			stock.remove();
+			stock.remove(itemName);
 		}
 		else {
 			throw new ItemDoesntExist();
@@ -76,9 +78,9 @@ public class WareHouse {
 	}
 	
 	
-	public void addStock(String itemName, int number) throws ItemDoesntExist{
+	public void addStock(Item itemName, int number) throws ItemDoesntExist{
 		if(stock.get(itemName) != null){
-			stock.get(itemName).addToStock(number);
+			stock.put(itemName, number);
 		}
 		else {
 			throw new ItemDoesntExist();
@@ -86,7 +88,7 @@ public class WareHouse {
 	}
 	
 	public void addNewItemStock(Item itemName, int number) throws CantAddExistingItem{
-		if(stock.get(itemName.getType()) != null){
+		if(stock.get(itemName) != null){
 			throw new CantAddExistingItem();
 		}
 		else {
@@ -94,7 +96,7 @@ public class WareHouse {
 		}
 	}
 	
-	public void removeItemStock(String type) throws CantRemoveInexistantItem {
+	public void removeItemStock(Item type) throws CantRemoveInexistantItem {
 		if(stock.get(type) != null){
 			stock.remove(type);
 		}
