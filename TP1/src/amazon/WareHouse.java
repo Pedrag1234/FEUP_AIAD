@@ -70,7 +70,15 @@ public class WareHouse {
 	
 	public void removeStock(Item itemName, int number) throws NoStockException,ItemDoesntExist{
 		if(stock.get(itemName) != null){
-			stock.remove(itemName);
+			Integer currStock = stock.get(itemName);
+			
+			if(currStock - number > 0) {
+				stock.put(itemName,currStock - number);
+			}
+			else {
+				throw new NoStockException();
+			}
+			
 		}
 		else {
 			throw new ItemDoesntExist();
