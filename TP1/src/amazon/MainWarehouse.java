@@ -65,6 +65,15 @@ public class MainWarehouse extends Agent {
 	
 	public void print() {
 		this.wares.printStock();
+		
+		try {
+			wares.addStock(new Item(types[0],prices[0]),100000);
+		} catch (ItemDoesntExist e) {
+			System.out.println("Couldn't find item");
+		}
+		
+		this.wares.printStock();
+		
 	}
 	
 	public void setup() {

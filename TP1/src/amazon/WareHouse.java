@@ -80,7 +80,7 @@ public class WareHouse {
 	
 	public void addStock(Item itemName, int number) throws ItemDoesntExist{
 		if(stock.get(itemName) != null){
-			stock.put(itemName, number);
+			stock.put(itemName,stock.get(itemName) + number);
 		}
 		else {
 			throw new ItemDoesntExist();
