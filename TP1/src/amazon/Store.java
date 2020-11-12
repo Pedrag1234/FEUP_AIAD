@@ -1,5 +1,6 @@
 package amazon;
 
+
 import jade.core.Agent;
 
 public class Store extends Agent {
@@ -9,20 +10,16 @@ public class Store extends Agent {
 	private double profit;
 	private int n_customers;
 	private int store_id;
+	private String area;
 	
 	
 	
-	// price value according to how much stock there is
+	// value of the stock_size
 	private double stock_sz_value;
-	
-	// price value if client is a spender or not
-	private double spender_value;
-	
-	// price value if client is wealth or not
-	private double economic_value;
-	
-	// price value if client is wealth or not
-	private double sus_value;
+	// maximum promotion value of the item
+	private double maxPromo;
+	// minimum promotion value of the item
+	private double minPromo;
 	
 	
 	private static final String[] types = {
@@ -61,22 +58,20 @@ public class Store extends Agent {
 	
 	
 	public Store(int store_id, 
-				 double stock_sz_value, 
-				 double spender_value,
-				 double economic_value,
-				 double sus_value){
+				 int maxPromo,
+				 int minPromo,
+				 int stock_sz_value,
+				 String area){
 		
 		
 		this.setProfit(0);
 		this.setN_customers(0);
 		this.setStore_id(store_id);
+		this.setArea(area);
 		
-		
-		
+		this.setMaxPromo(maxPromo);
+		this.setMinPromo(minPromo);
 		this.setStock_sz_value(stock_sz_value);
-		this.setSpender_value(spender_value);
-		this.setEconomic_value(economic_value);
-		this.setSus_value(sus_value);
 		
 	}
 	
@@ -89,9 +84,13 @@ public class Store extends Agent {
 	}
 	
 	//TODO: needs to receive client data
-	private double calculatePriceOffer(Item s, int n_items) {
+	private double calculatePriceOffer(Item s, int n_items, int stock_size) {
 		
-		int promotion = 0;
+		
+		
+		double randomPromo = Math.random() * (this.maxPromo - this.minPromo) + this.minPromo;
+		
+		int promotion = (int) (100 * (stock_size * this.stock_sz_value + randomPromo));
 		
 		s.applyPromotion(promotion);
 		
@@ -100,7 +99,9 @@ public class Store extends Agent {
 		
 		return price * n_items;
 	}
-
+	
+	
+	
 
 	public double getProfit() {
 		return profit;
@@ -125,38 +126,43 @@ public class Store extends Agent {
 	public void setStore_id(int store_id) {
 		this.store_id = store_id;
 	}
+	
+
+	public double getMaxPromo() {
+		return maxPromo;
+	}
+	
+
+	public void setMaxPromo(int maxPromo) {
+		this.maxPromo = maxPromo;
+	}
+
+	public double getMinPromo() {
+		return minPromo;
+	}
+
+	public void setMinPromo(int minPromo) {
+		this.minPromo = minPromo;
+	}
+	
 
 	public double getStock_sz_value() {
 		return stock_sz_value;
 	}
+	
 
 	public void setStock_sz_value(double stock_sz_value) {
 		this.stock_sz_value = stock_sz_value;
 	}
 
-	public double getSpender_value() {
-		return spender_value;
+	public String getArea() {
+		return area;
 	}
 
-	public void setSpender_value(double spender_value) {
-		this.spender_value = spender_value;
+	public void setArea(String area) {
+		this.area = area;
 	}
 
-	public double getEconomic_value() {
-		return economic_value;
-	}
-
-	public void setEconomic_value(double economic_value) {
-		this.economic_value = economic_value;
-	}
-
-	public double getSus_value() {
-		return sus_value;
-	}
-
-	public void setSus_value(double sus_value) {
-		this.sus_value = sus_value;
-	}
 	
 	
 	 
