@@ -1,7 +1,11 @@
 package amazon;
 
 
+import java.util.Stack;
+
 import jade.core.Agent;
+
+import jade.core.behaviours.SequentialBehaviour;
 
 public class Store extends Agent {
 
@@ -11,6 +15,10 @@ public class Store extends Agent {
 	private int n_customers;
 	private int store_id;
 	private String area;
+	
+	private Stack<Item> currItemOrder;
+	private Stack<Integer> currItemNumber;
+	private int order;
 	
 	
 	
@@ -73,6 +81,10 @@ public class Store extends Agent {
 		this.setMinPromo(minPromo);
 		this.setStock_sz_value(stock_sz_value);
 		
+		
+		this.currItemNumber = new Stack<>();
+		this.currItemOrder = new Stack<>();
+		this.order = 0;
 	}
 	
 	void sendMessage2WareHouse() {
@@ -101,6 +113,13 @@ public class Store extends Agent {
 	}
 	
 	
+	public void setup() {
+		SequentialBehaviour loop = new SequentialBehaviour();
+		//TODO: add behaviors
+		
+		
+		addBehaviour(loop);
+	}
 	
 
 	public double getProfit() {
@@ -127,12 +146,10 @@ public class Store extends Agent {
 		this.store_id = store_id;
 	}
 	
-
 	public double getMaxPromo() {
 		return maxPromo;
 	}
 	
-
 	public void setMaxPromo(int maxPromo) {
 		this.maxPromo = maxPromo;
 	}
@@ -145,12 +162,10 @@ public class Store extends Agent {
 		this.minPromo = minPromo;
 	}
 	
-
 	public double getStock_sz_value() {
 		return stock_sz_value;
 	}
 	
-
 	public void setStock_sz_value(double stock_sz_value) {
 		this.stock_sz_value = stock_sz_value;
 	}
@@ -161,6 +176,32 @@ public class Store extends Agent {
 
 	public void setArea(String area) {
 		this.area = area;
+	}
+
+	public Stack<Item> getCurrItemOrder() {
+		return currItemOrder;
+	}
+
+	public void setCurrItemOrder(Stack<Item> currItemOrder) {
+		this.currItemOrder = currItemOrder;
+	}
+
+	public Stack<Integer> getCurrItemNumber() {
+		return currItemNumber;
+	}
+
+	public void setCurrItemNumber(Stack<Integer> currItemNumber) {
+		this.currItemNumber = currItemNumber;
+	}
+	
+
+	public int getOrder() {
+		return order;
+	}
+	
+
+	public void setOrder(int order) {
+		this.order = order;
 	}
 
 	
