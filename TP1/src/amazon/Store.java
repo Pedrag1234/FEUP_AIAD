@@ -42,14 +42,18 @@ public class Store extends Agent {
 			26.00,	
 	};
 	private WareHouse storeStorage;
+	private String area;
 	
-	
-	public Store(){
+	public Store(String area){
 		this.setStoreStorage(new WareHouse());
-		
+		this.area = area;
 		//this.generateRandomStorage();
 		
 		//storeStorage.printStock();
+	}
+	
+	public String getArea() {
+		return area;
 	}
 	
 	private void generateRandomStorage() {
