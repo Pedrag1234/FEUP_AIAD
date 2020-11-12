@@ -80,6 +80,10 @@ public class MainWarehouse extends Agent {
 		
 	}
 	
+	public void removeItemFromStock(Item itemName, int number) throws NoStockException, ItemDoesntExist {
+		this.wares.removeStock(itemName, number);
+	}
+	
 	public void setup() {
 		//this.wares.printStock();
 	}

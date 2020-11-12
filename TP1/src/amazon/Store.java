@@ -3,8 +3,8 @@ package amazon;
 
 import java.util.Stack;
 
+import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
 import jade.core.Agent;
-
 import jade.core.behaviours.SequentialBehaviour;
 
 public class Store extends Agent {
@@ -115,8 +115,8 @@ public class Store extends Agent {
 	
 	public void setup() {
 		SequentialBehaviour loop = new SequentialBehaviour();
-		//TODO: add behaviors
 		
+		loop.addSubBehaviour(new StoreReqItem2WarehouseBehaviour(this));
 		
 		addBehaviour(loop);
 	}
