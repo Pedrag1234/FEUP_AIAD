@@ -34,6 +34,15 @@ public class WareHouse {
 		
 	}
 	
+	public Integer getItemStock(Item s) throws ItemDoesntExist {
+		if (stock.get(s) != null) {
+			return stock.get(s);
+		}
+		else {
+			throw new ItemDoesntExist();
+		}
+	}
+	
 	public void startPromotion(Item itemName, int promoValue) throws ItemDoesntExist {
 		if(stock.get(itemName) != null){
 			Set<Entry<Item,Integer>> entries = stock.entrySet();

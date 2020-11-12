@@ -63,6 +63,10 @@ public class MainWarehouse extends Agent {
 		
 	}
 	
+	public Integer getItemStock(Item s) throws ItemDoesntExist {
+		return wares.getItemStock(s);
+	}
+	
 	public void print() {
 		this.wares.printStock();
 		
