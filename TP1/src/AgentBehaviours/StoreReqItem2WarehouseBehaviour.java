@@ -8,6 +8,8 @@ import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
 import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -17,7 +19,7 @@ import jade.lang.acl.ACLMessage;
 
 
 
-public class StoreReqItem2WarehouseBehaviour extends Behaviour {
+public class StoreReqItem2WarehouseBehaviour extends SimpleBehaviour {
 
 	/**
 	 * 
@@ -38,6 +40,8 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 		
 		Hashtable<String, Integer> MessageContents = new Hashtable<>();
 		
+		System.out.println("It got here somehow: Store");
+		
 		try {
 			Stack<Item> i = this.store.getCurrItemOrder();
 			Stack<Integer> n = this.store.getCurrItemNumber();
@@ -48,7 +52,7 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 				
 			}
 			
-			msg.setContentObject(MessageContents);
+			msg.setContentObject("You are geh");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,6 +61,7 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 		DFAgentDescription dfd = new DFAgentDescription();
 		ServiceDescription sd = new ServiceDescription();
 		
+		
 		sd.setType("MainWarehouse");
 		dfd.addServices(sd);
 		
@@ -64,11 +69,16 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 		try {
 			DFAgentDescription[] result = DFService.search(this.store, dfd);
 			
+			System.out.println(result.length);
+			
 			for (int i = 0; i < result.length; i++) {
 				
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
+				System.out.println(dest.getName());
+				
+				this.complete = true;
 				this.store.send(msg);
 			}
 		
@@ -76,14 +86,10 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 			e.printStackTrace();
 		}
 
-		this.complete = true;
+		
 	}
 	
 
-	@Override
-	public boolean done() {
-		return this.complete;
-	}
 
 	public Store getStore() {
 		return store;
@@ -91,6 +97,12 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 
 	public void setStore(Store store) {
 		this.store = store;
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return this.complete;
 	}
 
 	

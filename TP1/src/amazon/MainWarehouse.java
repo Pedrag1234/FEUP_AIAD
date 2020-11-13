@@ -52,7 +52,8 @@ public class MainWarehouse extends Agent {
 	public void register() {
 		ServiceDescription sd = new ServiceDescription();
 		
-		sd.setName("MainWarehouse");
+		sd.setName(getLocalName());
+		sd.setType("MainWarehouse");
 		
 		this.dfd = new DFAgentDescription();
 		dfd.setName(getAID());

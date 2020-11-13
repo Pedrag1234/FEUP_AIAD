@@ -62,7 +62,8 @@ public class Store extends Agent {
 	public void register() {
 		ServiceDescription sd = new ServiceDescription();
 		
-		sd.setName("Store_"+this.store_id);
+		sd.setName(getLocalName());
+		sd.setType("Store_"+this.store_id);
 		
 		this.dfd = new DFAgentDescription();
 		dfd.setName(getAID());

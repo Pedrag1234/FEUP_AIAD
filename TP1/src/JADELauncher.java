@@ -48,7 +48,7 @@ public class JADELauncher {
 			26.00,	
 	};
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StaleProxyException {
 			
 		Runtime rt = Runtime.instance();
 
@@ -68,21 +68,25 @@ public class JADELauncher {
 		
 		
 		AgentController ac1;
+		AgentController ac2;
 		try {
 			
 			m.print();
 			
 			ac1 = mainContainer.acceptNewAgent("WareHouse", m);
-			ac1 = mainContainer.acceptNewAgent("Store_0", store);
+			ac2 = mainContainer.acceptNewAgent("Store", store);
 			
 			System.out.println("-----------------------------------------------");
 			
 			m.print();
 			
 			ac1.start();
+			ac2.start();
+			
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
 		}
+		
 		
 		/*Object[] agentArgs = new Object[0];
 		AgentController ac2;
