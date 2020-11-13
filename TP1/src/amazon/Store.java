@@ -103,12 +103,15 @@ public class Store extends Agent {
 		addBehaviour(loop);
 	}
 
+	
+
+
+
 	@Override
 	public String toString() {
-		return "Store [id=" + id + ", storeStorage=" + storeStorage + ", area=" + area + "]";
+		return "Store [profit=" + profit + ", n_customers=" + n_customers + ", store_id=" + store_id + ", area=" + area
+				+ ", stock_sz_value=" + stock_sz_value + ", maxPromo=" + maxPromo + ", minPromo=" + minPromo + "]";
 	}
-
-
 
 
 	public double getProfit() {
