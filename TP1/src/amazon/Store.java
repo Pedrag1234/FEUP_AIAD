@@ -6,6 +6,9 @@ import java.util.Stack;
 import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 public class Store extends Agent {
 
@@ -20,6 +23,8 @@ public class Store extends Agent {
 	private Stack<Integer> currItemNumber;
 	private int order;
 	
+	private DFAgentDescription dfd;
+	
 	
 	
 	// value of the stock_size
@@ -29,40 +34,6 @@ public class Store extends Agent {
 	// minimum promotion value of the item
 	private double minPromo;
 	
-	
-	private static final String[] types = {
-			"Pen",
-			"Book",
-			"Pencil",
-			"Pencil Case",
-			"Calculator",
-			"Eraser",
-			"Laptop",
-			"TV",
-			"PC",
-			"Monitors",
-			"Smartphone",
-			"DishWasher",
-			"Laundry Machine",
-			"Kitchen Utensils"
-	};
-	
-	private static final double[] prices = {
-			5.99,
-			10.99,
-			4.99,
-			7.50,
-			129.90,
-			2.59,
-			700.00,
-			500.48,
-			1250.99,
-			350.33,
-			599.99,
-			329.99,
-			289.00,
-			26.00,	
-	};
 	
 	
 	public Store(int store_id, 
@@ -87,16 +58,26 @@ public class Store extends Agent {
 		this.order = 0;
 	}
 	
-	void sendMessage2WareHouse() {
-		//TODO: communication
-	}
 	
-	void sendMessage2Cliente() {
-		//TODO: communication
+	public void register() {
+		ServiceDescription sd = new ServiceDescription();
+		
+		sd.setName("Store_"+this.store_id);
+		
+		this.dfd = new DFAgentDescription();
+		dfd.setName(getAID());
+		dfd.addServices(sd);
+		
+		try {
+			DFService.register(this, this.dfd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	//TODO: needs to receive client data
-	private double calculatePriceOffer(Item s, int n_items, int stock_size) {
+	/*private double calculatePriceOffer(Item s, int n_items, int stock_size) {
 		
 		
 		
@@ -110,7 +91,7 @@ public class Store extends Agent {
 		
 		
 		return price * n_items;
-	}
+	}*/
 	
 	
 	public void setup() {

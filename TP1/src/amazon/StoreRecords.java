@@ -33,7 +33,7 @@ public class StoreRecords {
 		
 		
 		for (int i = 0; i < stores.length; i++) {
-			pw.printf("%d, %s, %d, %f, %f, %f,%f,\n",
+			pw.printf("%d,%s,%d,%f,%f,%f,%f,\n",
 					stores[i].getStore_id(),
 					stores[i].getArea(),
 					stores[i].getN_customers(),

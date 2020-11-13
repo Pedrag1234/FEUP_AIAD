@@ -36,7 +36,7 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		
-		Hashtable<Item, Integer> MessageContents = new Hashtable<>();
+		Hashtable<String, Integer> MessageContents = new Hashtable<>();
 		
 		try {
 			Stack<Item> i = this.store.getCurrItemOrder();
@@ -44,11 +44,11 @@ public class StoreReqItem2WarehouseBehaviour extends Behaviour {
 			
 			for (int j = 0; j < i.size() ; j++) {
 				
-				MessageContents.put(i.pop(),n.pop());
+				MessageContents.put(i.pop().getType(),n.pop());
 				
 			}
 			
-			msg.setContentObject(i);
+			msg.setContentObject(MessageContents);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
