@@ -5,6 +5,12 @@ import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
 import AgentBehaviours.WarehouseHandleReq2RemItem;
 import StockExceptions.*;
 
@@ -95,8 +101,24 @@ public class MainWarehouse extends Agent {
 		
 	}
 	
-	public void removeItemFromStock(Item itemName, int number) throws NoStockException, ItemDoesntExist {
-		this.wares.removeStock(itemName, number);
+	public void removeItemFromStock(String itemName, int number) throws NoStockException, ItemDoesntExist {
+		
+		Set<Map.Entry<Item, Integer>> entries = this.wares.getStock().entrySet();
+		Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+		
+		Entry<Item, Integer> entry = null;
+		
+		while (itr.hasNext()) {
+			
+			entry = itr.next();
+			
+			if(entry.getKey().getType().equals(itemName)) {
+				this.wares.removeStock(entry.getKey(), number);
+			}
+			
+		}
+		
+		this.print();
 	}
 	
 	public void setup() {

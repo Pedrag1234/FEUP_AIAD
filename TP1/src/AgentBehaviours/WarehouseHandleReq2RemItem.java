@@ -37,10 +37,9 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 		ACLMessage msg = this.warehouse.receive();
 		
 		if (msg != null) {
-			System.out.println("Yeah I guess");			/*try {
+			try {
 				Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
 				
-				System.out.println("It got here somehow : Warehouse");
 				
 				Set<Map.Entry<String, Integer>> entries = requests.entrySet();
 				Iterator<Map.Entry<String, Integer>> itr = entries.iterator();
@@ -50,16 +49,18 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 				while (itr.hasNext()) {
 					
 					entry = itr.next();
+					
 					try {
-						this.warehouse.removeItemFromStock(entry.getKey(), entry.getValue());;
+						warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
 					} catch (NoStockException | ItemDoesntExist e) {
 						e.printStackTrace();
 					}
+					
 				}
 
 			} catch (UnreadableException e) {
 				e.printStackTrace();
-			}*/
+			}
 			this.complete = true;
 		}
 		else {

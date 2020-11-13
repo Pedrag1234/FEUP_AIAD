@@ -62,6 +62,7 @@ public class JADELauncher {
 		store.setOrder(1);
 		
 		for (int i = 0; i < 3; i++) {	
+			System.out.println("Type = " + types[i]);
 			store.getCurrItemOrder().push(new Item(types[i], prices[i]));
 			store.getCurrItemNumber().push((int) (Math.random() * 1000));
 		}
@@ -78,7 +79,7 @@ public class JADELauncher {
 			
 			System.out.println("-----------------------------------------------");
 			
-			m.print();
+			
 			
 			ac1.start();
 			ac2.start();

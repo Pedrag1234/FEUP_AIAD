@@ -2,7 +2,11 @@ package AgentBehaviours;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
+import java.util.Map.Entry;
 
 import amazon.Item;
 import amazon.Store;
@@ -40,19 +44,22 @@ public class StoreReqItem2WarehouseBehaviour extends SimpleBehaviour {
 		
 		Hashtable<String, Integer> MessageContents = new Hashtable<>();
 		
-		System.out.println("It got here somehow: Store");
 		
 		try {
 			Stack<Item> i = this.store.getCurrItemOrder();
 			Stack<Integer> n = this.store.getCurrItemNumber();
 			
-			for (int j = 0; j < i.size() ; j++) {
+			while(i.size() > 0) {
 				
-				MessageContents.put(i.pop().getType(),n.pop());
+				String temp = i.pop().getType();
+				Integer temp1 = n.pop();
+				
+				MessageContents.put(temp,temp1);
 				
 			}
 			
-			msg.setContentObject("You are geh");
+			
+			msg.setContentObject(MessageContents);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
