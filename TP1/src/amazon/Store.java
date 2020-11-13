@@ -8,43 +8,12 @@ public class Store extends Agent {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final String[] types = {
-			"Pen",
-			"Book",
-			"Pencil",
-			"Pencil Case",
-			"Calculator",
-			"Eraser",
-			"Laptop",
-			"TV",
-			"PC",
-			"Monitors",
-			"Smartphone",
-			"DishWasher",
-			"Laundry Machine",
-			"Kitchen Utensils"
-	};
-	
-	private static final double[] prices = {
-			5.99,
-			10.99,
-			4.99,
-			7.50,
-			129.90,
-			2.59,
-			700.00,
-			500.48,
-			1250.99,
-			350.33,
-			599.99,
-			329.99,
-			289.00,
-			26.00,	
-	};
+	private int id;
 	private WareHouse storeStorage;
 	private String area;
 	
-	public Store(String area){
+	public Store(int id, String area){
+		this.id = id;
 		this.setStoreStorage(new WareHouse());
 		this.area = area;
 		//this.generateRandomStorage();
@@ -83,6 +52,13 @@ public class Store extends Agent {
 	public void setStoreStorage(WareHouse storeStorage) {
 		this.storeStorage = storeStorage;
 	}
+
+	@Override
+	public String toString() {
+		return "Store [id=" + id + ", storeStorage=" + storeStorage + ", area=" + area + "]";
+	}
+	
+	
 	
 	
 }

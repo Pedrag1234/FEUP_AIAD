@@ -145,6 +145,12 @@ public class Client extends Agent{
 		this.suscetible = suscetible;
 	}
 
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", area=" + area + ", money_to_spend=" + money_to_spend + ", buy_Local=" + buy_Local
+				+ ", spender=" + spender + ", suscetible=" + suscetible + ", needs=" + needs + "]";
+	}
+
 
 	
 	
