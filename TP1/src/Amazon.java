@@ -154,7 +154,7 @@ public int get_stores() {
                 // use comma as separator
                 String[] store = line.split(cvsSplitBy);
                 
-                Store temp = new Store(Integer.parseInt(store[0]),store[1]);
+                Store temp = new Store(Integer.parseInt(store[0]),Integer.parseInt(store[1]),Integer.parseInt(store[2]),Integer.parseInt(store[3]),store[4]);
                 		
                 stores.add(temp);
 
