@@ -1,12 +1,18 @@
 package amazon;
 
 import jade.core.Agent;
-
+import jade.core.behaviours.SequentialBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import AgentBehaviours.WarehouseHandleReq2RemItem;
 import StockExceptions.*;
 
 public class MainWarehouse extends Agent {
 
 	private static final long serialVersionUID = 4363918672967765440L;
+	
+	private DFAgentDescription dfd;
 	
 	private static final String[] types = {
 			"Pen",
@@ -43,6 +49,23 @@ public class MainWarehouse extends Agent {
 	};
 	
 	
+	public void register() {
+		ServiceDescription sd = new ServiceDescription();
+		
+		sd.setName(getLocalName());
+		sd.setType("MainWarehouse");
+		
+		this.dfd = new DFAgentDescription();
+		dfd.setName(getAID());
+		dfd.addServices(sd);
+		
+		try {
+			DFService.register(this, this.dfd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private WareHouse wares;
 	
 	public MainWarehouse(){
@@ -63,21 +86,25 @@ public class MainWarehouse extends Agent {
 		
 	}
 	
+	public Integer getItemStock(Item s) throws ItemDoesntExist {
+		return wares.getItemStock(s);
+	}
+	
 	public void print() {
-		this.wares.printStock();
-		
-		try {
-			wares.addStock(new Item(types[0],prices[0]),100000);
-		} catch (ItemDoesntExist e) {
-			System.out.println("Couldn't find item");
-		}
-		
 		this.wares.printStock();
 		
 	}
 	
+	public void removeItemFromStock(Item itemName, int number) throws NoStockException, ItemDoesntExist {
+		this.wares.removeStock(itemName, number);
+	}
+	
 	public void setup() {
-		//this.wares.printStock();
+		SequentialBehaviour loop = new SequentialBehaviour();
+		
+		loop.addSubBehaviour(new WarehouseHandleReq2RemItem(this));
+		
+		addBehaviour(loop);
 	}
 
 	public WareHouse getWares() {
