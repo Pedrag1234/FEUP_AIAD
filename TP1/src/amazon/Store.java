@@ -96,6 +96,7 @@ public class Store extends Agent {
 
 
 	public void setup() {
+		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
 
 		loop.addSubBehaviour(new StoreReqItem2WarehouseBehaviour(this));

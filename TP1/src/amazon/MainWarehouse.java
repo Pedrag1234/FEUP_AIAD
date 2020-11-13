@@ -100,6 +100,7 @@ public class MainWarehouse extends Agent {
 	}
 	
 	public void setup() {
+		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
 		
 		loop.addSubBehaviour(new WarehouseHandleReq2RemItem(this));
