@@ -5,7 +5,15 @@ import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import AgentBehaviours.WarehouseHandleReq2RemItem;
+import AgentBehaviours.WarehouseReturnInventoryBehaviour;
 import StockExceptions.*;
 
 public class MainWarehouse extends Agent {
@@ -69,6 +77,7 @@ public class MainWarehouse extends Agent {
 	private WareHouse wares;
 	
 	public MainWarehouse(){
+		
 		wares = new WareHouse();
 		
 		this.generateWareHouseStock();
@@ -99,9 +108,31 @@ public class MainWarehouse extends Agent {
 		this.wares.removeStock(itemName, number);
 	}
 	
+	public Hashtable<String,Integer> getStock() {
+		Hashtable<String,Integer> stock = new Hashtable<>();
+		
+		Set<Map.Entry<Item, Integer>> entries = this.wares.getStock().entrySet();
+		Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+		
+		Entry<Item, Integer> entry = null;
+		
+		while (itr.hasNext()) {
+			
+			entry = itr.next();
+			
+			stock.put(entry.getKey().getType(),entry.getValue());
+			
+		}
+		
+		return stock;
+	}
+	
 	public void setup() {
+		register();
 		SequentialBehaviour loop = new SequentialBehaviour();
 		
+		
+		loop.addSubBehaviour(new WarehouseReturnInventoryBehaviour(this));
 		loop.addSubBehaviour(new WarehouseHandleReq2RemItem(this));
 		
 		addBehaviour(loop);
