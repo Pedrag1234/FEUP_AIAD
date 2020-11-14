@@ -30,8 +30,11 @@ public class Amazon {
 	
 	
 	public Amazon() {
-		get_clients();
+		
 		get_stores();
+		get_clients();
+		
+		start_stores();
 		
 	/*	for (Client i : clients) {
 			System.out.println(i.toString());
@@ -40,6 +43,10 @@ public class Amazon {
 		for (Store i : stores) {
 			System.out.println(i.toString());
 		}*/
+		
+	}
+	
+	public void start_stores() {
 		
 	}
 	
@@ -63,7 +70,7 @@ public class Amazon {
                 HashMap<String, Double> needs_temp = new HashMap<String, Double>();
                 needs_temp.put(client[6].replace("\"", ""), Double.parseDouble(client[7]));
                 
-                Client temp = new Client(Integer.parseInt(client[0]),client[1],Integer.parseInt(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp);
+                Client temp = new Client(Integer.parseInt(client[0]),client[1],Integer.parseInt(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
                 		
                 clients.add(temp);
 
