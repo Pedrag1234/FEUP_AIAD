@@ -44,61 +44,7 @@ public class Amazon {
 	}
 	
 	
-	public static void main(String[] args) {
-		
-		Amazon amazon = new Amazon();
-			
-		/*Runtime rt = Runtime.instance();
-
-		Profile p1 = new ProfileImpl();
-		ContainerController mainContainer = rt.createMainContainer(p1);
-		
-		Profile p2 = new ProfileImpl();
-		ContainerController container = rt.createAgentContainer(p2);
-		
-		
-		
-		AgentController ac1;
-		try {
-			MainWarehouse m = new MainWarehouse();
-			m.print();
-			
-			ac1 = mainContainer.acceptNewAgent("WareHouse", m);
-			
-			m.setup();
-			
-			ac1.start();
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		} */
-		
-		/*Object[] agentArgs = new Object[0];
-		AgentController ac2;
-		try {
-			ac2 = container.createNewAgent("name2", "jade.core.Agent", agentArgs);
-			ac2.start();
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		}
-
-		AgentController ac3;
-		try {
-			ac3 = mainContainer.acceptNewAgent("myRMA", new jade.tools.rma.rma());
-			ac3.start();
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		}*/
-		
-		/*Item item = new Item("Smartphone",599.99,599.99);
-		Store store = new Store("Porto");
-		
-		HashMap<String, Double> needs = new HashMap<String, Double>();
-		needs.put("Smartphone", 0.7);
-		
-		Client client = new Client(01, "Porto", 1000, 0.5, 0.5, 0, needs);
-		boolean result = client.decide_if_buy(item, store);
-		System.out.println(result);*/
-	}
+	
 	
 	public int get_clients() {
 		
