@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 
@@ -29,6 +30,7 @@ public class Store extends Agent {
 	final int MOST_EXPENSIVE = 1;
 	final int IN_PROMOTION = 2;
 	final int RAREST = 3;
+	final int COMMON = 4;
 
 	private double profit;
 	private int n_customers;
@@ -102,7 +104,7 @@ public class Store extends Agent {
 		ArrayList<Item> returnItems = null;
 		
 		
-		int strategy = (int) (Math.random() * 3);
+		int strategy = (int) (Math.random() * 4);
 		
 		
 			
@@ -118,25 +120,29 @@ public class Store extends Agent {
 				break;
 			}
 			case IN_PROMOTION: {
-				System.out.println("Cheapest");
-				returnItems = getCheapestItems(); 
+				System.out.println("In promotion");
+				returnItems = getItemsInPromotion(); 
 				break;
 			}
 			case RAREST: {
-				System.out.println("Most Expensive");
-				returnItems = getMostExpensiveItems(); 
+				System.out.println("Rarest");
+				returnItems = getRarestItems(); 
+				break;
+			}
+			case COMMON: {
+				System.out.println("Most Common");
+				returnItems = getMostCommonItems(); 
 				break;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + strategy);
 		}
-			
-		
-		
+
 		return returnItems;
 	}
 	
-	public ArrayList<Item> getCheapestItems(){
+	
+	private ArrayList<Item> getCheapestItems(){
 		ArrayList<Item> cheapest = new ArrayList<>();
 		
 		Item minItem = null; 
@@ -174,7 +180,7 @@ public class Store extends Agent {
 		return cheapest;
 	}
 	
-	public ArrayList<Item> getMostExpensiveItems(){
+	private ArrayList<Item> getMostExpensiveItems(){
 		ArrayList<Item> expensive = new ArrayList<>();
 		
 		Item maxItem = null; 
@@ -211,11 +217,115 @@ public class Store extends Agent {
 		
 		return expensive;
 	}
+	
+	private ArrayList<Item> getItemsInPromotion(){
+		ArrayList<Item> promotion = new ArrayList<>();
+		
+		int i = 0;
+		
+		Object[] temp = this.storeWarehouseStock.keySet().toArray();
+		
+		while(i < 4) {
+			
+			int random_index = (int) (Math.random() * temp.length);
+			Item random_item = (Item) temp[random_index];
+			
+			
+			if(!promotion.contains(random_item)) {
+				i++;
+				
+				int stock_sz = this.storeWarehouseStock.get(random_item);
+				
+				this.calculatePriceOffer(random_item, stock_sz);
+				
+				promotion.add(random_item);
+			}
+			
+			
+		}
+		
+		
+		return promotion;
+	}
+	
+	private ArrayList<Item> getRarestItems(){
+		ArrayList<Item> rarest = new ArrayList<>();
+		
+		Item minItem = null; 
+		
+		for (int i = 0; i < 4; i++) {
+			
+			Set<Map.Entry<Item, Integer>> entries = this.storeWarehouseStock.entrySet();
+			Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+			
+			Entry<Item, Integer> entry = null;
+			
+			int j = 0;
+			
+			while (itr.hasNext()) {
+				
+				entry = itr.next();
+				
+				if(j == 0 && rarest.contains(entry.getKey())) {
+					j++;
+					minItem = entry.getKey();
+				}
+				else if(entry.getValue() < this.storeWarehouseStock.get(minItem)) {
+					if (!rarest.contains(entry.getKey())) {
+						minItem = entry.getKey();
+					}
+				}
+				else {
+					continue;
+				}
+	
+			}
+			rarest.add(minItem);
+		}
+		
+		return rarest;
+	}
+	
+	private ArrayList<Item> getMostCommonItems(){
+		ArrayList<Item> common = new ArrayList<>();
+		
+		Item maxItem = null; 
+		
+		for (int i = 0; i < 4; i++) {
+			
+			Set<Map.Entry<Item, Integer>> entries = this.storeWarehouseStock.entrySet();
+			Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+			
+			Entry<Item, Integer> entry = null;
+			
+			int j = 0;
+			
+			while (itr.hasNext()) {
+				
+				entry = itr.next();
+				
+				if(j == 0 && common.contains(entry.getKey())) {
+					j++;
+					maxItem = entry.getKey();
+				}
+				else if(entry.getValue() > this.storeWarehouseStock.get(maxItem)) {
+					if (!common.contains(entry.getKey())) {
+						maxItem = entry.getKey();
+					}
+				}
+				else {
+					continue;
+				}
+	
+			}
+			common.add(maxItem);
+		}
+		
+		return common;
+	}
 
-	//TODO: needs to receive client data
-	/*private double calculatePriceOffer(Item s, int n_items, int stock_size) {
-
-
+	
+ 	private void calculatePriceOffer(Item s, int stock_size) {
 
 		double randomPromo = Math.random() * (this.maxPromo - this.minPromo) + this.minPromo;
 
@@ -223,11 +333,7 @@ public class Store extends Agent {
 
 		s.applyPromotion(promotion);
 
-		double price = s.getCurrentPrice();
-
-
-		return price * n_items;
-	}*/
+	}
 
 
 	public void setup() {
