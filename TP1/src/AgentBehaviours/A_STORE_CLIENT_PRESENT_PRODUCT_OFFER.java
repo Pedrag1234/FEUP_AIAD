@@ -2,6 +2,7 @@ package AgentBehaviours;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Stack;
 
@@ -38,8 +39,13 @@ private static final long serialVersionUID = 2123129761660843976L;
 			
 			ACLMessage msg = new ACLMessage(ACLMessage.AGREE);
 			
-			ArrayList<Item> MessageContents = store.generateProducts2Offer();
+			ArrayList<Item> items = store.generateProducts2Offer();
 			
+			HashMap<Item,Integer> MessageContents = new HashMap<>();
+			
+			for (int i = 0; i < items.size(); i++) {
+				MessageContents.put(items.get(i), this.store.getStore_id());
+			}
 			
 			try {
 				
