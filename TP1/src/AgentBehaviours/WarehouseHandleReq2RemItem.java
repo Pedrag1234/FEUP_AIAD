@@ -13,6 +13,7 @@ import amazon.MainWarehouse;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
 
@@ -34,7 +35,8 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 
 	@Override
 	public void action() {
-		ACLMessage msg = this.warehouse.receive();
+		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+		ACLMessage msg = this.warehouse.receive(mt);
 		
 		if (msg != null) {
 			try {

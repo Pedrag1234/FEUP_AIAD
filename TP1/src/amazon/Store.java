@@ -1,9 +1,11 @@
 package amazon;
 
 
+import java.util.Hashtable;
 import java.util.Stack;
 
 import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
+import AgentBehaviours.StoreRequestInventoryBehaviour;
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
@@ -22,6 +24,9 @@ public class Store extends Agent {
 	private Stack<Item> currItemOrder;
 	private Stack<Integer> currItemNumber;
 	private int order;
+	private String sdType ="";
+	
+	private Hashtable<String,Integer> storeWarehouseStock = new Hashtable<>();
 
 	private DFAgentDescription dfd;
 
@@ -56,6 +61,7 @@ public class Store extends Agent {
 		this.currItemNumber = new Stack<>();
 		this.currItemOrder = new Stack<>();
 		this.order = 0;
+
 	}
 
 
@@ -64,6 +70,7 @@ public class Store extends Agent {
 
 		sd.setName(getLocalName());
 		sd.setType("Store_"+this.store_id);
+		sdType = "Store_"+this.store_id;
 
 		this.dfd = new DFAgentDescription();
 		dfd.setName(getAID());
@@ -98,7 +105,7 @@ public class Store extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
-
+		loop.addSubBehaviour(new StoreRequestInventoryBehaviour(this));
 		loop.addSubBehaviour(new StoreReqItem2WarehouseBehaviour(this));
 
 		addBehaviour(loop);
@@ -112,6 +119,11 @@ public class Store extends Agent {
 	public String toString() {
 		return "Store [profit=" + profit + ", n_customers=" + n_customers + ", store_id=" + store_id + ", area=" + area
 				+ ", stock_sz_value=" + stock_sz_value + ", maxPromo=" + maxPromo + ", minPromo=" + minPromo + "]";
+	}
+	
+	public String getStoreType()
+	{
+		return sdType;
 	}
 
 
@@ -198,7 +210,15 @@ public class Store extends Agent {
 	}
 
 
-
+	public void setStoreWarehouseStock(Hashtable<String,Integer> newStock)
+	{
+		this.storeWarehouseStock = newStock;
+	}
+	
+	public Hashtable<String,Integer> getStoreWarehouseStock()
+	{
+		return this.storeWarehouseStock;
+	}
 
 
 
