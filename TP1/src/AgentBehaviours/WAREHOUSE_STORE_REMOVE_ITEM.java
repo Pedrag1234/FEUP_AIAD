@@ -17,7 +17,7 @@ import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
 
-public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
+public class WAREHOUSE_STORE_REMOVE_ITEM extends CyclicBehaviour {
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 	private MainWarehouse warehouse;
 	private boolean complete;
 	
-	public WarehouseHandleReq2RemItem(MainWarehouse warehouse) {
+	public WAREHOUSE_STORE_REMOVE_ITEM(MainWarehouse warehouse) {
 		this.warehouse = warehouse;
 		this.complete = false;
 	}

@@ -2,11 +2,17 @@ package AgentBehaviours;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
+import java.util.Map.Entry;
 
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
+import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -14,26 +20,43 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 
-public class StorePresentProduct2Client extends SimpleBehaviour{
 
-private static final long serialVersionUID = 2123129761660843976L;
+
+
+public class STORE_WAREHOUSE_REMOVE_ITEM extends SimpleBehaviour {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2123129761660843976L;
 	
 	private Store store;
 	private boolean complete = false;
 	
 	
-	public StorePresentProduct2Client(Store s){
-		this.store = s;
+	public STORE_WAREHOUSE_REMOVE_ITEM(Store s){
+		this.setStore(s);
 	}
-	
+
 	@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		
-		String MessageContents = "Yo Yo Yo";
+		Hashtable<String, Integer> MessageContents = new Hashtable<>();
 		
 		
 		try {
+			Stack<Item> i = this.store.getCurrItemOrder();
+			Stack<Integer> n = this.store.getCurrItemNumber();
+			
+			while(i.size() > 0) {
+				
+				String temp = i.pop().getType();
+				Integer temp1 = n.pop();
+				
+				MessageContents.put(temp,temp1);
+				
+			}
 			
 			
 			msg.setContentObject(MessageContents);
@@ -46,24 +69,26 @@ private static final long serialVersionUID = 2123129761660843976L;
 		ServiceDescription sd = new ServiceDescription();
 		
 		
-		sd.setType("Client_1");
+		sd.setType("MainWarehouse");
 		dfd.addServices(sd);
 		
 		
 		try {
 			DFAgentDescription[] result = DFService.search(this.store, dfd);
 			
-			System.out.println(result.length);
 			
 			for (int i = 0; i < result.length; i++) {
 				
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
-				System.out.println(dest.getName());
+				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
 				
-				this.complete = true;
 				this.store.send(msg);
+				
+				//System.out.println("ending storereqitem2warehouse");
+				this.complete = true;
+				
 			}
 		
 		} catch (FIPAException e) {
@@ -73,10 +98,22 @@ private static final long serialVersionUID = 2123129761660843976L;
 		
 	}
 	
+
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
 	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
 		return this.complete;
 	}
+
 	
+
 }

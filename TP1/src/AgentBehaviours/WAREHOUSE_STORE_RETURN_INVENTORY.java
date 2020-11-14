@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import amazon.Item;
 import amazon.MainWarehouse;
 import jade.core.AID;
 import jade.core.behaviours.SimpleBehaviour;
@@ -15,7 +16,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
+public class WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 
 	/**
 	 * 
@@ -25,7 +26,7 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 	private MainWarehouse warehouse;
 	private boolean complete;
 
-	public WarehouseReturnInventoryBehaviour(MainWarehouse warehouse) {
+	public WAREHOUSE_STORE_RETURN_INVENTORY(MainWarehouse warehouse) {
 		this.warehouse = warehouse;
 		this.complete = false;
 	}
@@ -34,7 +35,8 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 	public void action() {
 		//RECEIVE MSG
 		String StoreType;
-		Hashtable<String,Integer> stock = new Hashtable<>();
+		Hashtable<Item,Integer> stock = new Hashtable<Item,Integer>();
+
 		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.QUERY_IF);
 		ACLMessage msg = this.warehouse.receive(mt);
 
@@ -61,7 +63,6 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 			sd.setType(StoreType);
 			dfd.addServices(sd);
 
-			//try?
 			try {
 				DFAgentDescription[] result = DFService.search(this.warehouse, dfd);
 

@@ -20,7 +20,7 @@ import jade.lang.acl.UnreadableException;
 
 
 
-public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
+public class STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 	private boolean complete = false;
 
 
-	public StoreRequestInventoryBehaviour(Store s){
+	public STORE_WAREHOUSE_REQUEST_INVENTORY(Store s){
 		this.setStore(s);
 	}
 
@@ -40,7 +40,7 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 	@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.QUERY_IF);
-		Hashtable<String,Integer> stock = new Hashtable<>();
+		Hashtable<Item,Integer> stock = new Hashtable<Item,Integer>();
 
 
 		//msg.setContentObject(stock);
@@ -88,7 +88,7 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 				System.out.println("MSG REPLY RECEIVED; GETTING STORE INFO NOW");
 				try {
 					//receives stock info
-					stock = (Hashtable<String,Integer>)msgReply.getContentObject();
+					stock = (Hashtable<Item,Integer>)msgReply.getContentObject();
 					//updates store's information about its warehouse stock
 					this.store.setStoreWarehouseStock(stock);
 				} catch (UnreadableException e) {

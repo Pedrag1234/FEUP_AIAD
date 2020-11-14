@@ -1,14 +1,15 @@
 package amazon;
 
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Stack;
 
-import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
+import AgentBehaviours.STORE_WAREHOUSE_REMOVE_ITEM;
 
-import AgentBehaviours.StorePresentProduct2Client;
+import AgentBehaviours.STORE_CLIENT_PRESENT_PRODUCTS;
 
-import AgentBehaviours.StoreRequestInventoryBehaviour;
+import AgentBehaviours.STORE_WAREHOUSE_REQUEST_INVENTORY;
 
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
@@ -30,10 +31,9 @@ public class Store extends Agent {
 	private int order;
 	private String sdType ="";
 	
-	private Hashtable<String,Integer> storeWarehouseStock = new Hashtable<>();
+	private Hashtable<Item,Integer> storeWarehouseStock = new Hashtable<Item,Integer>();
 
 	private DFAgentDescription dfd;
-
 
 
 	// value of the stock_size
@@ -109,9 +109,9 @@ public class Store extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
-		loop.addSubBehaviour(new StoreRequestInventoryBehaviour(this));
-		loop.addSubBehaviour(new StoreReqItem2WarehouseBehaviour(this));
-		loop.addSubBehaviour(new StorePresentProduct2Client(this));
+		loop.addSubBehaviour(new STORE_WAREHOUSE_REQUEST_INVENTORY(this));
+		loop.addSubBehaviour(new STORE_WAREHOUSE_REMOVE_ITEM(this));
+		loop.addSubBehaviour(new STORE_CLIENT_PRESENT_PRODUCTS(this));
 
 		addBehaviour(loop);
 	}
@@ -215,12 +215,12 @@ public class Store extends Agent {
 	}
 
 
-	public void setStoreWarehouseStock(Hashtable<String,Integer> newStock)
+	public void setStoreWarehouseStock(Hashtable<Item,Integer> newStock)
 	{
 		this.storeWarehouseStock = newStock;
 	}
 	
-	public Hashtable<String,Integer> getStoreWarehouseStock()
+	public Hashtable<Item,Integer> getStoreWarehouseStock()
 	{
 		return this.storeWarehouseStock;
 	}

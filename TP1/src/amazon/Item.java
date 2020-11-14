@@ -1,6 +1,8 @@
 package amazon;
 
-public class Item {
+import jade.util.leap.Serializable;
+
+public class Item implements Serializable {
 	
 	private String type;
 	private Double currentPrice;

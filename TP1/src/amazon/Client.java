@@ -5,12 +5,12 @@ import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import AgentBehaviours.ClientReceiveProductOffer;
+import AgentBehaviours.CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
+import AgentBehaviours.STORE_WAREHOUSE_REMOVE_ITEM;
 
 
 public class Client extends Agent{
@@ -186,7 +186,7 @@ public class Client extends Agent{
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
 
-		loop.addSubBehaviour(new ClientReceiveProductOffer(this));
+		loop.addSubBehaviour(new CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
 
 		addBehaviour(loop);
 	}

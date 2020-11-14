@@ -16,12 +16,12 @@ import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
-public class ClientReceiveProductOffer extends SimpleBehaviour{
+public class CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 	
 	private Client client;
 	private boolean complete;
 	
-	public ClientReceiveProductOffer(Client client) {
+	public CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(Client client) {
 		this.client = client;
 		this.complete = false;
 	}
