@@ -36,7 +36,8 @@ public class Store extends Agent {
 	private int n_customers;
 	private int store_id;
 	private String area;
-
+	
+	private String currClientId = "";
 	private Stack<Item> currItemOrder;
 	private Stack<Integer> currItemNumber;
 	private int order;
@@ -453,6 +454,16 @@ public class Store extends Agent {
 	public Hashtable<Item,Integer> getStoreWarehouseStock()
 	{
 		return this.storeWarehouseStock;
+	}
+
+
+	public String getCurrClientId() {
+		return currClientId;
+	}
+
+
+	public void setCurrClientId(String currClientId) {
+		this.currClientId = currClientId;
 	}
 
 

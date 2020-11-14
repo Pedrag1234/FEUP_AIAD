@@ -34,6 +34,8 @@ public class Client extends Agent{
 	private ArrayList<Store> stores_available = new ArrayList<Store>();
 	private ArrayList<Store> stores_to_contact = new ArrayList<Store>();
 	
+	private ArrayList<HashMap<Item,Integer>> proposals;
+	
 	private DFAgentDescription dfd;
 	
 	
@@ -46,7 +48,7 @@ public class Client extends Agent{
 		this.suscetible = suscetible;
 		this.needs = needs;
 		this.stores_available = stores_available;
-		
+		this.setProposals(new ArrayList<>());
 	}
 	
 	public void decide_which_stores_to_contact() {
@@ -289,6 +291,22 @@ public class Client extends Agent{
 	        }
 	    }
 	    return sortedMap;
+	}
+
+	public ArrayList<HashMap<Item, Integer>> getProposals() {
+		return proposals;
+	}
+
+	public void setProposals(ArrayList<HashMap<Item, Integer>> proposals) {
+		this.proposals = proposals;
+	}
+	
+	public void addProposedItems(HashMap<Item,Integer> prop) {
+		this.proposals.add(prop);
+	}
+	
+	public ArrayList<Store> getStores_To_Contact() {
+		return this.stores_to_contact;
 	}
 	
 }
