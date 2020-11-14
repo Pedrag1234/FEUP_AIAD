@@ -5,6 +5,7 @@ import amazon.Item;
 import amazon.MainWarehouse;
 import amazon.Store;
 import amazon.Client;
+import jade.core.MainContainer;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -15,6 +16,8 @@ import java.util.HashMap;
 
 
 public class JADELauncher {
+	
+	
 	
 	private static final String[] types = {
 			"Pen",
@@ -50,15 +53,12 @@ public class JADELauncher {
 			26.00,	
 	};
 	
-	private Runtime rt;
-	private Profile p;
-	private ContainerController cc;
 
 	public static void main(String[] args) throws StaleProxyException {
 		
-		this.rt = Runtime.instance();
-		this.p = new ProfileImpl(true);
-		this.cc = rt.createMainContainer(p);
+		Runtime rt = Runtime.instance();
+		ProfileImpl p = new ProfileImpl(true);
+		ContainerController cc = rt.createMainContainer(p);
 		
 		Amazon amazon = new Amazon();
 		
