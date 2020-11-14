@@ -1,6 +1,7 @@
 package AgentBehaviours;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Stack;
 
@@ -13,6 +14,7 @@ import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
 public class A_STORE_CLIENT_PRESENT_PRODUCT_OFFER extends SimpleBehaviour{
 
@@ -28,48 +30,54 @@ private static final long serialVersionUID = 2123129761660843976L;
 	
 	@Override
 	public void action() {
-		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		
-		String MessageContents = "Yo Yo Yo";
+		MessageTemplate request = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+		ACLMessage m = this.store.blockingReceive(request);
 		
-		
-		try {
+		if(m != null) {
+			
+			ACLMessage msg = new ACLMessage(ACLMessage.AGREE);
+			
+			ArrayList<Item> MessageContents = store.generateProducts2Offer();
 			
 			
-			msg.setContentObject(MessageContents);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		DFAgentDescription dfd = new DFAgentDescription();
-		ServiceDescription sd = new ServiceDescription();
-		
-		
-		sd.setType("Client_1");
-		dfd.addServices(sd);
-		
-		
-		try {
-			DFAgentDescription[] result = DFService.search(this.store, dfd);
-			
-			System.out.println(result.length);
-			
-			for (int i = 0; i < result.length; i++) {
+			try {
 				
-				AID dest = result[i].getName();
-				msg.addReceiver(dest);
 				
-				System.out.println(dest.getName());
+				msg.setContentObject(MessageContents);
 				
-				this.complete = true;
-				this.store.send(msg);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		
-		} catch (FIPAException e) {
-			e.printStackTrace();
+			
+			DFAgentDescription dfd = new DFAgentDescription();
+			ServiceDescription sd = new ServiceDescription();
+			
+			
+			sd.setType("Client_"+this.store.getCurrClientId());
+			dfd.addServices(sd);
+			
+			
+			try {
+				DFAgentDescription[] result = DFService.search(this.store, dfd);
+				
+				System.out.println(result.length);
+				
+				for (int i = 0; i < result.length; i++) {
+					
+					AID dest = result[i].getName();
+					msg.addReceiver(dest);
+					
+					System.out.println(dest.getName());
+					
+					this.complete = true;
+					this.store.send(msg);
+				}
+			
+			} catch (FIPAException e) {
+				e.printStackTrace();
+			}
 		}
-
 		
 	}
 	

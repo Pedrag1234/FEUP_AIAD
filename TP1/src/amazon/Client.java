@@ -29,6 +29,8 @@ public class Client extends Agent{
 	HashMap<String, Double> needs = new HashMap<String, Double>();
 	ArrayList<Item> buy_list = new ArrayList<Item>();
 	
+	ArrayList<ArrayList<Item>> proposals;
+	
 	private DFAgentDescription dfd;
 	
 	
@@ -40,6 +42,7 @@ public class Client extends Agent{
 		this.spender = spender;
 		this.suscetible = suscetible;
 		this.needs = needs;
+		this.proposals = new ArrayList<>();
 	}
 	
 	public double calculate_buying_local_chance (Store store) { 
@@ -266,6 +269,11 @@ public class Client extends Agent{
 	        }
 	    }
 	    return sortedMap;
+	}
+	
+	
+	public void addProposedItems(ArrayList<Item> prop) {
+		this.proposals.add(prop);
 	}
 	
 }

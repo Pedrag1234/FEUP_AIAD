@@ -1,5 +1,6 @@
 package AgentBehaviours;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,6 +15,7 @@ import StockExceptions.NoStockException;
 import amazon.MainWarehouse;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
 public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
@@ -28,25 +30,27 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 	
 	@Override
 	public void action() {
-		ACLMessage msg = this.client.receive();
 		
-		if (msg != null) {
+		MessageTemplate mt =  MessageTemplate.MatchPerformative(ACLMessage.AGREE);
+		ACLMessage msg = this.client.blockingReceive(mt);
+		
+		if(msg != null) {
+			
 			try {
-				String requests = (String)msg.getContentObject();
-				System.out.println(requests);
+				ArrayList<Item> products = (ArrayList<Item>) msg.getContentObject();
+				
+				this.client.addProposedItems(products);
+				this.complete = true;
 				
 			} catch (UnreadableException e) {
 				e.printStackTrace();
 			}
-		
-				
-
 			
-			this.complete = true;
+			
+			
 		}
-		else {
-			//block();
-		}
+		
+
 		
 		return;
 	}
