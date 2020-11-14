@@ -76,17 +76,19 @@ public class StoreReqItem2WarehouseBehaviour extends SimpleBehaviour {
 		try {
 			DFAgentDescription[] result = DFService.search(this.store, dfd);
 			
-			System.out.println(result.length);
 			
 			for (int i = 0; i < result.length; i++) {
 				
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
-				System.out.println(dest.getName());
+				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
 				
-				this.complete = true;
 				this.store.send(msg);
+				
+				//System.out.println("ending storereqitem2warehouse");
+				this.complete = true;
+				
 			}
 		
 		} catch (FIPAException e) {
