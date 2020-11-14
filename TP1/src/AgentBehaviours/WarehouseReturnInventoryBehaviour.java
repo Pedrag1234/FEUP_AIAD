@@ -79,7 +79,6 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 			}
 
 			//System.out.println("ending WarehouseReturnInventory");
-
 			this.complete = true;
 
 		}

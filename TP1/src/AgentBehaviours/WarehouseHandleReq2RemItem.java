@@ -42,7 +42,7 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 			try {
 				Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
 				
-				
+				System.out.println("MSG RECEIVED; DELETE ITEM");
 				Set<Map.Entry<String, Integer>> entries = requests.entrySet();
 				Iterator<Map.Entry<String, Integer>> itr = entries.iterator();
 				
@@ -64,6 +64,7 @@ public class WarehouseHandleReq2RemItem extends CyclicBehaviour {
 				e.printStackTrace();
 			}
 			this.complete = true;
+			//System.out.println("ending warehousehandlereq2rem");
 		}
 		else {
 			//block();

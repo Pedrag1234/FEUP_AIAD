@@ -85,6 +85,8 @@ public class StoreReqItem2WarehouseBehaviour extends SimpleBehaviour {
 				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
 				
 				this.store.send(msg);
+				
+				//System.out.println("ending storereqitem2warehouse");
 				this.complete = true;
 				
 			}
