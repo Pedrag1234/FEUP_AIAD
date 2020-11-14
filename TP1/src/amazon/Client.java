@@ -1,8 +1,17 @@
 package amazon;
 
 import jade.core.Agent;
+import jade.core.behaviours.SequentialBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import AgentBehaviours.ClientReceiveProductOffer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
+
 
 public class Client extends Agent{
 	
@@ -13,6 +22,8 @@ public class Client extends Agent{
 	private double spender;
 	private double suscetible;
 	HashMap<String, Double> needs = new HashMap<String, Double>();
+	
+	private DFAgentDescription dfd;
 	
 	
 	public Client(int id, String area, int money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs) {
@@ -152,6 +163,32 @@ public class Client extends Agent{
 	}
 
 
+	public void register() {
+		ServiceDescription sd = new ServiceDescription();
+		
+		sd.setName(getLocalName());
+		System.out.println("Client_"+ this.id);
+		sd.setType("Client_"+ this.id);
+		
+		
+		this.dfd = new DFAgentDescription();
+		dfd.setName(getAID());
+		dfd.addServices(sd);
+		
+		try {
+			DFService.register(this, this.dfd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public void setup() {
+		this.register();
+		SequentialBehaviour loop = new SequentialBehaviour();
+
+		loop.addSubBehaviour(new ClientReceiveProductOffer(this));
+
+		addBehaviour(loop);
+	}
 	
 }

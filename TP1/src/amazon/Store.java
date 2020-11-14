@@ -4,6 +4,7 @@ package amazon;
 import java.util.Stack;
 
 import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
+import AgentBehaviours.StorePresentProduct2Client;
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
@@ -100,6 +101,7 @@ public class Store extends Agent {
 		SequentialBehaviour loop = new SequentialBehaviour();
 
 		loop.addSubBehaviour(new StoreReqItem2WarehouseBehaviour(this));
+		loop.addSubBehaviour(new StorePresentProduct2Client(this));
 
 		addBehaviour(loop);
 	}
