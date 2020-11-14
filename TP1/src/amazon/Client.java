@@ -8,7 +8,12 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import AgentBehaviours.ClientReceiveProductOffer;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 import AgentBehaviours.StoreReqItem2WarehouseBehaviour;
 
@@ -22,6 +27,7 @@ public class Client extends Agent{
 	private double spender;
 	private double suscetible;
 	HashMap<String, Double> needs = new HashMap<String, Double>();
+	ArrayList<Item> buy_list = new ArrayList<Item>();
 	
 	private DFAgentDescription dfd;
 	
@@ -79,8 +85,46 @@ public class Client extends Agent{
 		return 0;
 	}
 	
+	public ArrayList<Item> decide_which_items_to_buy(ArrayList<HashMap<Item, Integer>> store_stock, Store store) {
+		double money_spent_so_far = 0;
+		HashMap<Item, Double> temp = new HashMap<Item, Double>();
+		
+		for (HashMap<Item, Integer> i : store_stock) {
+			
+			for (Item j : i.keySet()) {
+				  temp.put(j, decide_if_buy(j,store));
+			}
+		      
+		}
+		
+		temp = sortHashMapByValues(temp);
+		
+		ArrayList<Item> items_most_interested_in_buying = new ArrayList<>(temp.keySet());
+		ArrayList<Item> buy_list_temp = new ArrayList<>();
+		
+		for (Item i : items_most_interested_in_buying) {
+			
+			var d = Math.random();
+			if (d < temp.get(i)) {
+				buy_list_temp.add(i);
+			}
+		}
+		
+		for (Item i : buy_list_temp) {
+			
+			if(i.getCurrentPrice() + money_spent_so_far < this.money_to_spend) {
+				this.buy_list.add(i);
+			}
+			
+		}
+		
+		return this.buy_list;
+		
+		
+	}
 	
-	public boolean decide_if_buy(Item item, Store store) {
+	
+	public double decide_if_buy(Item item, Store store) {
 			
 		double price = item.getCurrentPrice();
 		
@@ -89,18 +133,21 @@ public class Client extends Agent{
 		double money_percentage_remaining = calculate_money_percentage_remaining(price);
 		
 		if(money_percentage_remaining == -1) { //Check if the price of the item is bigger than the money available
-			return false;
+			return 0;
 		}
 		
 		double need = check_need(item);
 		
 		double chance_of_buying = (buying_local_chance + susceptibility + money_percentage_remaining + need)/4;
 		System.out.println("Chance of buying was:" + chance_of_buying);
-		var d = Math.random();
+		
+		return chance_of_buying;
+		
+		/*var d = Math.random();
 		if (d < chance_of_buying)
 		    return true;
 		else 
-		    return false;
+		    return false;*/
 		
 			
 	}
@@ -189,6 +236,36 @@ public class Client extends Agent{
 		loop.addSubBehaviour(new ClientReceiveProductOffer(this));
 
 		addBehaviour(loop);
+	}
+	
+	public LinkedHashMap<Item, Double> sortHashMapByValues(
+	        HashMap<Item, Double> passedMap) {
+	    List<Item> mapKeys = new ArrayList<>(passedMap.keySet());
+	    List<Double> mapValues = new ArrayList<>(passedMap.values());
+	    Collections.sort(mapValues);
+	  //  Collections.sort(mapKeys);
+
+	    LinkedHashMap<Item, Double> sortedMap =
+	        new LinkedHashMap<>();
+
+	    Iterator<Double> valueIt = mapValues.iterator();
+	    while (valueIt.hasNext()) {
+	    	Double val = valueIt.next();
+	        Iterator<Item> keyIt = mapKeys.iterator();
+
+	        while (keyIt.hasNext()) {
+	        	Item key = keyIt.next();
+	            Double comp1 = passedMap.get(key);
+	            Double comp2 = val;
+
+	            if (comp1.equals(comp2)) {
+	                keyIt.remove();
+	                sortedMap.put(key, val);
+	                break;
+	            }
+	        }
+	    }
+	    return sortedMap;
 	}
 	
 }

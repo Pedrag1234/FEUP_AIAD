@@ -49,10 +49,23 @@ public class JADELauncher {
 			289.00,
 			26.00,	
 	};
+	
+	private Runtime rt;
+	private Profile p;
+	private ContainerController cc;
 
 	public static void main(String[] args) throws StaleProxyException {
-			
-		Runtime rt = Runtime.instance();
+		
+		this.rt = Runtime.instance();
+		this.p = new ProfileImpl(true);
+		this.cc = rt.createMainContainer(p);
+		
+		Amazon amazon = new Amazon();
+		
+		
+		
+		
+	/*	Runtime rt = Runtime.instance();
 
 		Profile p1 = new ProfileImpl();
 		ContainerController mainContainer = rt.createMainContainer(p1);
@@ -96,7 +109,7 @@ public class JADELauncher {
 			
 		} catch (StaleProxyException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		/*Object[] agentArgs = new Object[0];
