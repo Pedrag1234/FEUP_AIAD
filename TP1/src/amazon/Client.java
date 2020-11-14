@@ -35,8 +35,7 @@ public class Client extends Agent{
 	private ArrayList<Store> stores_to_contact = new ArrayList<Store>();
 	
 	private ArrayList<HashMap<Item,Integer>> proposals;
-	
-	ArrayList<ArrayList<Item>> proposals;
+
 	
 	private DFAgentDescription dfd;
 	
@@ -311,9 +310,5 @@ public class Client extends Agent{
 		return this.stores_to_contact;
 	}
 	
-	
-	public void addProposedItems(ArrayList<Item> prop) {
-		this.proposals.add(prop);
-	}
 	
 }
