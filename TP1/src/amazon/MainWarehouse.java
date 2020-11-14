@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import AgentBehaviours.WAREHOUSE_STORE_REMOVE_ITEM;
-import AgentBehaviours.WAREHOUSE_STORE_RETURN_INVENTORY;
+import AgentBehaviours.B_WAREHOUSE_STORE_REMOVED_ITEM;
+import AgentBehaviours.C_WAREHOUSE_STORE_RETURN_INVENTORY;
 import StockExceptions.*;
 
 public class MainWarehouse extends Agent {
@@ -139,8 +139,8 @@ public class MainWarehouse extends Agent {
 		SequentialBehaviour loop = new SequentialBehaviour();
 		
 		
-		loop.addSubBehaviour(new WAREHOUSE_STORE_RETURN_INVENTORY(this));
-		loop.addSubBehaviour(new WAREHOUSE_STORE_REMOVE_ITEM(this));
+		loop.addSubBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
+		loop.addSubBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 		addBehaviour(loop);
 	}

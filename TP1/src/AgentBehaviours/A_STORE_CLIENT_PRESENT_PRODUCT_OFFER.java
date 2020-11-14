@@ -2,17 +2,11 @@ package AgentBehaviours;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
-import java.util.Map.Entry;
 
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
-import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -20,43 +14,26 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 
+public class A_STORE_CLIENT_PRESENT_PRODUCT_OFFER extends SimpleBehaviour{
 
-
-
-public class STORE_WAREHOUSE_REMOVE_ITEM extends SimpleBehaviour {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2123129761660843976L;
+private static final long serialVersionUID = 2123129761660843976L;
 	
 	private Store store;
 	private boolean complete = false;
 	
 	
-	public STORE_WAREHOUSE_REMOVE_ITEM(Store s){
-		this.setStore(s);
+	public A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(Store s){
+		this.store = s;
 	}
-
+	
 	@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		
-		Hashtable<String, Integer> MessageContents = new Hashtable<>();
+		String MessageContents = "Yo Yo Yo";
 		
 		
 		try {
-			Stack<Item> i = this.store.getCurrItemOrder();
-			Stack<Integer> n = this.store.getCurrItemNumber();
-			
-			while(i.size() > 0) {
-				
-				String temp = i.pop().getType();
-				Integer temp1 = n.pop();
-				
-				MessageContents.put(temp,temp1);
-				
-			}
 			
 			
 			msg.setContentObject(MessageContents);
@@ -69,26 +46,24 @@ public class STORE_WAREHOUSE_REMOVE_ITEM extends SimpleBehaviour {
 		ServiceDescription sd = new ServiceDescription();
 		
 		
-		sd.setType("MainWarehouse");
+		sd.setType("Client_1");
 		dfd.addServices(sd);
 		
 		
 		try {
 			DFAgentDescription[] result = DFService.search(this.store, dfd);
 			
+			System.out.println(result.length);
 			
 			for (int i = 0; i < result.length; i++) {
 				
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
-				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
+				System.out.println(dest.getName());
 				
-				this.store.send(msg);
-				
-				//System.out.println("ending storereqitem2warehouse");
 				this.complete = true;
-				
+				this.store.send(msg);
 			}
 		
 		} catch (FIPAException e) {
@@ -98,22 +73,10 @@ public class STORE_WAREHOUSE_REMOVE_ITEM extends SimpleBehaviour {
 		
 	}
 	
-
-
-	public Store getStore() {
-		return store;
-	}
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
-
 	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
 		return this.complete;
 	}
-
 	
-
 }

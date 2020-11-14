@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Stack;
 
-import AgentBehaviours.STORE_WAREHOUSE_REMOVE_ITEM;
+import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 
-import AgentBehaviours.STORE_CLIENT_PRESENT_PRODUCTS;
+import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 
-import AgentBehaviours.STORE_WAREHOUSE_REQUEST_INVENTORY;
+import AgentBehaviours.C_STORE_WAREHOUSE_REQUEST_INVENTORY;
 
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
@@ -109,9 +109,9 @@ public class Store extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
-		loop.addSubBehaviour(new STORE_WAREHOUSE_REQUEST_INVENTORY(this));
-		loop.addSubBehaviour(new STORE_WAREHOUSE_REMOVE_ITEM(this));
-		loop.addSubBehaviour(new STORE_CLIENT_PRESENT_PRODUCTS(this));
+		loop.addSubBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
+		loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
+		loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
 
 		addBehaviour(loop);
 	}

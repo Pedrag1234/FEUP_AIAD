@@ -20,7 +20,7 @@ import jade.lang.acl.UnreadableException;
 
 
 
-public class STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
+public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 	private boolean complete = false;
 
 
-	public STORE_WAREHOUSE_REQUEST_INVENTORY(Store s){
+	public C_STORE_WAREHOUSE_REQUEST_INVENTORY(Store s){
 		this.setStore(s);
 	}
 

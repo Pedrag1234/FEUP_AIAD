@@ -16,7 +16,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
+public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 	private MainWarehouse warehouse;
 	private boolean complete;
 
-	public WAREHOUSE_STORE_RETURN_INVENTORY(MainWarehouse warehouse) {
+	public C_WAREHOUSE_STORE_RETURN_INVENTORY(MainWarehouse warehouse) {
 		this.warehouse = warehouse;
 		this.complete = false;
 	}
