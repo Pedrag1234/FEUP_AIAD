@@ -1,5 +1,7 @@
 package amazon;
 
+
+
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
@@ -21,6 +23,7 @@ import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 public class Client extends Agent{
 	
 	private int id;
+	private int number_of_stores = 25;
 	private String area;
 	private int money_to_spend;
 	private double buy_Local;
@@ -28,13 +31,17 @@ public class Client extends Agent{
 	private double suscetible;
 	HashMap<String, Double> needs = new HashMap<String, Double>();
 	ArrayList<Item> buy_list = new ArrayList<Item>();
+	private ArrayList<Store> stores_available = new ArrayList<Store>();
+	private ArrayList<Store> stores_to_contact = new ArrayList<Store>();
+	
+	private ArrayList<HashMap<Item,Integer>> proposals;
 	
 	ArrayList<ArrayList<Item>> proposals;
 	
 	private DFAgentDescription dfd;
 	
 	
-	public Client(int id, String area, int money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs) {
+	public Client(int id, String area, int money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available) {
 		this.id = id;
 		this.area = area;
 		this.money_to_spend = money_to_spend;
@@ -42,8 +49,18 @@ public class Client extends Agent{
 		this.spender = spender;
 		this.suscetible = suscetible;
 		this.needs = needs;
-		this.proposals = new ArrayList<>();
+		this.stores_available = stores_available;
+		this.setProposals(new ArrayList<>());
 	}
+	
+	public void decide_which_stores_to_contact() {
+		for (int i=0; i< number_of_stores; i++) {
+			var d = (int)(Math.random() * (99 - 0 + 1) + 0); 
+			
+			stores_to_contact.add(stores_available.get(d));
+		}
+	}
+	
 	
 	public double calculate_buying_local_chance (Store store) { 
 	
@@ -88,22 +105,26 @@ public class Client extends Agent{
 		return 0;
 	}
 	
-	public ArrayList<Item> decide_which_items_to_buy(ArrayList<HashMap<Item, Integer>> store_stock, Store store) {
+	public ArrayList<Item> decide_which_items_to_buy(ArrayList<HashMap<Item, Integer>> store_stock, ArrayList<Store> stores) {
 		double money_spent_so_far = 0;
+		int counter = 0;
 		HashMap<Item, Double> temp = new HashMap<Item, Double>();
 		
 		for (HashMap<Item, Integer> i : store_stock) {
 			
 			for (Item j : i.keySet()) {
-				  temp.put(j, decide_if_buy(j,store));
+				  temp.put(j, decide_if_buy(j,stores.get(counter)));
+				 
 			}
-		      
+		      counter++;
 		}
 		
 		temp = sortHashMapByValues(temp);
 		
 		ArrayList<Item> items_most_interested_in_buying = new ArrayList<>(temp.keySet());
 		ArrayList<Item> buy_list_temp = new ArrayList<>();
+		
+		System.out.println(items_most_interested_in_buying);
 		
 		for (Item i : items_most_interested_in_buying) {
 			
@@ -112,6 +133,8 @@ public class Client extends Agent{
 				buy_list_temp.add(i);
 			}
 		}
+		
+		
 		
 		for (Item i : buy_list_temp) {
 			
@@ -142,7 +165,7 @@ public class Client extends Agent{
 		double need = check_need(item);
 		
 		double chance_of_buying = (buying_local_chance + susceptibility + money_percentage_remaining + need)/4;
-		System.out.println("Chance of buying was:" + chance_of_buying);
+		System.out.println("Chance of buying " + item + " was:" + chance_of_buying);
 		
 		return chance_of_buying;
 		
@@ -246,6 +269,7 @@ public class Client extends Agent{
 	    List<Item> mapKeys = new ArrayList<>(passedMap.keySet());
 	    List<Double> mapValues = new ArrayList<>(passedMap.values());
 	    Collections.sort(mapValues);
+	    Collections.reverse(mapValues);
 	  //  Collections.sort(mapKeys);
 
 	    LinkedHashMap<Item, Double> sortedMap =
@@ -269,6 +293,22 @@ public class Client extends Agent{
 	        }
 	    }
 	    return sortedMap;
+	}
+
+	public ArrayList<HashMap<Item, Integer>> getProposals() {
+		return proposals;
+	}
+
+	public void setProposals(ArrayList<HashMap<Item, Integer>> proposals) {
+		this.proposals = proposals;
+	}
+	
+	public void addProposedItems(HashMap<Item,Integer> prop) {
+		this.proposals.add(prop);
+	}
+	
+	public ArrayList<Store> getStores_To_Contact() {
+		return this.stores_to_contact;
 	}
 	
 	

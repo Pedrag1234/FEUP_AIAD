@@ -12,7 +12,10 @@ import jade.core.Runtime;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 
 
 public class JADELauncher {
@@ -53,17 +56,65 @@ public class JADELauncher {
 			26.00,	
 	};
 	
+	private Runtime rt;
+	private Profile p;
+	private ContainerController cc;
+	
+	public void setup_container() {
+		this.rt = Runtime.instance();
+		this.p = new ProfileImpl(true);
+		this.cc = rt.createMainContainer(p);
+		
+	}
 
 	public static void main(String[] args) throws StaleProxyException {
 		
-		Runtime rt = Runtime.instance();
-		ProfileImpl p = new ProfileImpl(true);
-		ContainerController cc = rt.createMainContainer(p);
 		
 		Amazon amazon = new Amazon();
 		
 		
+		/*
+		Item item1 = new Item("Book", 20.0, 40.0);
+		Item item2 = new Item("Phone", 30.0, 60.0);
+		Item item3 = new Item("Pen", 5.0, 10.0);
+		Item item4 = new Item("Book", 20.0, 20.0);
+		Item item5 = new Item("Phone", 30.0, 30.0);
+		Item item6 = new Item("Pen", 5.0, 5.0);
 		
+		Store store = new Store(0, 20, 10, 2,"Nevada");
+		Store store2 = new Store(0, 20, 10, 2,"Porto");
+		
+		HashMap<Item, Integer> stock1 = new HashMap<Item, Integer>();
+		stock1.put(item1,10);
+		stock1.put(item2,10);
+		stock1.put(item3,10);
+	
+		
+		HashMap<Item, Integer> stock2 = new HashMap<Item, Integer>();
+		stock2.put(item4,10);
+		stock2.put(item5,10);
+		stock2.put(item6,10);
+	
+		
+		ArrayList<HashMap<Item, Integer>> store_stock = new ArrayList<HashMap<Item, Integer>>();
+		store_stock.add(stock1);
+		store_stock.add(stock2);
+		
+		HashMap<String, Double> needs = new HashMap<String, Double>();
+		needs.put("Book", 0.7);
+		
+		ArrayList<Store> stores = new ArrayList<>();
+		stores.add(store2);
+		stores.add(store);
+		
+		Client client = new Client(01, "Nevada", 1000, 0.5, 0.5, 0, needs);
+		
+		ArrayList<Item> lista = client.decide_which_items_to_buy(store_stock, stores);
+		
+		for (Item i : lista) {
+		      System.out.println(i);
+		} */
+
 		
 	/*	Runtime rt = Runtime.instance();
 

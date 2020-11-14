@@ -20,19 +20,44 @@ public class Item implements Serializable {
 		setCurrentPrice(currentPrice);
 	}
 	
-	@Override
-	public boolean equals(Object s) {
-		if(((Item) s).getType() == type)
-			return true;
-		else
-			return false;
-		
-	}
+
+
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (currentPrice == null) {
+			if (other.currentPrice != null)
+				return false;
+		} else if (!currentPrice.equals(other.currentPrice))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+
+	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return this.type.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((currentPrice == null) ? 0 : currentPrice.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
 	}
 	
 	@Override
@@ -72,5 +97,12 @@ public class Item implements Serializable {
 	public void endPromotion() {
 		setCurrentPrice(price);
 	}
+
+	@Override
+	public String toString() {
+		return "Item [type=" + type + ", currentPrice=" + currentPrice + ", price=" + price + "]";
+	}
+	
+	
 	
 }
