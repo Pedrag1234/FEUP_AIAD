@@ -14,6 +14,8 @@ import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
+import jade.lang.acl.UnreadableException;
 
 
 
@@ -38,15 +40,12 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 	@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.QUERY_IF);
-		try {
+		Hashtable<String,Integer> stock = new Hashtable<>();
 
 
-			//msg.setContentObject(stock);
-			msg.setContentObject("pLS Gib stock");
+		//msg.setContentObject(stock);
+		msg.setContent(this.store.getStoreType());
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
 		DFAgentDescription dfd = new DFAgentDescription();
 		ServiceDescription sd = new ServiceDescription();
@@ -67,7 +66,7 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 				msg.addReceiver(dest);
 
 				System.out.println("MSG SENT; Requested Inventory");
-				this.complete = true;
+
 				this.store.send(msg);
 
 			}
@@ -76,7 +75,34 @@ public class StoreRequestInventoryBehaviour extends SimpleBehaviour{
 			e.printStackTrace();
 		}
 
-
+		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+		ACLMessage msgReply;
+		msgReply = this.store.receive(mt);
+		int i;
+		while(msgReply == null)
+		{
+			msgReply = this.store.receive(mt);
+			if(msgReply != null)
+			{
+				
+				System.out.println("MSG REPLY RECEIVED; GETTING STORE INFO NOW");
+				try {
+					//receives stock info
+					stock = (Hashtable<String,Integer>)msgReply.getContentObject();
+					//updates store's information about its warehouse stock
+					this.store.setStoreWarehouseStock(stock);
+				} catch (UnreadableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/*if(stock.size() != 0)
+					{System.out.println("got stock size!:");
+					System.out.println(stock.size());}*/
+			}
+		}
+		
+		//System.out.println("ending StoreRequestInventory");
+		this.complete = true;
 	}
 
 	@Override

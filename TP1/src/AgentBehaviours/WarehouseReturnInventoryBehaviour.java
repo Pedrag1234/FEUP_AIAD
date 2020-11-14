@@ -1,5 +1,6 @@
 package AgentBehaviours;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -31,25 +32,39 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 
 	@Override
 	public void action() {
+		//RECEIVE MSG
+		String StoreType;
 		Hashtable<String,Integer> stock = new Hashtable<>();
 		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.QUERY_IF);
 		ACLMessage msg = this.warehouse.receive(mt);
 
 		if (msg != null) {
 
-			System.out.println("MSG RECEIVED Nigggggggggggg");			
+			System.out.println("MSG RECEIVED; GIVE BACK INVENTORY INFO");			
 			//System.out.println(msg.getContent());
 			//stock = (Hashtable<String,Integer>)msg.getContentObject();
 			//REPLY:
+			StoreType = msg.getContent();
 			ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
+			try {
+				//Fill MSG with inventory information to return
+				stock = this.warehouse.getStock();
+				msgReply.setContentObject(stock);
+				//System.out.println("FILLED MSG WITH STOCK INFO"); //, size:");
+				//System.out.println(stock.size());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			DFAgentDescription dfd = new DFAgentDescription();
 			ServiceDescription sd = new ServiceDescription();
-			sd.setType("Store");
+			sd.setType(StoreType);
 			dfd.addServices(sd);
 
 			//try?
 			try {
 				DFAgentDescription[] result = DFService.search(this.warehouse, dfd);
+
 				for (int i = 0; i < result.length; i++) {
 
 					AID dest = result[i].getName();
@@ -63,6 +78,7 @@ public class WarehouseReturnInventoryBehaviour extends SimpleBehaviour{
 				e.printStackTrace();
 			}
 
+			//System.out.println("ending WarehouseReturnInventory");
 
 			this.complete = true;
 
