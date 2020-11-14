@@ -3,7 +3,11 @@ package amazon;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
+import java.util.Map.Entry;
 
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 
@@ -20,6 +24,11 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 public class Store extends Agent {
 
 	private static final long serialVersionUID = 1L;
+	
+	final int CHEAPEST = 0;
+	final int MOST_EXPENSIVE = 1;
+	final int IN_PROMOTION = 2;
+	final int RAREST = 3;
 
 	private double profit;
 	private int n_customers;
@@ -86,6 +95,121 @@ public class Store extends Agent {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public ArrayList<Item> generateProducts2Offer() {
+		
+		ArrayList<Item> returnItems = null;
+		
+		
+		int strategy = (int) (Math.random() * 3);
+		
+		
+			
+		switch (strategy) {
+			case CHEAPEST: {
+				System.out.println("Cheapest");
+				returnItems = getCheapestItems(); 
+				break;
+			}
+			case MOST_EXPENSIVE: {
+				System.out.println("Most Expensive");
+				returnItems = getMostExpensiveItems(); 
+				break;
+			}
+			case IN_PROMOTION: {
+				System.out.println("Cheapest");
+				returnItems = getCheapestItems(); 
+				break;
+			}
+			case RAREST: {
+				System.out.println("Most Expensive");
+				returnItems = getMostExpensiveItems(); 
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + strategy);
+		}
+			
+		
+		
+		return returnItems;
+	}
+	
+	public ArrayList<Item> getCheapestItems(){
+		ArrayList<Item> cheapest = new ArrayList<>();
+		
+		Item minItem = null; 
+		
+		for (int i = 0; i < 4; i++) {
+			
+			Set<Map.Entry<Item, Integer>> entries = this.storeWarehouseStock.entrySet();
+			Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+			
+			Entry<Item, Integer> entry = null;
+			
+			int j = 0;
+			
+			while (itr.hasNext()) {
+				
+				entry = itr.next();
+				
+				if(j == 0 && cheapest.contains(entry.getKey())) {
+					j++;
+					minItem = entry.getKey();
+				}
+				else if(entry.getKey().getCurrentPrice() < minItem.getCurrentPrice()) {
+					if (!cheapest.contains(entry.getKey())) {
+						minItem = entry.getKey();
+					}
+				}
+				else {
+					continue;
+				}
+	
+			}
+			cheapest.add(minItem);
+		}
+		
+		return cheapest;
+	}
+	
+	public ArrayList<Item> getMostExpensiveItems(){
+		ArrayList<Item> expensive = new ArrayList<>();
+		
+		Item maxItem = null; 
+		
+		for (int i = 0; i < 4; i++) {
+			
+			Set<Map.Entry<Item, Integer>> entries = this.storeWarehouseStock.entrySet();
+			Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
+			
+			Entry<Item, Integer> entry = null;
+			
+			int j = 0;
+			
+			while (itr.hasNext()) {
+				
+				entry = itr.next();
+				
+				if(j == 0 && expensive.contains(entry.getKey())) {
+					j++;
+					maxItem = entry.getKey();
+				}
+				else if(entry.getKey().getCurrentPrice() > maxItem.getCurrentPrice()) {
+					if (!expensive.contains(entry.getKey())) {
+						maxItem = entry.getKey();
+					}
+				}
+				else {
+					continue;
+				}
+	
+			}
+			expensive.add(maxItem);
+		}
+		
+		return expensive;
 	}
 
 	//TODO: needs to receive client data
