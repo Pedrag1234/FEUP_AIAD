@@ -178,4 +178,14 @@ public class JADELauncher {
 		}*/
 	}
 
+	public ContainerController getCc() {
+		return cc;
+	}
+
+	public void setCc(ContainerController cc) {
+		this.cc = cc;
+	}
+	
+	
+
 }

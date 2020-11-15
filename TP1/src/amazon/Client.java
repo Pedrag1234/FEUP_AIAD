@@ -37,6 +37,8 @@ public class Client extends Agent{
 	private DFAgentDescription dfd;
 	
 	
+	
+	
 	public Client(int id, String area, int money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available) {
 		this.id = id;
 		this.area = area;
@@ -101,19 +103,16 @@ public class Client extends Agent{
 		return 0;
 	}
 	
-	public ArrayList<Item> decide_which_items_to_buy(ArrayList<HashMap<Item, Integer>> store_stock, ArrayList<Store> stores) {
+	public ArrayList<Item> decide_which_items_to_buy(HashMap<Item, Integer> store_stock) {
 		double money_spent_so_far = 0;
-		int counter = 0;
 		HashMap<Item, Double> temp = new HashMap<Item, Double>();
-		
-		for (HashMap<Item, Integer> i : store_stock) {
-			
-			for (Item j : i.keySet()) {
-				  temp.put(j, decide_if_buy(j,stores.get(counter)));
-				 
+	
+				
+			for (Item j : store_stock.keySet()) {
+				  temp.put(j, decide_if_buy(j,this.stores_available.get(store_stock.get(j))));
+	
 			}
-		      counter++;
-		}
+		     
 		
 		temp = sortHashMapByValues(temp);
 		
