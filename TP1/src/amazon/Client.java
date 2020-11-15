@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
+import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 
 
 public class Client extends Agent{
@@ -111,12 +112,15 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_items_to_buy(HashMap<Item, Integer> store_stock) {
+		
+	//	System.out.println(store_stock);
+		
 		double money_spent_so_far = 0;
 		HashMap<Item, Double> temp = new HashMap<Item, Double>();
 	
 				
 			for (Item j : store_stock.keySet()) {
-				  temp.put(j, decide_if_buy(j,this.stores_available.get(store_stock.get(j))));
+				  temp.put(j, decide_if_buy(j, this.stores_available.get(store_stock.get(j)-1) ));
 	
 			}
 		     
@@ -126,7 +130,7 @@ public class Client extends Agent{
 		ArrayList<Item> items_most_interested_in_buying = new ArrayList<>(temp.keySet());
 		ArrayList<Item> buy_list_temp = new ArrayList<>();
 		
-		System.out.println(items_most_interested_in_buying);
+	//	System.out.println("A" + items_most_interested_in_buying);
 		
 		for (Item i : items_most_interested_in_buying) {
 			
@@ -141,7 +145,7 @@ public class Client extends Agent{
 		for (Item i : buy_list_temp) {
 			
 			if(i.getCurrentPrice() + money_spent_so_far < this.money_to_spend) {
-				this.buy_list.put(i,this.stores_available.get(store_stock.get(i)).getStore_id());
+				this.buy_list.put(i,this.stores_available.get(store_stock.get(i)-1).getStore_id());
 			}
 			
 		}
@@ -167,7 +171,7 @@ public class Client extends Agent{
 		double need = check_need(item);
 		
 		double chance_of_buying = (buying_local_chance + susceptibility + money_percentage_remaining + need)/4;
-		System.out.println("Chance of buying " + item + " was:" + chance_of_buying);
+	//	System.out.println("Chance of buying " + item + " was:" + chance_of_buying);
 		
 		return chance_of_buying;
 		
@@ -261,6 +265,8 @@ public class Client extends Agent{
 		SequentialBehaviour loop = new SequentialBehaviour();
 
 		loop.addSubBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
+		loop.addSubBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
+		
 
 		addBehaviour(loop);
 	}

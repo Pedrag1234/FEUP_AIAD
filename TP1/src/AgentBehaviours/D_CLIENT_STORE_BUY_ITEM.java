@@ -36,8 +36,9 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 
 	@Override
 	public void action() {
-
-
+	//	System.out.println(this.client.getProposals());
+		System.out.println("[Client " + this.client.getId() +"] [Decidind which items to buy ]");
+		this.client.decide_which_items_to_buy(this.client.getProposals());
 		HashMap<Item,Integer> buy_list = this.client.getBuy_list();
 
 		for (Item i : buy_list.keySet()) {
@@ -60,17 +61,14 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 			try {
 				DFAgentDescription[] result = DFService.search(this.client, dfd);
 
-				System.out.println(result.length);
-
 				for (int z = 0; z < result.length; z++) {
 
 					AID dest = result[z].getName();
 					msg.addReceiver(dest);
 
-					System.out.println(dest.getName());
-
 					this.complete = true;
 					this.client.send(msg);
+					System.out.println("[Client " + this.client.getId() +"] [MSG SEND; Want to purchase " + i.getType() + " from Store_"+ buy_list.get(i) + "]");
 				}
 
 			} catch (FIPAException e) {

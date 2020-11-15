@@ -77,7 +77,8 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 
 				try {
 					HashMap<Item,Integer> products = (HashMap<Item, Integer>) msg.getContentObject();
-					Set<Map.Entry<Item, Integer>> entries = this.client.getProposals().entrySet();
+					
+					Set<Map.Entry<Item, Integer>> entries = products.entrySet();
 					Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
 					Entry<Item, Integer> entry = null;
 					while (itr.hasNext()) 
@@ -85,7 +86,7 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 						entry = itr.next();
 						this.client.getProposals().put(entry.getKey(), entry.getValue());
 					}
-
+					System.out.println("[Client " + this.client.getId() +"] [MSG RECEIVE; Products received from " + "Store_"+this.client.getStores_To_Contact().get(i).getStore_id() + "]");
 					this.complete = true;
 
 				} catch (UnreadableException e) {
