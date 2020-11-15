@@ -53,7 +53,7 @@ public class Amazon {
 	//		ac2 = mainContainer.acceptNewAgent("Store", store);
 		
 		}
-	}
+	
 	
 	
 	
