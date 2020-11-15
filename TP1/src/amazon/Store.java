@@ -33,6 +33,7 @@ public class Store extends Agent {
 	final int COMMON = 4;
 	
 	public boolean has_inventory = false;
+	public boolean proposal_accepted = false;
 
 	private double profit;
 	private int n_customers;

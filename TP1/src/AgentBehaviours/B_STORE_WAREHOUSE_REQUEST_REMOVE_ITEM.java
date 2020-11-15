@@ -90,6 +90,24 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				this.complete = true;
 				
 			}
+			
+			ACLMessage res = this.store.blockingReceive();
+			
+			switch (res.getPerformative()) {
+			
+			case ACLMessage.ACCEPT_PROPOSAL: {
+				this.store.proposal_accepted = true;
+				break;
+			}
+			case ACLMessage.REJECT_PROPOSAL: {
+				this.store.proposal_accepted = false;
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + res.getPerformative());
+			}
+			
+			
 		
 		} catch (FIPAException e) {
 			e.printStackTrace();

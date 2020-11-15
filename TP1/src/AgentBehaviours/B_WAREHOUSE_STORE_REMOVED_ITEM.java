@@ -10,6 +10,7 @@ import StockExceptions.ItemDoesntExist;
 import StockExceptions.NoStockException;
 import amazon.Item;
 import amazon.MainWarehouse;
+import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -54,8 +55,23 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
 					
 					try {
 						warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
+						
+						ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+						
+						AID dest = msg.getSender();
+						
+						msg.addReceiver(dest);
+						this.warehouse.send(msg);
+						
 					} catch (NoStockException | ItemDoesntExist e) {
-						e.printStackTrace();
+						
+						ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
+						
+						AID dest = msg.getSender();
+						
+						msg.addReceiver(dest);
+						this.warehouse.send(msg);
+						
 					}
 					
 				}
