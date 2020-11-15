@@ -1,6 +1,10 @@
 package AgentBehaviours;
 
 import amazon.Store;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import amazon.Client;
 import amazon.Item;
 import jade.core.AID;
@@ -26,8 +30,13 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
 
-		msg.setContent("Pls i buy"); //ALTERAR ISTO
-
+		ArrayList<Item> buy_list = this.client.getBuy_list();
+		HashMap<Item,Integer> tempHashMap = new HashMap<Item,Integer>();
+		
+		for(int i = 0; i < buy_list.size(); i++)
+		{
+			tempHashMap = buy_list.get(i);
+		}
 
 		DFAgentDescription dfd = new DFAgentDescription();
 		ServiceDescription sd = new ServiceDescription();
