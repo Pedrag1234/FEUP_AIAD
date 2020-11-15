@@ -2,8 +2,13 @@ package AgentBehaviours;
 
 import amazon.Store;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import amazon.Client;
 import amazon.Item;
@@ -28,43 +33,57 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 
 	@Override
 	public void action() {
-		ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
-
-		ArrayList<Item> buy_list = this.client.getBuy_list();
-		HashMap<Item,Integer> tempHashMap = new HashMap<Item,Integer>();
-		
-		for(int i = 0; i < buy_list.size(); i++)
-		{
-			tempHashMap = buy_list.get(i);
-		}
-
-		DFAgentDescription dfd = new DFAgentDescription();
-		ServiceDescription sd = new ServiceDescription();
 
 
-		sd.setType("Store"); //ALTERAR ISTO
-		dfd.addServices(sd);
+		HashMap<Item,Integer> buy_list = this.client.getBuy_list();
 
-
-		try {
-			DFAgentDescription[] result = DFService.search(this.client, dfd);
-
-			System.out.println(result.length);
-
-			for (int i = 0; i < result.length; i++) {
-
-				AID dest = result[i].getName();
-				msg.addReceiver(dest);
-
-				System.out.println(dest.getName());
-
-				this.complete = true;
-				this.client.send(msg);
+		for (Item i : buy_list.keySet()) {
+			ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
+			try {
+				msg.setContentObject(i);
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
+			buy_list.get(i); //i = Item , get(i)=id loja
+			
+			DFAgentDescription dfd = new DFAgentDescription();
+			ServiceDescription sd = new ServiceDescription();
 
-		} catch (FIPAException e) {
-			e.printStackTrace();
+
+			sd.setType("Store_" + buy_list.get(i) ); //ALTERAR ISTO
+			dfd.addServices(sd);
+
+
+			try {
+				DFAgentDescription[] result = DFService.search(this.client, dfd);
+
+				System.out.println(result.length);
+
+				for (int z = 0; z < result.length; z++) {
+
+					AID dest = result[z].getName();
+					msg.addReceiver(dest);
+
+					System.out.println(dest.getName());
+
+					this.complete = true;
+					this.client.send(msg);
+				}
+
+			} catch (FIPAException e) {
+				e.printStackTrace();
+			}
+			
+			//RECEBER MENSAGEM
+			
+			
 		}
+
+
+
+
+
+
 
 
 	}

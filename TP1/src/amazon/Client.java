@@ -29,13 +29,14 @@ public class Client extends Agent{
 	private double buy_Local;
 	private double spender;
 	private double suscetible;
-	HashMap<String, Double> needs = new HashMap<String, Double>();
-	ArrayList<Item> buy_list = new ArrayList<Item>();
+	
 	
 	private ArrayList<Store> stores_available = new ArrayList<Store>();
 	private ArrayList<Store> stores_to_contact = new ArrayList<Store>();
 	
-	private HashMap<Item,Integer> proposals;
+	private HashMap<Item,Integer> proposals ;
+	private HashMap<Item,Integer> buy_list = new HashMap<Item, Integer>();
+	private HashMap<String, Double> needs = new HashMap<String, Double>();
 
 	
 	private DFAgentDescription dfd;
@@ -107,7 +108,7 @@ public class Client extends Agent{
 		return 0;
 	}
 	
-	public ArrayList<Item> decide_which_items_to_buy(HashMap<Item, Integer> store_stock) {
+	public void decide_which_items_to_buy(HashMap<Item, Integer> store_stock) {
 		double money_spent_so_far = 0;
 		HashMap<Item, Double> temp = new HashMap<Item, Double>();
 	
@@ -138,12 +139,12 @@ public class Client extends Agent{
 		for (Item i : buy_list_temp) {
 			
 			if(i.getCurrentPrice() + money_spent_so_far < this.money_to_spend) {
-				this.buy_list.add(i);
+				this.buy_list.put(i,this.stores_available.get(store_stock.get(i)).getStore_id());
 			}
 			
 		}
 		
-		return this.buy_list;
+		return;
 		
 		
 	}
@@ -306,13 +307,15 @@ public class Client extends Agent{
 		return this.stores_to_contact;
 	}
 
-	public ArrayList<Item> getBuy_list() {
+	public HashMap<Item, Integer> getBuy_list() {
 		return buy_list;
 	}
 
-	public void setBuy_list(ArrayList<Item> buy_list) {
+	public void setBuy_list(HashMap<Item, Integer> buy_list) {
 		this.buy_list = buy_list;
 	}
+
+
 	
 	
 	
