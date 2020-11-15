@@ -1,6 +1,7 @@
 package AgentBehaviours;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Stack;
 
@@ -22,10 +23,13 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 
 	private Store store;
 	private boolean complete = false;
+	
+	private Item items_sent;
 
 
 	public D_STORE_CLIENT_CONFIRM_PURCHASE(Store s){
 		this.store = s;
+		this.items_sent =null;
 	}
 
 	@Override
@@ -45,6 +49,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			Item receivedItem; 
 			try {
 				receivedItem = (Item) msg.getContentObject();
+				this.items_sent =  receivedItem;
 				this.store.addItemToCurrItemOrder(receivedItem); //nothing to see here
 				
 			} catch (UnreadableException e) {
@@ -111,6 +116,8 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				
 				case ACLMessage.ACCEPT_PROPOSAL: {
 					
+					this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
+					System.out.println("[Store " + this.store.getStore_id() + "] [Current profit of store is  " + this.store.getProfit() + "$]" );
 					ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
 					msgReply.addReceiver(senderID);
 					this.store.send(msgReply);
