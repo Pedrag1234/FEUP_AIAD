@@ -122,7 +122,7 @@ public class MainWarehouse extends Agent {
 			
 		}
 		
-		this.print();
+		//this.print();
 	}
 	
 	public Hashtable<Item,Integer> getStock() {

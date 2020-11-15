@@ -32,7 +32,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 	public void action() {
 		//RECEIVE BUY ORDER
 		
-		//System.out.println("AAA " + this.store.getStore_id());
+	//	System.out.println("AAA " + this.store.getStore_id());
 		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);
 		ACLMessage msg = this.store.receive(mt);
 		
@@ -93,16 +93,19 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					AID dest = result[i].getName();
 					confirmation.addReceiver(dest);
 					
-					System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
+					System.out.println("[Store " + this.store.getStore_id() + "] [MSG SENT; Remove item from Warehouse]");
 					
 					this.store.send(confirmation);
 					
 					//System.out.println("ending storereqitem2warehouse");
-					this.complete = true;
+					
 					
 				}
 				
+			
 				ACLMessage res = this.store.blockingReceive();
+				
+				System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
 				
 				switch (res.getPerformative()) {
 				

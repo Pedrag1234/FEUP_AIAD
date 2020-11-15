@@ -24,7 +24,7 @@ import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 3;
+	private int number_of_stores = 1;
 	private String area;
 	private double money_to_spend;
 	private double money_spent = 0;
@@ -40,7 +40,7 @@ public class Client extends Agent{
 	private HashMap<Item,Integer> proposals ;
 	private HashMap<Item,Integer> buy_list = new HashMap<Item, Integer>();
 	private HashMap<String, Double> needs = new HashMap<String, Double>();
-	private HashMap<Store, Boolean> has_received_products = new HashMap<Store, Boolean>();
+	private HashMap<Store, Integer> has_received_products = new HashMap<Store, Integer>();
 
 	
 	private DFAgentDescription dfd;
@@ -68,7 +68,7 @@ public class Client extends Agent{
 			
 			stores_to_contact.add(stores_available.get(d));
 			stores_available.get(d).getClients().add(this);
-			has_received_products.put(stores_available.get(d), false);
+			has_received_products.put(stores_available.get(d), 0);
 		}
 	}
 	
@@ -342,15 +342,15 @@ public class Client extends Agent{
 	}
 
 
-	public HashMap<Store, Boolean> getHas_received_products() {
+	public HashMap<Store, Integer> getHas_received_products() {
 		return has_received_products;
 	}
 
-	public void setHas_received_products(HashMap<Store, Boolean> has_received_products) {
+	public void setHas_received_products(HashMap<Store, Integer> has_received_products) {
 		this.has_received_products = has_received_products;
 	}
 
-	public void insert_into_has_received_products (Store store, Boolean bool) {
+	public void insert_into_has_received_products (Store store, Integer bool) {
 		this.has_received_products.put(store, bool);
 	}
 	

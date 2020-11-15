@@ -82,7 +82,7 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
-				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
+				System.out.println("[Store " + this.store.getStore_id() + "] [MSG SENT; Remove item from Warehouse]");
 				
 				this.store.send(msg);
 				
@@ -96,11 +96,13 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 			switch (res.getPerformative()) {
 			
 			case ACLMessage.ACCEPT_PROPOSAL: {
+				System.out.println("THIS GOT HERE");
 				this.store.proposal_accepted = true;
 				break;
 			}
 			case ACLMessage.REJECT_PROPOSAL: {
 				this.store.proposal_accepted = false;
+				System.out.println("THIS GOT HERE ALSO");
 				break;
 			}
 			default:

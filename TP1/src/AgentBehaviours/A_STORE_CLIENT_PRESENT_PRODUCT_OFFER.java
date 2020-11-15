@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 import amazon.Client;
 import amazon.Item;
@@ -68,7 +69,7 @@ private static final long serialVersionUID = 2123129761660843976L;
 	            this.store.send(msg);
 	            System.out.println("[Store " + this.store.getStore_id() + "] [Sending Products to " + m.getSender().getLocalName() + "]" );
 	            
-	            start = System.nanoTime();
+	       
 	            //this.complete = true;
 	        }
 
@@ -78,14 +79,21 @@ private static final long serialVersionUID = 2123129761660843976L;
 	public boolean done() {
 
 		for(Client i : this.store.getClients()) {
-			HashMap<Store,Boolean> temp = i.getHas_received_products();
+			HashMap<Store,Integer> temp = i.getHas_received_products();
+			
+			try {
+				TimeUnit.MILLISECONDS.sleep(500);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+			
 			for (Store j : temp.keySet()) {
-				if(temp.get(j)==false) {
+				if(temp.get(j) == 0 && temp.get(j) != null) {
 					return false;
 				}
 			}
 		}
-		
 		return true;
 	}
 	

@@ -37,7 +37,7 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 	@Override
 	public void action() {
 	//	System.out.println(this.client.getProposals());
-		System.out.println("[Client " + this.client.getId() +"] [Decidind which items to buy ]");
+		System.out.println("[Client " + this.client.getId() +"] [Deciding which items to buy ]");
 		this.client.decide_which_items_to_buy(this.client.getProposals());
 		
 		HashMap<Item,Integer> buy_list = this.client.getBuy_list();

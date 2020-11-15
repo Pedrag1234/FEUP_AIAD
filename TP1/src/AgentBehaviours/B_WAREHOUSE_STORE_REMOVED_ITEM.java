@@ -43,7 +43,7 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
             try {
                 Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
 
-                System.out.println("MSG RECEIVED; DELETE ITEM");
+                System.out.println("[Warehouse] [MSG RECEIVED; Delete Item]");
                 Set<Map.Entry<String, Integer>> entries = requests.entrySet();
                 Iterator<Map.Entry<String, Integer>> itr = entries.iterator();
 
@@ -55,13 +55,14 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
 
                     try {
                         warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
-                        System.out.println("BIG FUCK YEAH");
+                        System.out.println("[Warehouse] [The item exists, deleting it now]");
                         ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 
                         AID dest = msg.getSender();
 
-                        msg.addReceiver(dest);
-                        this.warehouse.send(msg);
+                        res.addReceiver(dest);
+                        this.warehouse.send(res);
+                        System.out.println("[Warehouse] [Sent the confirmation]");
 
                     } catch (NoStockException | ItemDoesntExist e) {
 
@@ -69,8 +70,8 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
                         System.out.println("BIG OH NO");
                         AID dest = msg.getSender();
 
-                        msg.addReceiver(dest);
-                        this.warehouse.send(msg);
+                        res.addReceiver(dest);
+                        this.warehouse.send(res);
 
                     }
 
@@ -106,5 +107,7 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
 	public void setComplete(boolean complete) {
 		this.complete = complete;
 	}
+
+	
 
 }
