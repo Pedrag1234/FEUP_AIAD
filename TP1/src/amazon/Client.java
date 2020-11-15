@@ -24,7 +24,7 @@ import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 1;
+	private int number_of_stores = 3;
 	private String area;
 	private double money_to_spend;
 	private double money_spent = 0;

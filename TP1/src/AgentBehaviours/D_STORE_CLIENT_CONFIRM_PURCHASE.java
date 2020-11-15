@@ -116,14 +116,14 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				
 				case ACLMessage.ACCEPT_PROPOSAL: {
 					
-					this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-					System.out.println("[Store " + this.store.getStore_id() + "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+					
 					ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
 					msgReply.addReceiver(senderID);
 					this.store.send(msgReply);
 					msgReply.setContent("PurchaseComplete");
 					System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
-					
+					this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
+					System.out.println("[Store " + this.store.getStore_id() + "] [Current profit of store is  " + this.store.getProfit() + "$]" );
 					break;
 				}
 				case ACLMessage.REJECT_PROPOSAL: {
