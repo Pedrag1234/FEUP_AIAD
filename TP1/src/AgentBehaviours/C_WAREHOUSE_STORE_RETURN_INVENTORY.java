@@ -7,6 +7,7 @@ import java.util.Hashtable;
 import amazon.Item;
 import amazon.MainWarehouse;
 import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -16,7 +17,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
+public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
 
 	/**
 	 * 
@@ -42,45 +43,32 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 
 		if (msg != null) {
 
-			System.out.println("MSG RECEIVED; GIVE BACK INVENTORY INFO");			
-			//System.out.println(msg.getContent());
-			//stock = (Hashtable<String,Integer>)msg.getContentObject();
-			//REPLY:
-			StoreType = msg.getContent();
-			ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-			try {
-				//Fill MSG with inventory information to return
-				stock = this.warehouse.getStock();
-				msgReply.setContentObject(stock);
-				//System.out.println("FILLED MSG WITH STOCK INFO"); //, size:");
-				//System.out.println(stock.size());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			DFAgentDescription dfd = new DFAgentDescription();
-			ServiceDescription sd = new ServiceDescription();
-			sd.setType(StoreType);
-			dfd.addServices(sd);
+			System.out.println("[Warehouse] [MSG RECEIVED; Giving back inventory info now]");            
+            //System.out.println(msg.getContent());
+            //stock = (Hashtable<String,Integer>)msg.getContentObject();
+            
+            //REPLY:
+            StoreType = msg.getContent();
+            ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
+            try {
+                //Fill MSG with inventory information to return
+                stock = this.warehouse.getStock();
+                msgReply.setContentObject(stock);
+                
+                //System.out.println("FILLED MSG WITH STOCK INFO"); //, size:");
+                //System.out.println(stock.size());
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        
+            //SEND REPLY
+            AID senderID = msg.getSender();
+            msgReply.addReceiver(senderID);
 
-			try {
-				DFAgentDescription[] result = DFService.search(this.warehouse, dfd);
+            this.warehouse.send(msgReply);
 
-				for (int i = 0; i < result.length; i++) {
-
-					AID dest = result[i].getName();
-					msgReply.addReceiver(dest);
-
-					System.out.println("REPLY MSG SENT; CURRENT INVENTORY IN WAREHOUSE");
-
-					this.warehouse.send(msgReply);
-				}
-			} catch (FIPAException e) {
-				e.printStackTrace();
-			}
-
-			//System.out.println("ending WarehouseReturnInventory");
-			this.complete = true;
+      //      this.complete = true;
 
 		}
 		else {
@@ -90,9 +78,6 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 		return;
 	}
 
-	@Override
-	public boolean done() {
-		return this.complete;
-	}
+
 
 }

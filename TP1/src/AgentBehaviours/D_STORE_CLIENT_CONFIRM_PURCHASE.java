@@ -28,6 +28,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends SimpleBehaviour{
 		ACLMessage msg = this.store.receive(mt);
 		
 		AID senderID = msg.getSender();
+		
 		if (msg != null) 
 		{
 			Item receivedItem; 
@@ -39,13 +40,15 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends SimpleBehaviour{
 				e.printStackTrace();
 			}
 			
+			 //SEND REPLY
+			ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
+			msgReply.addReceiver(senderID);
+			this.store.send(msgReply);
+			msgReply.setContent("PurchaseComplete");
+			this.complete = true;
+		
 		}
-		 //SEND REPLY
-		ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-		msgReply.addReceiver(senderID);
-		this.store.send(msgReply);
-		msgReply.setContent("PurchaseComplete");
-		this.complete = true;
+		
 	}
 
 	@Override

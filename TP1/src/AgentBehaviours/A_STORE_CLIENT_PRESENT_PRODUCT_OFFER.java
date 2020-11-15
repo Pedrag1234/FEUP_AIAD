@@ -9,6 +9,7 @@ import java.util.Stack;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -17,7 +18,7 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
-public class A_STORE_CLIENT_PRESENT_PRODUCT_OFFER extends SimpleBehaviour{
+public class A_STORE_CLIENT_PRESENT_PRODUCT_OFFER extends CyclicBehaviour{
 
 private static final long serialVersionUID = 2123129761660843976L;
 	
@@ -29,68 +30,44 @@ private static final long serialVersionUID = 2123129761660843976L;
 		this.store = s;
 	}
 	
-	@Override
-	public void action() {
-		
-		MessageTemplate request = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
-		ACLMessage m = this.store.blockingReceive(request);
-		
-		if(m != null) {
-			
-			ACLMessage msg = new ACLMessage(ACLMessage.AGREE);
-			
-			ArrayList<Item> items = store.generateProducts2Offer();
-			
-			HashMap<Item,Integer> MessageContents = new HashMap<>();
-			
-			for (int i = 0; i < items.size(); i++) {
-				MessageContents.put(items.get(i), this.store.getStore_id());
-			}
-			
-			try {
-				
-				
-				msg.setContentObject(MessageContents);
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			DFAgentDescription dfd = new DFAgentDescription();
-			ServiceDescription sd = new ServiceDescription();
-			
-			
-			sd.setType("Client_"+this.store.getCurrClientId());
-			dfd.addServices(sd);
-			
-			
-			try {
-				DFAgentDescription[] result = DFService.search(this.store, dfd);
-				
-				System.out.println(result.length);
-				
-				for (int i = 0; i < result.length; i++) {
-					
-					AID dest = result[i].getName();
-					msg.addReceiver(dest);
-					
-					System.out.println(dest.getName());
-					
-					this.complete = true;
-					this.store.send(msg);
-				}
-			
-			} catch (FIPAException e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
+	 @Override
+	    public void action() {
+	        //RECEIVE MESSAGE REQUEST
+	        MessageTemplate request = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+	        ACLMessage m = this.store.blockingReceive(request);
+
+	        if(m != null) {
+
+	            ACLMessage msg = new ACLMessage(ACLMessage.AGREE);
+
+	            ArrayList<Item> items = store.getOffering();
+
+	            HashMap<Item,Integer> MessageContents = new HashMap<>();
+
+	            for (int i = 0; i < items.size(); i++) {
+	                MessageContents.put(items.get(i), this.store.getStore_id());
+	            }
+
+	            try {
+
+
+	                msg.setContentObject(MessageContents);
+
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+
+	            //REPLY MESSAGE
+
+	            msg.addReceiver(m.getSender());
+	            this.complete = true;
+	            this.store.send(msg);
+	            System.out.println("[Store " + this.store.getStore_id() + "] [Sending Products to " + m.getSender().getLocalName() + "]" );
+
+	        }
+
+	    }
 	
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return this.complete;
-	}
+
 	
 }

@@ -30,11 +30,43 @@ public class Amazon {
 	
 	
 	public Amazon() {
+		boolean condition = false;
+		Runtime rt = Runtime.instance();
+		Profile p = new ProfileImpl(true);
+		ContainerController cc = rt.createMainContainer(p);
 		
 		get_stores();
+		
+		
 		get_clients();
 		
-		start_stores();
+		try {
+			
+			MainWarehouse m = new MainWarehouse();
+			AgentController ac3;
+			ac3 = cc.acceptNewAgent("WareHouse", m);
+			ac3.start();
+			System.out.println("[MainWarehouse] Created");
+			
+			start_stores(cc);
+			
+			do{
+				for (Store i : stores) {
+					condition = i.has_inventory;
+					if(condition == false) {
+						break;
+					}
+				}
+			}while(condition != true);
+			
+			start_clients(cc);
+			
+			
+			
+		} catch (StaleProxyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	/*	for (Client i : clients) {
 			System.out.println(i.toString());
@@ -46,13 +78,29 @@ public class Amazon {
 		
 	}
 	
-	public void start_stores() {
+	public void start_stores(ContainerController cc) throws StaleProxyException {
 		
-		
+		for (Store i : this.stores) {
+			AgentController ac2;
 			
-	//		ac2 = mainContainer.acceptNewAgent("Store", store);
-		
+			ac2 = cc.acceptNewAgent("Store" + i.getStore_id(), i);
+			System.out.println("[Store_" + i.getStore_id() + "] Created");
+			ac2.start();
 		}
+		
+	}
+	
+	public void start_clients(ContainerController cc) throws StaleProxyException {
+		
+		for (Client i : this.clients) {
+			AgentController ac1;
+			
+			ac1 = cc.acceptNewAgent("Client" + i.getId(), i);
+			System.out.println("[Client_" + i.getId() + "] Created");
+			ac1.start();
+		}
+		
+	}
 	
 	
 	

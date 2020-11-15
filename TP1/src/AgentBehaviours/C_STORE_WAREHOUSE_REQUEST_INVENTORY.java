@@ -65,7 +65,7 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 
-				System.out.println("MSG SENT; Requested Inventory");
+				System.out.println("[Store " + this.store.getStore_id() + "]" + " [MSG SENT; Requested Inventory]");
 
 				this.store.send(msg);
 
@@ -85,7 +85,7 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 			if(msgReply != null)
 			{
 				
-				System.out.println("MSG REPLY RECEIVED; GETTING STORE INFO NOW");
+				System.out.println("[Store " + this.store.getStore_id() + "]" + " [MSG REPLY RECEIVED; GETTING STORE INFO NOW]");
 				try {
 					//receives stock info
 					stock = (Hashtable<Item,Integer>)msgReply.getContentObject();
@@ -102,6 +102,8 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 		}
 		
 		//System.out.println("ending StoreRequestInventory");
+		this.store.setOffering(this.store.generateProducts2Offer());
+		this.store.has_inventory = true;
 		this.complete = true;
 	}
 

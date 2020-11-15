@@ -31,6 +31,8 @@ public class Store extends Agent {
 	final int IN_PROMOTION = 2;
 	final int RAREST = 3;
 	final int COMMON = 4;
+	
+	public boolean has_inventory = false;
 
 	private double profit;
 	private int n_customers;
@@ -42,6 +44,7 @@ public class Store extends Agent {
 	private Stack<Integer> currItemNumber;
 	private int order;
 	private String sdType ="";
+	private ArrayList<Item> offering = new ArrayList<Item>();
 	
 	private Hashtable<Item,Integer> storeWarehouseStock = new Hashtable<Item,Integer>();
 
@@ -77,7 +80,7 @@ public class Store extends Agent {
 		this.currItemNumber = new Stack<>();
 		this.currItemOrder = new Stack<>();
 		this.order = 0;
-
+		
 	}
 
 
@@ -160,7 +163,7 @@ public class Store extends Agent {
 				
 				entry = itr.next();
 				
-				if(j == 0 && cheapest.contains(entry.getKey())) {
+				if(j == 0 && cheapest.contains(entry.getKey()) == false) {
 					j++;
 					minItem = entry.getKey();
 				}
@@ -198,7 +201,7 @@ public class Store extends Agent {
 				
 				entry = itr.next();
 				
-				if(j == 0 && expensive.contains(entry.getKey())) {
+				if(j == 0 && expensive.contains(entry.getKey()) == false) {
 					j++;
 					maxItem = entry.getKey();
 				}
@@ -266,7 +269,7 @@ public class Store extends Agent {
 				
 				entry = itr.next();
 				
-				if(j == 0 && rarest.contains(entry.getKey())) {
+				if(j == 0 && rarest.contains(entry.getKey())==false) {
 					j++;
 					minItem = entry.getKey();
 				}
@@ -340,8 +343,9 @@ public class Store extends Agent {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
 		loop.addSubBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
-		loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
 		loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
+	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
 
 		addBehaviour(loop);
 	}
@@ -468,6 +472,16 @@ public class Store extends Agent {
 
 	public void setCurrClientId(String currClientId) {
 		this.currClientId = currClientId;
+	}
+
+
+	public ArrayList<Item> getOffering() {
+		return offering;
+	}
+
+
+	public void setOffering(ArrayList<Item> offering) {
+		this.offering = offering;
 	}
 
 
