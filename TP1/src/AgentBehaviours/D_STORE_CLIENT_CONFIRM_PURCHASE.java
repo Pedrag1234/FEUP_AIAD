@@ -59,12 +59,11 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			
 			try {
 				Stack<Item> i = this.store.getCurrItemOrder();
-				Stack<Integer> n = this.store.getCurrItemNumber();
 				
 				while(i.size() > 0) {
 					
 					String temp = i.pop().getType();
-					Integer temp1 = n.pop();
+					Integer temp1 = 1;
 					
 					MessageContents.put(temp,temp1);
 					
@@ -119,7 +118,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				}
 				case ACLMessage.REJECT_PROPOSAL: {
 					
-					ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
+					ACLMessage msgReply = new ACLMessage(ACLMessage.REFUSE);
 					msgReply.addReceiver(senderID);
 					this.store.send(msgReply);
 					msgReply.setContent("PurchaseComplete");
@@ -128,7 +127,11 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					break;
 				}
 				default:
-					throw new IllegalArgumentException("Unexpected value: " + res.getPerformative());
+					ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
+					msgReply.addReceiver(senderID);
+					this.store.send(msgReply);
+					msgReply.setContent("PurchaseComplete");
+					System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
 				}
 				
 				
@@ -137,10 +140,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				e.printStackTrace();
 			}
 			
-			
-			
-			 //SEND REPLY
-			
+
 			
 			this.complete = true;
 		
