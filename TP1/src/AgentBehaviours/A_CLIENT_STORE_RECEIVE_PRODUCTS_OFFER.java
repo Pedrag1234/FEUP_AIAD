@@ -74,15 +74,11 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 			if(msg != null) {
 				
 				try {
-					ArrayList<Item> products = (ArrayList<Item>) msg.getContentObject();
+					HashMap<Item,Integer> products = (HashMap<Item, Integer>) msg.getContentObject();
 					
-					HashMap<Item, Integer> res = new HashMap<>();
 					
-					for (int j = 0; j < products.size(); j++) {
-						res.put(products.get(j), 0);
-					}
 					
-					this.client.addProposedItems(res);
+					this.client.addProposedItems(products);
 					this.complete = true;
 					
 				} catch (UnreadableException e) {

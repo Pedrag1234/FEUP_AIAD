@@ -48,6 +48,11 @@ public class Amazon {
 	
 	public void start_stores() {
 		
+		
+			
+	//		ac2 = mainContainer.acceptNewAgent("Store", store);
+		
+		}
 	}
 	
 	
