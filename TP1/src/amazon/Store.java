@@ -15,7 +15,7 @@ import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 
 import AgentBehaviours.C_STORE_WAREHOUSE_REQUEST_INVENTORY;
-
+import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 import jade.core.Agent;
 import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
@@ -46,6 +46,8 @@ public class Store extends Agent {
 	private int order;
 	private String sdType ="";
 	private ArrayList<Item> offering = new ArrayList<Item>();
+	private ArrayList<Client> clients = new ArrayList<Client>();
+	public boolean proposal_accepted = false;
 	
 	private Hashtable<Item,Integer> storeWarehouseStock = new Hashtable<Item,Integer>();
 
@@ -343,12 +345,16 @@ public class Store extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
+	//	SequentialBehaviour loop2 = new SequentialBehaviour();
 		loop.addSubBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
 		loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+		loop.addSubBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this));
+		
 	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
 	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
 
 		addBehaviour(loop);
+	//	addBehaviour(loop2);
 	}
 
 	
@@ -486,6 +492,16 @@ public class Store extends Agent {
 	}
 
 
+	public ArrayList<Client> getClients() {
+		return clients;
+	}
+
+
+	public void setClients(ArrayList<Client> clients) {
+		this.clients = clients;
+	}
+
+	
 
 
 

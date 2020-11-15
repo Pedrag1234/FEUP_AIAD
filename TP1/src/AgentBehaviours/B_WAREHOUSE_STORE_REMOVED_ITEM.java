@@ -35,59 +35,59 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
 	}
 
 	@Override
-	public void action() {
-		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
-		ACLMessage msg = this.warehouse.receive(mt);
-		
-		if (msg != null) {
-			try {
-				Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
-				
-				System.out.println("MSG RECEIVED; DELETE ITEM");
-				Set<Map.Entry<String, Integer>> entries = requests.entrySet();
-				Iterator<Map.Entry<String, Integer>> itr = entries.iterator();
-				
-				Entry<String, Integer> entry = null;
-				
-				while (itr.hasNext()) {
-					
-					entry = itr.next();
-					
-					try {
-						warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
-						
-						ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
-						
-						AID dest = msg.getSender();
-						
-						msg.addReceiver(dest);
-						this.warehouse.send(msg);
-						
-					} catch (NoStockException | ItemDoesntExist e) {
-						
-						ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
-						
-						AID dest = msg.getSender();
-						
-						msg.addReceiver(dest);
-						this.warehouse.send(msg);
-						
-					}
-					
-				}
+    public void action() {
+        MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+        ACLMessage msg = this.warehouse.receive(mt);
 
-			} catch (UnreadableException e) {
-				e.printStackTrace();
-			}
-			this.complete = true;
-			//System.out.println("ending warehousehandlereq2rem");
-		}
-		else {
-			//block();
-		}
-		
-		return;
-	}
+        if (msg != null) {
+            try {
+                Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
+
+                System.out.println("MSG RECEIVED; DELETE ITEM");
+                Set<Map.Entry<String, Integer>> entries = requests.entrySet();
+                Iterator<Map.Entry<String, Integer>> itr = entries.iterator();
+
+                Entry<String, Integer> entry = null;
+
+                while (itr.hasNext()) {
+
+                    entry = itr.next();
+
+                    try {
+                        warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
+
+                        ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+
+                        AID dest = msg.getSender();
+
+                        msg.addReceiver(dest);
+                        this.warehouse.send(msg);
+
+                    } catch (NoStockException | ItemDoesntExist e) {
+
+                        ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
+
+                        AID dest = msg.getSender();
+
+                        msg.addReceiver(dest);
+                        this.warehouse.send(msg);
+
+                    }
+
+                }
+
+            } catch (UnreadableException e) {
+                e.printStackTrace();
+            }
+            this.complete = true;
+            //System.out.println("ending warehousehandlereq2rem");
+        }
+        else {
+            //block();
+        }
+
+        return;
+    }
 
 
 

@@ -87,6 +87,7 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 						this.client.getProposals().put(entry.getKey(), entry.getValue());
 					}
 					System.out.println("[Client " + this.client.getId() +"] [MSG RECEIVE; Products received from " + "Store_"+this.client.getStores_To_Contact().get(i).getStore_id() + "]");
+					this.client.insert_into_has_received_products(this.client.getStores_To_Contact().get(i), true);
 					this.complete = true;
 
 				} catch (UnreadableException e) {

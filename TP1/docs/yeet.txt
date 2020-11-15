@@ -1,0 +1,77 @@
+@Override
+	public void action() {
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+		
+		Hashtable<String, Integer> MessageContents = new Hashtable<>();
+		
+		
+		try {
+			Stack<Item> i = this.store.getCurrItemOrder();
+			Stack<Integer> n = this.store.getCurrItemNumber();
+			
+			while(i.size() > 0) {
+				
+				String temp = i.pop().getType();
+				Integer temp1 = n.pop();
+				
+				MessageContents.put(temp,temp1);
+				
+			}
+			
+			
+			msg.setContentObject(MessageContents);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		DFAgentDescription dfd = new DFAgentDescription();
+		ServiceDescription sd = new ServiceDescription();
+		
+		
+		sd.setType("MainWarehouse");
+		dfd.addServices(sd);
+		
+		
+		try {
+			DFAgentDescription[] result = DFService.search(this.store, dfd);
+			
+			
+			for (int i = 0; i < result.length; i++) {
+				
+				AID dest = result[i].getName();
+				msg.addReceiver(dest);
+				
+				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
+				
+				this.store.send(msg);
+				
+				//System.out.println("ending storereqitem2warehouse");
+				this.complete = true;
+				
+			}
+			
+			ACLMessage res = this.store.blockingReceive();
+			
+			switch (res.getPerformative()) {
+			
+			case ACLMessage.ACCEPT_PROPOSAL: {
+				this.store.proposal_accepted = true;
+				break;
+			}
+			case ACLMessage.REJECT_PROPOSAL: {
+				this.store.proposal_accepted = false;
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + res.getPerformative());
+			}
+			
+			
+		
+		} catch (FIPAException e) {
+			e.printStackTrace();
+		}
+
+		
+	}
