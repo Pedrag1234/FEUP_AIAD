@@ -31,6 +31,7 @@ public class Client extends Agent{
 	private double suscetible;
 	HashMap<String, Double> needs = new HashMap<String, Double>();
 	ArrayList<Item> buy_list = new ArrayList<Item>();
+	
 	private ArrayList<Store> stores_available = new ArrayList<Store>();
 	private ArrayList<Store> stores_to_contact = new ArrayList<Store>();
 	
@@ -309,6 +310,15 @@ public class Client extends Agent{
 	public ArrayList<Store> getStores_To_Contact() {
 		return this.stores_to_contact;
 	}
+
+	public ArrayList<Item> getBuy_list() {
+		return buy_list;
+	}
+
+	public void setBuy_list(ArrayList<Item> buy_list) {
+		this.buy_list = buy_list;
+	}
+	
 	
 	
 }
