@@ -5,6 +5,7 @@ import amazon.Store;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -19,6 +20,8 @@ import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
+import jade.lang.acl.UnreadableException;
 
 public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 
@@ -45,7 +48,7 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 				e1.printStackTrace();
 			}
 			buy_list.get(i); //i = Item , get(i)=id loja
-			
+
 			DFAgentDescription dfd = new DFAgentDescription();
 			ServiceDescription sd = new ServiceDescription();
 
@@ -73,10 +76,28 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 			} catch (FIPAException e) {
 				e.printStackTrace();
 			}
-			
+
 			//RECEBER MENSAGEM
-			
-			
+			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.INFORM);			
+			ACLMessage msgReply;
+			msgReply = this.client.receive(mt);
+			while(msgReply == null)
+			{
+				msgReply = this.client.receive(mt);
+				if(msgReply != null)
+				{
+
+					//receives stock info
+					if(msgReply.getContent() == "PurchaseComplete")
+						System.out.println("PURCHASE COMPLETE");
+
+
+				}
+			}
+
+			this.complete = true;
+
+
 		}
 
 

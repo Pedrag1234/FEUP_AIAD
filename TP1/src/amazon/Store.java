@@ -433,6 +433,11 @@ public class Store extends Agent {
 	public void setCurrItemNumber(Stack<Integer> currItemNumber) {
 		this.currItemNumber = currItemNumber;
 	}
+	
+	public void addItemToCurrItemOrder (Item itemToAdd)
+	{
+		this.currItemOrder.push(itemToAdd);
+	}
 
 
 	public int getOrder() {
