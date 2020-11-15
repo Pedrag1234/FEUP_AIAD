@@ -140,7 +140,7 @@ public class MainWarehouse extends Agent {
 		
 		
 		loop.addSubBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
-	//	loop.addSubBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
+		loop.addSubBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 		addBehaviour(loop);
 	}

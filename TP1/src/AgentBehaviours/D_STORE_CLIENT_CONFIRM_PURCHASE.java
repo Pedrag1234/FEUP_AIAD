@@ -1,10 +1,16 @@
 package AgentBehaviours;
 
+import java.io.IOException;
+import java.util.Hashtable;
+import java.util.Stack;
+
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
@@ -45,12 +51,96 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				e.printStackTrace();
 			}
 			
+			
+			ACLMessage confirmation = new ACLMessage(ACLMessage.REQUEST);
+			
+			Hashtable<String, Integer> MessageContents = new Hashtable<>();
+			
+			
+			try {
+				Stack<Item> i = this.store.getCurrItemOrder();
+				Stack<Integer> n = this.store.getCurrItemNumber();
+				
+				while(i.size() > 0) {
+					
+					String temp = i.pop().getType();
+					Integer temp1 = n.pop();
+					
+					MessageContents.put(temp,temp1);
+					
+				}
+				
+				
+				confirmation.setContentObject(MessageContents);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			DFAgentDescription dfd = new DFAgentDescription();
+			ServiceDescription sd = new ServiceDescription();
+			
+			
+			sd.setType("MainWarehouse");
+			dfd.addServices(sd);
+			
+			
+			try {
+				DFAgentDescription[] result = DFService.search(this.store, dfd);
+				
+				
+				for (int i = 0; i < result.length; i++) {
+					
+					AID dest = result[i].getName();
+					msg.addReceiver(dest);
+					
+					System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
+					
+					this.store.send(msg);
+					
+					//System.out.println("ending storereqitem2warehouse");
+					this.complete = true;
+					
+				}
+				
+				ACLMessage res = this.store.blockingReceive();
+				
+				switch (res.getPerformative()) {
+				
+				case ACLMessage.ACCEPT_PROPOSAL: {
+					
+					ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
+					msgReply.addReceiver(senderID);
+					this.store.send(msgReply);
+					msgReply.setContent("PurchaseComplete");
+					System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+					
+					break;
+				}
+				case ACLMessage.REJECT_PROPOSAL: {
+					
+					ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
+					msgReply.addReceiver(senderID);
+					this.store.send(msgReply);
+					msgReply.setContent("PurchaseComplete");
+					System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
+					
+					break;
+				}
+				default:
+					throw new IllegalArgumentException("Unexpected value: " + res.getPerformative());
+				}
+				
+				
+			
+			} catch (FIPAException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
 			 //SEND REPLY
-			ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-			msgReply.addReceiver(senderID);
-			this.store.send(msgReply);
-			msgReply.setContent("PurchaseComplete");
-			System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+			
 			
 			this.complete = true;
 		
