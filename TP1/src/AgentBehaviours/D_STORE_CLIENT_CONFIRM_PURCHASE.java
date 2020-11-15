@@ -91,11 +91,11 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				for (int i = 0; i < result.length; i++) {
 					
 					AID dest = result[i].getName();
-					msg.addReceiver(dest);
+					confirmation.addReceiver(dest);
 					
 					System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
 					
-					this.store.send(msg);
+					this.store.send(confirmation);
 					
 					//System.out.println("ending storereqitem2warehouse");
 					this.complete = true;

@@ -137,12 +137,14 @@ public class MainWarehouse extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
+		SequentialBehaviour loop2 = new SequentialBehaviour();
 		
 		
 		loop.addSubBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
-		loop.addSubBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
+		loop2.addSubBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 		addBehaviour(loop);
+		addBehaviour(loop2);
 	}
 
 	public WareHouse getWares() {
