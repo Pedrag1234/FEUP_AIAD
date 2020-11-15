@@ -51,17 +51,19 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 			try {
 				DFAgentDescription[] result = DFService.search(this.client, dfd);
 
-				System.out.println(result.length);
+			//	System.out.println(result.length);
 
 				for (int n = 0; n < result.length; n++) {
 
 					AID dest = result[n].getName();
 					request.addReceiver(dest);
 
-					System.out.println(dest.getName());
+				//	System.out.println(dest.getName());
 
 					this.complete = true;
 					this.client.send(request);
+					System.out.println("[Client " + this.client.getId() +"] [MSG SEND; Sending request for products to " + "Store_"+this.client.getStores_To_Contact().get(i).getStore_id() + "]");     
+					
 				}
 
 			} catch (FIPAException e) {

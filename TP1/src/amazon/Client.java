@@ -23,7 +23,7 @@ import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 25;
+	private int number_of_stores = 3;
 	private String area;
 	private int money_to_spend;
 	private double buy_Local;
@@ -54,11 +54,13 @@ public class Client extends Agent{
 		this.needs = needs;
 		this.stores_available = stores_available;
 		this.setProposals(new HashMap<Item, Integer>());
+		decide_which_stores_to_contact();
+		
 	}
 	
 	public void decide_which_stores_to_contact() {
 		for (int i=0; i< number_of_stores; i++) {
-			var d = (int)(Math.random() * (99 - 0 + 1) + 0); 
+			var d = (int)(Math.random() * ((number_of_stores-1) - 0 + 1) + 0); 
 			
 			stores_to_contact.add(stores_available.get(d));
 		}
@@ -240,7 +242,6 @@ public class Client extends Agent{
 		ServiceDescription sd = new ServiceDescription();
 		
 		sd.setName(getLocalName());
-		System.out.println("Client_"+ this.id);
 		sd.setType("Client_"+ this.id);
 		
 		

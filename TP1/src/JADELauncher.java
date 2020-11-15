@@ -56,16 +56,7 @@ public class JADELauncher {
 			26.00,	
 	};
 	
-	private Runtime rt;
-	private Profile p;
-	private ContainerController cc;
 	
-	public void setup_container() {
-		this.rt = Runtime.instance();
-		this.p = new ProfileImpl(true);
-		this.cc = rt.createMainContainer(p);
-		
-	}
 
 	public static void main(String[] args) throws StaleProxyException {
 		
@@ -181,13 +172,7 @@ public class JADELauncher {
 		}*/
 	}
 
-	public ContainerController getCc() {
-		return cc;
-	}
 
-	public void setCc(ContainerController cc) {
-		this.cc = cc;
-	}
 	
 	
 
