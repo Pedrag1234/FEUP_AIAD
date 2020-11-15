@@ -3,6 +3,7 @@ package AgentBehaviours;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -10,7 +11,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class D_STORE_CLIENT_CONFIRM_PURCHASE extends SimpleBehaviour{
+public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 	
 
 	private Store store;
@@ -24,13 +25,17 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends SimpleBehaviour{
 	@Override
 	public void action() {
 		//RECEIVE BUY ORDER
+		
+		//System.out.println("AAA " + this.store.getStore_id());
 		MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);
 		ACLMessage msg = this.store.receive(mt);
 		
-		AID senderID = msg.getSender();
+		
 		
 		if (msg != null) 
 		{
+			AID senderID = msg.getSender();
+			System.out.println("[Store " + this.store.getStore_id() + "] [Received purchase request from  " + msg.getSender().getLocalName() + "]" );
 			Item receivedItem; 
 			try {
 				receivedItem = (Item) msg.getContentObject();
@@ -45,16 +50,13 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends SimpleBehaviour{
 			msgReply.addReceiver(senderID);
 			this.store.send(msgReply);
 			msgReply.setContent("PurchaseComplete");
+			System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+			
 			this.complete = true;
 		
 		}
 		
 	}
 
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return this.complete;
-	}
 
 }

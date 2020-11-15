@@ -3,6 +3,7 @@
 import amazon.MainWarehouse;
 import amazon.Item;
 import amazon.Store;
+import amazon.Client;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -123,7 +124,7 @@ public class Amazon {
                 HashMap<String, Double> needs_temp = new HashMap<String, Double>();
                 needs_temp.put(client[6].replace("\"", ""), Double.parseDouble(client[7]));
                 
-                Client temp = new Client(Integer.parseInt(client[0]),client[1],Integer.parseInt(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
+                Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
                 		
                 clients.add(temp);
 
@@ -160,7 +161,7 @@ public int get_stores() {
                 // use comma as separator
                 String[] store = line.split(cvsSplitBy);
                 
-                Store temp = new Store(Integer.parseInt(store[0]),Integer.parseInt(store[1]),Integer.parseInt(store[2]),Integer.parseInt(store[3]),store[4]);
+                Store temp = new Store(Integer.parseInt(store[0])-1,Integer.parseInt(store[1]),Integer.parseInt(store[2]),Integer.parseInt(store[3]),store[4]);
                 		
                 stores.add(temp);
 
