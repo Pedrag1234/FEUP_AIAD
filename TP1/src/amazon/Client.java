@@ -25,7 +25,7 @@ import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 20;
+	private int number_of_stores = 5;
 	private String area;
 	private double money_to_spend;
 	private double money_spent = 0;
@@ -64,7 +64,7 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_stores_to_contact() {
-		for (int i=0; i< 4; i++) {
+		for (int i=0; i< 3; i++) {
 			var d = (int)(Math.random() * ((number_of_stores-1) - 0 + 1) + 0); 
 			
 			stores_to_contact.add(stores_available.get(d));
