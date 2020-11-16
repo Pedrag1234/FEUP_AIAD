@@ -107,7 +107,10 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					
 				}
 				
-				MessageTemplate test = MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL);
+			
+				
+				MessageTemplate test = MessageTemplate.or(MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL), MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL));
+			
 				ACLMessage res = this.store.blockingReceive(test);
 				
 				System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
@@ -123,7 +126,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					msgReply.setContent("PurchaseComplete");
 					System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
 					this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-					System.out.println("[Store " + this.store.getStore_id() + "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+					System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
 					break;
 				}
 				case ACLMessage.REJECT_PROPOSAL: {

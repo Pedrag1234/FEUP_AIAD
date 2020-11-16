@@ -109,7 +109,7 @@ public class Amazon {
 	
 	public int get_clients() {
 		
-		String csvFile = "./docs/Clients.csv";
+		String csvFile = "./docs/Clients_200.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -148,7 +148,7 @@ public class Amazon {
 	
 public int get_stores() {
 		
-		String csvFile = "./docs/Stores.csv";
+		String csvFile = "./docs/Stores_20.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";

@@ -82,7 +82,7 @@ private static final long serialVersionUID = 2123129761660843976L;
 			HashMap<Store,Integer> temp = i.getHas_received_products();
 			
 			try {
-				TimeUnit.MILLISECONDS.sleep(500);
+				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();

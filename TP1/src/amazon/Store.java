@@ -38,6 +38,7 @@ public class Store extends Agent {
 	private int n_customers;
 	private int store_id;
 	private String area;
+	private String strategy1;
 	
 	private String currClientId = "";
 	private Stack<Item> currItemOrder;
@@ -116,27 +117,27 @@ public class Store extends Agent {
 			
 		switch (strategy) {
 			case CHEAPEST: {
-				System.out.println("Cheapest");
+				this.strategy1 = "Cheapest";
 				returnItems = getCheapestItems(); 
 				break;
 			}
 			case MOST_EXPENSIVE: {
-				System.out.println("Most Expensive");
+				this.strategy1 = "Most Expensive";
 				returnItems = getMostExpensiveItems(); 
 				break;
 			}
 			case IN_PROMOTION: {
-				System.out.println("In promotion");
+				this.strategy1 = "In Promotion";
 				returnItems = getItemsInPromotion(); 
 				break;
 			}
 			case RAREST: {
-				System.out.println("Rarest");
+				this.strategy1 = "Rarest";
 				returnItems = getRarestItems(); 
 				break;
 			}
 			case COMMON: {
-				System.out.println("Most Common");
+			//	System.out.println("Most Common");
 				returnItems = getMostCommonItems(); 
 				break;
 			}
@@ -253,6 +254,18 @@ public class Store extends Agent {
 		return promotion;
 	}
 	
+	
+	
+	public String getStrategy1() {
+		return strategy1;
+	}
+
+
+	public void setStrategy1(String strategy1) {
+		this.strategy1 = strategy1;
+	}
+
+
 	private ArrayList<Item> getRarestItems(){
 		ArrayList<Item> rarest = new ArrayList<>();
 		

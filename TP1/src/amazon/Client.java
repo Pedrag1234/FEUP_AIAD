@@ -7,7 +7,7 @@ import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
+import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 
@@ -24,7 +25,7 @@ import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 3;
+	private int number_of_stores = 20;
 	private String area;
 	private double money_to_spend;
 	private double money_spent = 0;
@@ -63,7 +64,7 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_stores_to_contact() {
-		for (int i=0; i< number_of_stores; i++) {
+		for (int i=0; i< 4; i++) {
 			var d = (int)(Math.random() * ((number_of_stores-1) - 0 + 1) + 0); 
 			
 			stores_to_contact.add(stores_available.get(d));
