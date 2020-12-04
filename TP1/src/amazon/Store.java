@@ -16,9 +16,9 @@ import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 
 import AgentBehaviours.C_STORE_WAREHOUSE_REQUEST_INVENTORY;
 
-import jade.core.Agent;
-import jade.core.behaviours.SequentialBehaviour;
-import jade.domain.DFService;
+import sajas.core.Agent;
+import sajas.core.behaviours.SequentialBehaviour;
+import sajas.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 

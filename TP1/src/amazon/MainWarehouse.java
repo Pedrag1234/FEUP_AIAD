@@ -1,8 +1,8 @@
 package amazon;
 
-import jade.core.Agent;
-import jade.core.behaviours.SequentialBehaviour;
-import jade.domain.DFService;
+import sajas.core.Agent;
+import sajas.core.behaviours.SequentialBehaviour;
+import sajas.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 

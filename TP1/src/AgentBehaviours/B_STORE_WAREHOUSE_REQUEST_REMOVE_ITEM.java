@@ -11,14 +11,15 @@ import java.util.Map.Entry;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
-import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.SimpleBehaviour;
-import jade.domain.DFService;
+import sajas.core.behaviours.Behaviour;
+import sajas.core.behaviours.CyclicBehaviour;
+import sajas.core.behaviours.SimpleBehaviour;
+import sajas.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+
 
 
 

@@ -3,7 +3,7 @@ package AgentBehaviours;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
-import jade.core.behaviours.SimpleBehaviour;
+import sajas.core.behaviours.SimpleBehaviour;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;

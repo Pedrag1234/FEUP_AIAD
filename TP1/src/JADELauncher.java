@@ -8,9 +8,9 @@ import amazon.Client;
 import jade.core.MainContainer;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
-import jade.core.Runtime;
-import jade.wrapper.AgentController;
-import jade.wrapper.ContainerController;
+import sajas.core.Runtime;
+import sajas.wrapper.AgentController;
+import sajas.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 
 import java.util.ArrayList;
