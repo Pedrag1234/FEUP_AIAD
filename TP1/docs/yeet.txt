@@ -1,44 +1,4 @@
-package AgentBehaviours;
-
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
-import java.util.Map.Entry;
-
-import amazon.Item;
-import amazon.Store;
-import jade.core.AID;
-import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.SimpleBehaviour;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
-
-
-
-
-public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2123129761660843976L;
-	
-	private Store store;
-	private boolean complete = false;
-	
-	
-	public B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(Store s){
-		this.setStore(s);
-	}
-
-	@Override
+@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		
@@ -82,7 +42,7 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				AID dest = result[i].getName();
 				msg.addReceiver(dest);
 				
-				System.out.println("[Store " + this.store.getStore_id() + "] [MSG SENT; Remove item from Warehouse]");
+				System.out.println("MSG SENT; REMOVE ITEM FROM WAREHOUSE");
 				
 				this.store.send(msg);
 				
@@ -96,13 +56,11 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 			switch (res.getPerformative()) {
 			
 			case ACLMessage.ACCEPT_PROPOSAL: {
-				System.out.println("THIS GOT HERE");
 				this.store.proposal_accepted = true;
 				break;
 			}
 			case ACLMessage.REJECT_PROPOSAL: {
 				this.store.proposal_accepted = false;
-				System.out.println("THIS GOT HERE ALSO");
 				break;
 			}
 			default:
@@ -117,23 +75,3 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 
 		
 	}
-	
-
-
-	public Store getStore() {
-		return store;
-	}
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
-
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return this.complete;
-	}
-
-	
-
-}
