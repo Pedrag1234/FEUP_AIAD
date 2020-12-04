@@ -38,6 +38,7 @@ public class Store extends Agent {
 	private int n_customers;
 	private int store_id;
 	private String area;
+	private String strategy1;
 	
 	private String currClientId = "";
 	private Stack<Item> currItemOrder;
@@ -45,6 +46,8 @@ public class Store extends Agent {
 	private int order;
 	private String sdType ="";
 	private ArrayList<Item> offering = new ArrayList<Item>();
+	private ArrayList<Client> clients = new ArrayList<Client>();
+	public boolean proposal_accepted = false;
 	
 	private Hashtable<Item,Integer> storeWarehouseStock = new Hashtable<Item,Integer>();
 
@@ -114,27 +117,27 @@ public class Store extends Agent {
 			
 		switch (strategy) {
 			case CHEAPEST: {
-				System.out.println("Cheapest");
+				this.strategy1 = "Cheapest";
 				returnItems = getCheapestItems(); 
 				break;
 			}
 			case MOST_EXPENSIVE: {
-				System.out.println("Most Expensive");
+				this.strategy1 = "Most Expensive";
 				returnItems = getMostExpensiveItems(); 
 				break;
 			}
 			case IN_PROMOTION: {
-				System.out.println("In promotion");
+				this.strategy1 = "In Promotion";
 				returnItems = getItemsInPromotion(); 
 				break;
 			}
 			case RAREST: {
-				System.out.println("Rarest");
+				this.strategy1 = "Rarest";
 				returnItems = getRarestItems(); 
 				break;
 			}
 			case COMMON: {
-				System.out.println("Most Common");
+			//	System.out.println("Most Common");
 				returnItems = getMostCommonItems(); 
 				break;
 			}
@@ -251,6 +254,18 @@ public class Store extends Agent {
 		return promotion;
 	}
 	
+	
+	
+	public String getStrategy1() {
+		return strategy1;
+	}
+
+
+	public void setStrategy1(String strategy1) {
+		this.strategy1 = strategy1;
+	}
+
+
 	private ArrayList<Item> getRarestItems(){
 		ArrayList<Item> rarest = new ArrayList<>();
 		
@@ -342,12 +357,16 @@ public class Store extends Agent {
 	public void setup() {
 		this.register();
 		SequentialBehaviour loop = new SequentialBehaviour();
+	//	SequentialBehaviour loop2 = new SequentialBehaviour();
 		loop.addSubBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
 		loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+		loop.addSubBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this));
+		
 	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
 	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
 
 		addBehaviour(loop);
+	//	addBehaviour(loop2);
 	}
 
 	
@@ -485,6 +504,16 @@ public class Store extends Agent {
 	}
 
 
+	public ArrayList<Client> getClients() {
+		return clients;
+	}
+
+
+	public void setClients(ArrayList<Client> clients) {
+		this.clients = clients;
+	}
+
+	
 
 
 

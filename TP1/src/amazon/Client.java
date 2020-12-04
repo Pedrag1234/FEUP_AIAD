@@ -7,7 +7,7 @@ import sajas.core.behaviours.SequentialBehaviour;
 import sajas.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,18 +17,22 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
+import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
+import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
 
 
 public class Client extends Agent{
 	
 	private int id;
-	private int number_of_stores = 3;
+	private int number_of_stores = 5;
 	private String area;
-	private int money_to_spend;
+	private double money_to_spend;
+	private double money_spent = 0;
 	private double buy_Local;
 	private double spender;
 	private double suscetible;
+
 	
 	
 	private ArrayList<Store> stores_available = new ArrayList<Store>();
@@ -37,6 +41,7 @@ public class Client extends Agent{
 	private HashMap<Item,Integer> proposals ;
 	private HashMap<Item,Integer> buy_list = new HashMap<Item, Integer>();
 	private HashMap<String, Double> needs = new HashMap<String, Double>();
+	private HashMap<Store, Integer> has_received_products = new HashMap<Store, Integer>();
 
 	
 	private DFAgentDescription dfd;
@@ -44,7 +49,7 @@ public class Client extends Agent{
 	
 	
 	
-	public Client(int id, String area, int money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available) {
+	public Client(int id, String area, double money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available) {
 		this.id = id;
 		this.area = area;
 		this.money_to_spend = money_to_spend;
@@ -59,10 +64,12 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_stores_to_contact() {
-		for (int i=0; i< number_of_stores; i++) {
+		for (int i=0; i< 3; i++) {
 			var d = (int)(Math.random() * ((number_of_stores-1) - 0 + 1) + 0); 
 			
 			stores_to_contact.add(stores_available.get(d));
+			stores_available.get(d).getClients().add(this);
+			has_received_products.put(stores_available.get(d), 0);
 		}
 	}
 	
@@ -111,12 +118,15 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_items_to_buy(HashMap<Item, Integer> store_stock) {
+		
+	//	System.out.println(store_stock);
+		
 		double money_spent_so_far = 0;
 		HashMap<Item, Double> temp = new HashMap<Item, Double>();
 	
 				
 			for (Item j : store_stock.keySet()) {
-				  temp.put(j, decide_if_buy(j,this.stores_available.get(store_stock.get(j))));
+				  temp.put(j, decide_if_buy(j, this.stores_available.get(store_stock.get(j)) ));
 	
 			}
 		     
@@ -126,7 +136,7 @@ public class Client extends Agent{
 		ArrayList<Item> items_most_interested_in_buying = new ArrayList<>(temp.keySet());
 		ArrayList<Item> buy_list_temp = new ArrayList<>();
 		
-		System.out.println(items_most_interested_in_buying);
+	//	System.out.println("A" + items_most_interested_in_buying);
 		
 		for (Item i : items_most_interested_in_buying) {
 			
@@ -167,7 +177,7 @@ public class Client extends Agent{
 		double need = check_need(item);
 		
 		double chance_of_buying = (buying_local_chance + susceptibility + money_percentage_remaining + need)/4;
-		System.out.println("Chance of buying " + item + " was:" + chance_of_buying);
+	//	System.out.println("Chance of buying " + item + " was:" + chance_of_buying);
 		
 		return chance_of_buying;
 		
@@ -199,11 +209,11 @@ public class Client extends Agent{
 		this.area = area;
 	}
 
-	public int getMoney_to_spend() {
+	public double getMoney_to_spend() {
 		return money_to_spend;
 	}
 
-	public void setMoney_to_spend(int money_to_spend) {
+	public void setMoney_to_spend(double money_to_spend) {
 		this.money_to_spend = money_to_spend;
 	}
 
@@ -229,6 +239,20 @@ public class Client extends Agent{
 
 	public void setSuscetible(double suscetible) {
 		this.suscetible = suscetible;
+	}
+	
+	public void removeFromBuy_list(Item i) {
+        this.buy_list.remove(i);
+    }
+	
+	
+
+	public double getMoney_spent() {
+		return money_spent;
+	}
+
+	public void setMoney_spent(double money_spent) {
+		this.money_spent = money_spent;
 	}
 
 	@Override
@@ -261,6 +285,8 @@ public class Client extends Agent{
 		SequentialBehaviour loop = new SequentialBehaviour();
 
 		loop.addSubBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
+		loop.addSubBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
+		
 
 		addBehaviour(loop);
 	}
@@ -317,6 +343,17 @@ public class Client extends Agent{
 	}
 
 
+	public HashMap<Store, Integer> getHas_received_products() {
+		return has_received_products;
+	}
+
+	public void setHas_received_products(HashMap<Store, Integer> has_received_products) {
+		this.has_received_products = has_received_products;
+	}
+
+	public void insert_into_has_received_products (Store store, Integer bool) {
+		this.has_received_products.put(store, bool);
+	}
 	
 	
 	
