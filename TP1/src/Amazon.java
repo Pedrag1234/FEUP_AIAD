@@ -38,7 +38,6 @@ public class Amazon {
 		
 		get_stores();
 		
-		
 		get_clients();
 		
 		try {
@@ -92,6 +91,7 @@ public class Amazon {
 	}
 	
 	public void start_clients(ContainerController cc) throws StaleProxyException {
+		
 		
 		for (Client i : this.clients) {
 			AgentController ac1;
