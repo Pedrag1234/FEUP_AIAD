@@ -8,6 +8,8 @@ import java.util.Stack;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
+import sajas.core.behaviours.Behaviour;
+import sajas.core.behaviours.OneShotBehaviour;
 import sajas.core.behaviours.SimpleBehaviour;
 import sajas.domain.DFService;
 import jade.domain.FIPAException;
@@ -20,7 +22,7 @@ import jade.lang.acl.UnreadableException;
 
 
 
-public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
+public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends Behaviour{
 
 	/**
 	 * 
@@ -37,7 +39,6 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 	}
 
 
-	@Override
 	public void action() {
 		ACLMessage msg = new ACLMessage(ACLMessage.QUERY_IF);
 		Hashtable<Item,Integer> stock = new Hashtable<Item,Integer>();
@@ -103,11 +104,12 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 				//System.out.println("ending StoreRequestInventory");
 				this.store.setOffering(this.store.generateProducts2Offer());
 				this.store.has_inventory = true;
-				this.complete = true;
+				
 			}
+			
+			this.complete = true;
 	}
 
-	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
 		return this.complete;

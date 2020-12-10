@@ -286,12 +286,9 @@ public class Client extends Agent{
 		
 		
 		
-		addBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
-		
-		addBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
-		
-		
-		
+		setTimeout(() -> addBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this)), 2500);
+		setTimeout(() -> addBehaviour(new D_CLIENT_STORE_BUY_ITEM(this)), 25000);
+			
 		
 	}
 	

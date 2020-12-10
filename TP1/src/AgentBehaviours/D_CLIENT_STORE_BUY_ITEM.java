@@ -42,7 +42,10 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 		
 		HashMap<Item,Integer> buy_list = this.client.getBuy_list();
 
+		System.out.println(buy_list.size());
+		
 		for (Item i : buy_list.keySet()) {
+			
 			ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
 			try {
 				msg.setContentObject(i);

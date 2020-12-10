@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
 import AgentBehaviours.B_WAREHOUSE_STORE_REMOVED_ITEM;
 import AgentBehaviours.C_WAREHOUSE_STORE_RETURN_INVENTORY;
 import StockExceptions.*;
@@ -140,13 +141,25 @@ public class MainWarehouse extends Agent {
 	
 	
 
+		setTimeout(() -> addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this)),500);
 		
 			
-		addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
+	
 		addBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 	
 	}
+	
+	public static void setTimeout(Runnable runnable, int delay) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }).start();
+   }
 
 	public WareHouse getWares() {
 		return wares;
