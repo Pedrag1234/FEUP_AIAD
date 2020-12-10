@@ -281,15 +281,30 @@ public class Client extends Agent{
 	}
 	
 	public void setup() {
-		this.register();
-		SequentialBehaviour loop = new SequentialBehaviour();
-
-		loop.addSubBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
-		loop.addSubBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
 		
-
-		addBehaviour(loop);
+		this.register();
+		
+		
+		
+		addBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
+		
+		addBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
+		
+		
+		
+		
 	}
+	
+	public static void setTimeout(Runnable runnable, int delay) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }).start();
+   }
 	
 	public LinkedHashMap<Item, Double> sortHashMapByValues(
 	        HashMap<Item, Double> passedMap) {

@@ -1,179 +1,200 @@
 
 
-
-import amazon.Item;
 import amazon.MainWarehouse;
+import amazon.Item;
 import amazon.Store;
 import amazon.Client;
-import jade.core.MainContainer;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import sajas.core.Runtime;
+import sajas.sim.repast3.Repast3Launcher;
 import sajas.wrapper.AgentController;
 import sajas.wrapper.ContainerController;
+import uchicago.src.sim.engine.SimInit;
 import jade.wrapper.StaleProxyException;
-
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+
+
 import java.util.HashMap;
-import java.util.Hashtable;
+
+import amazon.Client;
+import amazon.Store;
 
 
-public class JADELauncher {
+public class JADELauncher extends Repast3Launcher{
+	
+	private ContainerController cc;
+	private ArrayList<Client> clients = new ArrayList<Client>();
+	private ArrayList<Store> stores = new ArrayList<Store>();
+	private MainWarehouse mainWarehouse;
 	
 	
-	
-	private static final String[] types = {
-			"Pen",
-			"Book",
-			"Pencil",
-			"Pencil Case",
-			"Calculator",
-			"Eraser",
-			"Laptop",
-			"TV",
-			"PC",
-			"Monitors",
-			"Smartphone",
-			"DishWasher",
-			"Laundry Machine",
-			"Kitchen Utensils"
-	};
-	
-	private static final double[] prices = {
-			5.99,
-			10.99,
-			4.99,
-			7.50,
-			129.90,
-			2.59,
-			700.00,
-			500.48,
-			1250.99,
-			350.33,
-			599.99,
-			329.99,
-			289.00,
-			26.00,	
-	};
-	
-	
+	public static void main(String[] args) {
 
-	public static void main(String[] args) throws StaleProxyException {
+		SimInit init = new SimInit();
+		init.setNumRuns(1);
+		init.loadModel(new JADELauncher(), null, false);
 		
-		
-		Amazon amazon = new Amazon();
-		
-		
-		/*
-		Item item1 = new Item("Book", 20.0, 40.0);
-		Item item2 = new Item("Phone", 30.0, 60.0);
-		Item item3 = new Item("Pen", 5.0, 10.0);
-		Item item4 = new Item("Book", 20.0, 20.0);
-		Item item5 = new Item("Phone", 30.0, 30.0);
-		Item item6 = new Item("Pen", 5.0, 5.0);
-		
-		Store store = new Store(0, 20, 10, 2,"Nevada");
-		Store store2 = new Store(0, 20, 10, 2,"Porto");
-		
-		HashMap<Item, Integer> stock1 = new HashMap<Item, Integer>();
-		stock1.put(item1,10);
-		stock1.put(item2,10);
-		stock1.put(item3,10);
-	
-		
-		HashMap<Item, Integer> stock2 = new HashMap<Item, Integer>();
-		stock2.put(item4,10);
-		stock2.put(item5,10);
-		stock2.put(item6,10);
-	
-		
-		ArrayList<HashMap<Item, Integer>> store_stock = new ArrayList<HashMap<Item, Integer>>();
-		store_stock.add(stock1);
-		store_stock.add(stock2);
-		
-		HashMap<String, Double> needs = new HashMap<String, Double>();
-		needs.put("Book", 0.7);
-		
-		ArrayList<Store> stores = new ArrayList<>();
-		stores.add(store2);
-		stores.add(store);
-		
-		Client client = new Client(01, "Nevada", 1000, 0.5, 0.5, 0, needs);
-		
-		ArrayList<Item> lista = client.decide_which_items_to_buy(store_stock, stores);
-		
-		for (Item i : lista) {
-		      System.out.println(i);
-		} */
-
-		
-	/*	Runtime rt = Runtime.instance();
-
-		Profile p1 = new ProfileImpl();
-		ContainerController mainContainer = rt.createMainContainer(p1);
-		
-		
-		MainWarehouse m = new MainWarehouse();
-		Store store = new Store(0, 20, 10, 2,"TugaLand");
-		
-		HashMap<String, Double> needs = new HashMap<String, Double>();
-		needs.put("Smartphone", 0.7);
-		
-		Client client = new Client(01, "Porto", 1000, 0.5, 0.5, 0, needs);
-		
-		store.setOrder(1);
-		
-		for (int i = 0; i < 3; i++) {	
-			System.out.println("Type = " + types[i]);
-			store.getCurrItemOrder().push(new Item(types[i], prices[i]));
-			store.getCurrItemNumber().push((int) (Math.random() * 1000));
-		}
-		
-		
-		AgentController ac1;
-		AgentController ac2;
-		AgentController ac3;
-		try {
-			
-			m.print();
-			
-			ac1 = mainContainer.acceptNewAgent("WareHouse", m);
-			ac2 = mainContainer.acceptNewAgent("Store", store);
-			ac3 = mainContainer.acceptNewAgent("Client", client);
-			
-			System.out.println("-----------------------------------------------");
-			
-			
-			
-			ac1.start();
-			ac2.start();
-			ac3.start();
-			
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		}*/
-		
-		
-		/*Object[] agentArgs = new Object[0];
-		AgentController ac2;
-		try {
-			ac2 = container.createNewAgent("name2", "jade.core.Agent", agentArgs);
-			ac2.start();
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		}
-
-		AgentController ac3;
-		try {
-			ac3 = mainContainer.acceptNewAgent("myRMA", new jade.tools.rma.rma());
-			ac3.start();
-		} catch (StaleProxyException e) {
-			e.printStackTrace();
-		}*/
 	}
-
-
 	
+	@Override
+	protected void launchJADE() {
+		
+		Runtime rt = Runtime.instance();
+		Profile p = new ProfileImpl(true);
+		cc = rt.createMainContainer(p);
+		
+		get_stores();
+		
+		get_clients();
+		
+		launchAgents();
+	}
+	
+	private void launchAgents() {
+		boolean condition = false;
+		
+		try {
+			
+			MainWarehouse m = new MainWarehouse();
+			AgentController ac3;
+			ac3 = cc.acceptNewAgent("WareHouse", m);
+			ac3.start();
+			System.out.println("[MainWarehouse] Created");
+			
+			start_stores(cc);
+			
+			
+			
+			start_clients(cc);	
+			
+		}catch (StaleProxyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+		
+	@Override
+	public String[] getInitParam() {
+		return new String[0];
+	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Welcome to the Sales Simulation";
+	}
+	
+	
+	
+	public void start_stores(ContainerController cc) throws StaleProxyException {
+		
+		for (Store i : this.stores) {
+			AgentController ac2;
+			ac2 = cc.acceptNewAgent("Store" + i.getStore_id(), i);
+			System.out.println("[Store_" + i.getStore_id() + "] Created");
+			ac2.start();
+		
+		}
+		
+	}
+	
+	public void start_clients(ContainerController cc) throws StaleProxyException {
+		
+		
+		for (Client i : this.clients) {
+			AgentController ac1;
+			
+			ac1 = cc.acceptNewAgent("Client" + i.getId(), i);
+			System.out.println("[Client_" + i.getId() + "] Created");
+			ac1.start();
+		}
+		
+	}
+	
+	
+	
+	public int get_clients() {
+		
+		String csvFile = "./docs/Clients_50.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] client = line.split(",(?=(?:[^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);
+                HashMap<String, Double> needs_temp = new HashMap<String, Double>();
+                needs_temp.put(client[6].replace("\"", ""), Double.parseDouble(client[7]));
+                
+                Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
+                		
+                clients.add(temp);
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return 0;    
+	}
+	
+	public int get_stores() {
+		
+		String csvFile = "./docs/Stores_5.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] store = line.split(cvsSplitBy);
+                
+                Store temp = new Store(Integer.parseInt(store[0])-1,Integer.parseInt(store[1]),Integer.parseInt(store[2]),Integer.parseInt(store[3]),store[4]);
+                		
+                stores.add(temp);
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return 0;    
+	}
 	
 
 }

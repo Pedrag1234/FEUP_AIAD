@@ -92,7 +92,7 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				
 			}
 			
-			ACLMessage res = this.store.blockingReceive();
+			ACLMessage res = this.store.receive();
 			
 			switch (res.getPerformative()) {
 			

@@ -111,7 +111,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				
 				MessageTemplate test = MessageTemplate.or(MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL), MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL));
 			
-				ACLMessage res = this.store.blockingReceive(test);
+				ACLMessage res = this.store.receive(test);
 				
 				System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
 				

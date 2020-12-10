@@ -38,7 +38,7 @@ private static final long serialVersionUID = 2123129761660843976L;
 		 	
 	        //RECEIVE MESSAGE REQUEST
 	        MessageTemplate request = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
-	        ACLMessage m = this.store.blockingReceive(request);
+	        ACLMessage m = this.store.receive(request);
 
 
 	        if(m != null) {

@@ -71,7 +71,7 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 			}
 
 			MessageTemplate mt =  MessageTemplate.MatchPerformative(ACLMessage.AGREE);
-			ACLMessage msg = this.client.blockingReceive(mt);
+			ACLMessage msg = this.client.receive(mt);
 
 			if(msg != null) {
 

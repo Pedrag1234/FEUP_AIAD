@@ -18,6 +18,7 @@ import AgentBehaviours.C_STORE_WAREHOUSE_REQUEST_INVENTORY;
 
 import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 
+
 import sajas.core.Agent;
 import sajas.core.behaviours.SequentialBehaviour;
 import sajas.domain.DFService;
@@ -87,6 +88,37 @@ public class Store extends Agent {
 		this.order = 0;
 		
 	}
+	
+	@Override
+	protected void setup() {	
+		
+		this.register();
+		
+		
+	//	SequentialBehaviour loop2 = new SequentialBehaviour();
+		addBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
+		addBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+		addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this));
+		
+	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
+	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+
+		
+		
+		
+	//	addBehaviour(loop2);
+	}
+	
+	  public static void setTimeout(Runnable runnable, int delay) {
+	        new Thread(() -> {
+	            try {
+	                Thread.sleep(delay);
+	                runnable.run();
+	            } catch (Exception e) {
+	                System.err.println(e);
+	            }
+	        }).start();
+	   }
 
 
 	public void register() {
@@ -354,25 +386,6 @@ public class Store extends Agent {
 		s.applyPromotion(promotion);
 
 	}
-
-
-	public void setup() {
-		this.register();
-		SequentialBehaviour loop = new SequentialBehaviour();
-	//	SequentialBehaviour loop2 = new SequentialBehaviour();
-		loop.addSubBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
-		loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
-		loop.addSubBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this));
-		
-	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
-	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
-
-		addBehaviour(loop);
-	//	addBehaviour(loop2);
-	}
-
-	
-
 
 
 	@Override

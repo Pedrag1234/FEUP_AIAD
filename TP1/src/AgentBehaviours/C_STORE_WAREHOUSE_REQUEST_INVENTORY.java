@@ -79,9 +79,8 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 		ACLMessage msgReply;
 		msgReply = this.store.receive(mt);
 		int i;
-		while(msgReply == null)
-		{
-			msgReply = this.store.receive(mt);
+		
+			
 			if(msgReply != null)
 			{
 				
@@ -98,13 +97,14 @@ public class C_STORE_WAREHOUSE_REQUEST_INVENTORY extends SimpleBehaviour{
 				/*if(stock.size() != 0)
 					{System.out.println("got stock size!:");
 					System.out.println(stock.size());}*/
-			}
-		}
+			
 		
-		//System.out.println("ending StoreRequestInventory");
-		this.store.setOffering(this.store.generateProducts2Offer());
-		this.store.has_inventory = true;
-		this.complete = true;
+		
+				//System.out.println("ending StoreRequestInventory");
+				this.store.setOffering(this.store.generateProducts2Offer());
+				this.store.has_inventory = true;
+				this.complete = true;
+			}
 	}
 
 	@Override
