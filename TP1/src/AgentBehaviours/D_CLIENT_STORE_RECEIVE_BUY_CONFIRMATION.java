@@ -40,28 +40,26 @@ public class D_CLIENT_STORE_RECEIVE_BUY_CONFIRMATION extends SimpleBehaviour{
 			
 		HashMap<Item,Integer> buy_list = this.client.getBuy_list();
 
-		
+	   
+	    
+	    MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.INFORM);			
+		ACLMessage msgReply;
 		
 		for (Item i : buy_list.keySet()) {
 			
-			
 			//RECEBER MENSAGEM
-			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.INFORM);			
-			ACLMessage msgReply;
 			
 				msgReply = this.client.receive(mt);
 				if(msgReply != null)
 				{
-
+					
 					//receives stock info
-					if(msgReply.getContent() == "PurchaseComplete") {
+					if(msgReply.getContent().contains("PurchaseComplete")) {
 						System.out.println("[Client " + this.client.getId() +"] PURCHASE COMPLETE");
 						this.client.setMoney_spent(this.client.getMoney_spent() + i.getPrice());
 						counter++;
 					}
 				}
-			
-			
 			
 		}
 		
@@ -71,6 +69,7 @@ public class D_CLIENT_STORE_RECEIVE_BUY_CONFIRMATION extends SimpleBehaviour{
 
 	@Override
 	public boolean done() {
+		 
 		return (this.client.getBuy_list().size() == counter);
 	}
 

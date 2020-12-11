@@ -23,6 +23,7 @@ import AgentBehaviours.A_CLIENT_STORE_REQUEST_PRODUCTS_OFFER;
 import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
+import AgentBehaviours.D_CLIENT_STORE_RECEIVE_BUY_CONFIRMATION;
 import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 
 
@@ -306,11 +307,12 @@ public class Client extends Agent{
 		
 		temp.addSubBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
 		temp.addSubBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
-		
+		temp.addSubBehaviour(new D_CLIENT_STORE_RECEIVE_BUY_CONFIRMATION(this));
 		
 		setTimeout(() -> addBehaviour(temp), 1500);
 		
-			
+		
+		
 		
 	}
 	
