@@ -73,30 +73,13 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 					
 					this.client.send(msg);
 					System.out.println("[Client " + this.client.getId() +"] [MSG SEND; Want to purchase " + i.getType() + " from Store_"+ buy_list.get(i) + "]");
-				//	this.complete = true;
+					this.complete = true;
 				}
 
 			} catch (FIPAException e) {
 				e.printStackTrace();
 			}
 
-			//RECEBER MENSAGEM
-			MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.INFORM);			
-			ACLMessage msgReply;
-			msgReply = this.client.receive(mt);
-			while(msgReply == null)
-			{
-				msgReply = this.client.receive(mt);
-				if(msgReply != null)
-				{
-
-					//receives stock info
-					if(msgReply.getContent() == "PurchaseComplete") {
-						System.out.println("PURCHASE COMPLETE");
-						this.client.setMoney_spent(this.client.getMoney_spent() + i.getPrice());
-					}
-				}
-			}
 			
 			
 		}

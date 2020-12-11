@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
+import AgentBehaviours.C_STORE_WAREHOUSE_RECEIVE_INVENTORY;
 import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
 import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 
@@ -97,13 +98,14 @@ public class Store extends Agent {
 		
 	//	SequentialBehaviour loop2 = new SequentialBehaviour();
 		addBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
+		addBehaviour(new C_STORE_WAREHOUSE_RECEIVE_INVENTORY(this));
 		
-		setTimeout(() -> addBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this)), 2000);
+		setTimeout(() -> addBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this)), 1000);
 		
-		addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this));
+		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
-	//	loop.addSubBehaviour(new B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM(this));
-	//	loop.addSubBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this));
+		
+
 
 		
 		

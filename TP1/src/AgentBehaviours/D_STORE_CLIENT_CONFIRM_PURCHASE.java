@@ -113,41 +113,43 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			
 				ACLMessage res = this.store.receive(test);
 				
-				System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
+				if(res != null) {
 				
-				switch (res.getPerformative()) {
+					System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
+					
+					switch (res.getPerformative()) {
+					
+					case ACLMessage.ACCEPT_PROPOSAL: {
+						
+						
+						ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
+						msgReply.addReceiver(senderID);
+						this.store.send(msgReply);
+						msgReply.setContent("PurchaseComplete");
+						System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+						this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
+						System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+						break;
+					}
+					case ACLMessage.REJECT_PROPOSAL: {
+						
+						ACLMessage msgReply = new ACLMessage(ACLMessage.REFUSE);
+						msgReply.addReceiver(senderID);
+						this.store.send(msgReply);
+						msgReply.setContent("PurchaseComplete");
+						System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
+						
+						break;
+					}
+					default:
+						ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
+						msgReply.addReceiver(senderID);
+						this.store.send(msgReply);
+						msgReply.setContent("PurchaseComplete");
+						System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
+					}
 				
-				case ACLMessage.ACCEPT_PROPOSAL: {
-					
-					
-					ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-					msgReply.addReceiver(senderID);
-					this.store.send(msgReply);
-					msgReply.setContent("PurchaseComplete");
-					System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
-					this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-					System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
-					break;
 				}
-				case ACLMessage.REJECT_PROPOSAL: {
-					
-					ACLMessage msgReply = new ACLMessage(ACLMessage.REFUSE);
-					msgReply.addReceiver(senderID);
-					this.store.send(msgReply);
-					msgReply.setContent("PurchaseComplete");
-					System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
-					
-					break;
-				}
-				default:
-					ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
-					msgReply.addReceiver(senderID);
-					this.store.send(msgReply);
-					msgReply.setContent("PurchaseComplete");
-					System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
-				}
-				
-				
 			
 			} catch (FIPAException e) {
 				e.printStackTrace();

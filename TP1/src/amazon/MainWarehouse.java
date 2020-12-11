@@ -141,7 +141,7 @@ public class MainWarehouse extends Agent {
 	
 	
 
-		setTimeout(() -> addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this)),500);
+		addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
 		
 			
 	

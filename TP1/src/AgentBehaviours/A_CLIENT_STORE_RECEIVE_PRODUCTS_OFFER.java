@@ -28,6 +28,7 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 
 	private Client client;
 	private boolean complete;
+	private int counter = 0;
 
 	public A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(Client client) {
 		this.client = client;
@@ -37,39 +38,10 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 	@Override
 	public void action() {
 
-
+		
+		
 		for (int i = 0; i < this.client.getStores_To_Contact().size(); i++) {
-			ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
-
-			DFAgentDescription dfd = new DFAgentDescription();
-			ServiceDescription sd = new ServiceDescription();
-
-
-			sd.setType("Store_"+this.client.getStores_To_Contact().get(i).getStore_id());
-			dfd.addServices(sd);
-
-			try {
-				DFAgentDescription[] result = DFService.search(this.client, dfd);
-
-			//	System.out.println(result.length);
-
-				for (int n = 0; n < result.length; n++) {
-
-					AID dest = result[n].getName();
-					request.addReceiver(dest);
-
-				//	System.out.println(dest.getName());
-
-					this.complete = true;
-					this.client.send(request);
-					System.out.println("[Client " + this.client.getId() +"] [MSG SEND; Sending request for products to " + "Store_"+this.client.getStores_To_Contact().get(i).getStore_id() + "]");     
-					
-				}
-
-			} catch (FIPAException e) {
-				e.printStackTrace();
-			}
-
+			
 			MessageTemplate mt =  MessageTemplate.MatchPerformative(ACLMessage.AGREE);
 			ACLMessage msg = this.client.receive(mt);
 
@@ -92,7 +64,7 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 					System.out.println("[Client " + this.client.getId() +"] [MSG RECEIVE; Products received from " + "Store_"+this.client.getStores_To_Contact().get(i).getStore_id() + "]");
 					
 					
-					this.complete = true;
+					counter++;
 
 				} catch (UnreadableException e) {
 					e.printStackTrace();
@@ -104,15 +76,13 @@ public class A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER extends SimpleBehaviour{
 		}
 
 
-
-		return;
 	}
 
 
 	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
-		return this.complete;
+		return (this.client.getStores_To_Contact().size() == counter);
 	}
 
 }

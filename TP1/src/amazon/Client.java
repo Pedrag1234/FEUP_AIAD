@@ -13,13 +13,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 import AgentBehaviours.A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER;
+import AgentBehaviours.A_CLIENT_STORE_REQUEST_PRODUCTS_OFFER;
+import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 import AgentBehaviours.B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM;
 import AgentBehaviours.D_CLIENT_STORE_BUY_ITEM;
+import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 
 
 public class Client extends Agent{
@@ -64,14 +68,24 @@ public class Client extends Agent{
 	}
 	
 	public void decide_which_stores_to_contact() {
-		for (int i=0; i< 3; i++) {
-			var d = (int)(Math.random() * ((number_of_stores-1) - 0 + 1) + 0); 
-			
-			stores_to_contact.add(stores_available.get(d));
+		
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i=1; i<number_of_stores; i++) {
+            list.add(i);
+        }
+        
+        Collections.shuffle(list);
+        for (int i=0; i<3; i++) {
+            int d = list.get(i);
+            
+            stores_to_contact.add(stores_available.get(d));
 			stores_available.get(d).getClients().add(this);
 			has_received_products.put(stores_available.get(d), 0);
-		}
+        }
+			
+			
 	}
+	
 	
 	
 	public double calculate_buying_local_chance (Store store) { 
@@ -286,8 +300,16 @@ public class Client extends Agent{
 		
 		
 		
-		setTimeout(() -> addBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this)), 2500);
-		setTimeout(() -> addBehaviour(new D_CLIENT_STORE_BUY_ITEM(this)), 25000);
+		setTimeout(() -> addBehaviour(new A_CLIENT_STORE_REQUEST_PRODUCTS_OFFER(this)), 500);
+		
+		SequentialBehaviour temp = new SequentialBehaviour();
+		
+		temp.addSubBehaviour(new A_CLIENT_STORE_RECEIVE_PRODUCTS_OFFER(this));
+		temp.addSubBehaviour(new D_CLIENT_STORE_BUY_ITEM(this));
+		
+		
+		setTimeout(() -> addBehaviour(temp), 1500);
+		
 			
 		
 	}
