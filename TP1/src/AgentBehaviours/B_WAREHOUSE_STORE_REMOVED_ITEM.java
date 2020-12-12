@@ -41,7 +41,7 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
         ACLMessage msg = this.warehouse.receive(mt);
 
         if (msg != null) {
-        	String clientId = msg.getContent();
+
             try {
                 Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
 
@@ -61,7 +61,6 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
                         ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 
                         AID dest = msg.getSender();
-                        res.setContent(clientId);
                         res.setContentObject(requests);
                         
                         res.addReceiver(dest);
@@ -74,7 +73,6 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
                         System.out.println("BIG OH NO");
                         AID dest = msg.getSender();
                         
-                        res.setContent(clientId);
                         res.addReceiver(dest);
                         this.warehouse.send(res);
 

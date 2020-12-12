@@ -8,6 +8,7 @@ import java.util.Stack;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
+import sajas.core.behaviours.Behaviour;
 import sajas.core.behaviours.CyclicBehaviour;
 import sajas.core.behaviours.SimpleBehaviour;
 import sajas.domain.DFService;
@@ -18,7 +19,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
+public class D_STORE_CLIENT_CONFIRM_PURCHASE extends Behaviour{
 	
 
 	private Store store;
@@ -81,7 +82,6 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					
 				}
 				
-				confirmation.setContent(clientId);
 				confirmation.setContentObject(MessageContents);
 				
 			} catch (IOException e) {
@@ -127,6 +127,11 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 		
 		}
 		
+	}
+
+	@Override
+	public boolean done() {
+		return this.complete;
 	}
 
 

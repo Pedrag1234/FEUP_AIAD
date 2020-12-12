@@ -35,43 +35,22 @@ public class D_STORE_CLIENT_SEND_CONFIRMATION extends Behaviour{
 		
 		if(res != null) {
 			
-			String clientId = res.getContent();
 			
-			DFAgentDescription dfd = new DFAgentDescription();
-			ServiceDescription sd = new ServiceDescription();
 			
-			sd.setType(clientId);
-			dfd.addServices(sd);
 			
 			System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
 			
 			try {
-				DFAgentDescription[] result = DFService.search(this.store, dfd);
 
-			//	System.out.println(result.length);
-
-				for (int n = 0; n < result.length; n++) {
-					
-					AID dest = result[n].getName();
-					
 					switch (res.getPerformative()) {
 					
 					case ACLMessage.ACCEPT_PROPOSAL: {
-						
-						ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-						msgReply.setContent("PurchaseComplete");
-						msgReply.addReceiver(dest);
-						
+
 						Hashtable<String, Integer> requests = (Hashtable<String, Integer>)res.getContentObject();
-						
-						this.store.send(msgReply);
-						
-						System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + clientId + "]" );
-						
-						
+
 						for (String i : requests.keySet()) {
 							  for(Item j : this.store.getStoreWarehouseStock().keySet()) {
-								  if(j.getType() == i) {
+								  if(j.getType().equals(i)) {
 									  this.store.setProfit(this.store.getProfit() + j.getCurrentPrice());
 								  }
 							  }
@@ -82,29 +61,21 @@ public class D_STORE_CLIENT_SEND_CONFIRMATION extends Behaviour{
 					}
 					
 					case ACLMessage.REJECT_PROPOSAL: {
-						
-						ACLMessage msgReply = new ACLMessage(ACLMessage.REFUSE);
-						msgReply.addReceiver(dest);
-						msgReply.setContent("PurchaseComplete");
-						this.store.send(msgReply);
-						System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + clientId + "]" );
+
+						System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase]" );
 						
 						break;
 					}
 					
 					default:
-						ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
-						msgReply.addReceiver(dest);
-						msgReply.setContent("PurchaseComplete");
-						this.store.send(msgReply);
-						System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + clientId + "]" );
+						System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase]" );
 					}
 				
-				}
+				
 				
 				
 
-			} catch (FIPAException | UnreadableException e) {
+			} catch ( UnreadableException e) {
 				e.printStackTrace();
 			}
 			this.complete = true;

@@ -103,7 +103,7 @@ public class Store extends Agent {
 		
 		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
-		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_SEND_CONFIRMATION(this)), 3000);
+		addBehaviour(new D_STORE_CLIENT_SEND_CONFIRMATION(this));
 
 
 		
