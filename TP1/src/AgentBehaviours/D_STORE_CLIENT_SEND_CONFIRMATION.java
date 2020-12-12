@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import amazon.Item;
 import amazon.Store;
 import jade.core.AID;
-import jade.core.behaviours.SimpleBehaviour;
+import sajas.core.behaviours.SimpleBehaviour;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -17,7 +17,7 @@ import sajas.core.behaviours.Behaviour;
 import sajas.core.behaviours.CyclicBehaviour;
 import sajas.domain.DFService;
 
-public class D_STORE_CLIENT_SEND_CONFIRMATION extends Behaviour{
+public class D_STORE_CLIENT_SEND_CONFIRMATION extends SimpleBehaviour{
 	
 	private Store store;
 	private Boolean complete = false;
