@@ -109,6 +109,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					System.out.println("[Store " + this.store.getStore_id() + "] [MSG SENT; Remove item from Warehouse]");
 					
 					this.store.send(confirmation);
+					System.out.println("[Warehouse] [MSG RECEIVED; Delete Item]");
 					
 					//System.out.println("ending storereqitem2warehouse");
 					

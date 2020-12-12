@@ -34,6 +34,7 @@ public class Client extends Agent{
 
 	private int id;
 	private int number_of_stores = 5;
+	private int storesToCheckPerClient = 2;
 	private String area;
 	private double money_to_spend;
 	private double money_spent = 0;
@@ -81,11 +82,11 @@ public class Client extends Agent{
 		
 		Collections.shuffle(listStores);
 
-	    for (int i = 0; i < 3; i++) {
+	    for (int i = 0; i < storesToCheckPerClient; i++) {
 	        list.add(listStores.get(i));
 	    }
-	    System.out.println("Coca cola zero: " + listStores);
-	    System.out.println("PUTAS E VINHO VERDE: " + list);
+//	    System.out.println("lista stores mixed: " + listStores);
+//	    System.out.println("lista stores escolhida: " + list);
 		for (int i=0; i<list.size(); i++) {
 			int d = list.get(i);
 

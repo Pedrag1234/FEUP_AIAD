@@ -97,7 +97,7 @@ public class Store extends Agent {
 		this.register();
 		
 		
-	//	SequentialBehaviour loop2 = new SequentialBehaviour();
+	//	SequentialBehaviour loop = new SequentialBehaviour();
 		addBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
 		addBehaviour(new C_STORE_WAREHOUSE_RECEIVE_INVENTORY(this));
 		
@@ -111,7 +111,7 @@ public class Store extends Agent {
 		
 		
 		
-	//	addBehaviour(loop2);
+	//	addBehaviour(loop);
 	}
 	
 	  public static void setTimeout(Runnable runnable, int delay) {

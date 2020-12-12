@@ -92,23 +92,6 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				
 			}
 			
-			ACLMessage res = this.store.receive();
-			
-			switch (res.getPerformative()) {
-			
-			case ACLMessage.ACCEPT_PROPOSAL: {
-				System.out.println("THIS GOT HERE");
-				this.store.proposal_accepted = true;
-				break;
-			}
-			case ACLMessage.REJECT_PROPOSAL: {
-				this.store.proposal_accepted = false;
-				System.out.println("THIS GOT HERE ALSO");
-				break;
-			}
-			default:
-				throw new IllegalArgumentException("Unexpected value: " + res.getPerformative());
-			}
 			
 			
 		

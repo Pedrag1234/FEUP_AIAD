@@ -142,9 +142,6 @@ public class MainWarehouse extends Agent {
 	
 
 		addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
-		
-			
-	
 		addBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 	
