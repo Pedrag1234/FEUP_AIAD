@@ -61,7 +61,7 @@ public class JADELauncher extends Repast3Launcher{
 		
 		try {
 			
-			MainWarehouse m = new MainWarehouse();
+			MainWarehouse m = new MainWarehouse(this.stores.size());
 			AgentController ac3;
 			ac3 = cc.acceptNewAgent("WareHouse", m);
 			ac3.start();

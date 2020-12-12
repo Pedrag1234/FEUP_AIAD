@@ -24,6 +24,8 @@ public class MainWarehouse extends Agent {
 	
 	private DFAgentDescription dfd;
 	
+	private int numberOfStores;
+	
 	private static final String[] types = {
 			"Pen",
 			"Book",
@@ -78,8 +80,9 @@ public class MainWarehouse extends Agent {
 	
 	private WareHouse wares;
 	
-	public MainWarehouse(){
+	public MainWarehouse(int numberOfStores){
 		
+		this.setNumberOfStores(numberOfStores);
 		wares = new WareHouse();
 		
 		this.generateWareHouseStock();
@@ -142,7 +145,6 @@ public class MainWarehouse extends Agent {
 	
 
 		addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
-		addBehaviour(new B_WAREHOUSE_STORE_REMOVED_ITEM(this));
 		
 	
 	}
@@ -164,5 +166,13 @@ public class MainWarehouse extends Agent {
 
 	public void setWares(WareHouse wares) {
 		this.wares = wares;
+	}
+
+	public int getNumberOfStores() {
+		return numberOfStores;
+	}
+
+	public void setNumberOfStores(int numberOfStores) {
+		this.numberOfStores = numberOfStores;
 	}
 }

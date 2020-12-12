@@ -17,7 +17,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
+public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 
 	/**
 	 * 
@@ -26,6 +26,7 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
 
 	private MainWarehouse warehouse;
 	private boolean complete;
+	private int storeCounter = 0;
 
 	public C_WAREHOUSE_STORE_RETURN_INVENTORY(MainWarehouse warehouse) {
 		this.warehouse = warehouse;
@@ -35,6 +36,7 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
 	@Override
 	public void action() {
 		//RECEIVE MSG
+		
 		String StoreType;
 		Hashtable<Item,Integer> stock = new Hashtable<Item,Integer>();
 
@@ -67,8 +69,8 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
             msgReply.addReceiver(senderID);
 
             this.warehouse.send(msgReply);
+            storeCounter++;
 
-      //      this.complete = true;
 
 		}
 		else {
@@ -76,6 +78,11 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends CyclicBehaviour{
 		}
 
 		return;
+	}
+
+	@Override
+	public boolean done() {
+		return (storeCounter == this.warehouse.getNumberOfStores());
 	}
 
 

@@ -33,7 +33,6 @@ import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 public class Client extends Agent{
 
 	private int id;
-	private int number_of_stores = 5;
 	private int storesToCheckPerClient = 2;
 	private String area;
 	private double money_to_spend;
@@ -76,7 +75,7 @@ public class Client extends Agent{
 
 		ArrayList<Integer> list = new ArrayList<Integer>();		
 		ArrayList<Integer> listStores = new ArrayList<Integer>();
-		for (int i = 0; i < number_of_stores; i++) {
+		for (int i = 0; i < stores_available.size(); i++) {
 			listStores.add(i);
 		}
 		
