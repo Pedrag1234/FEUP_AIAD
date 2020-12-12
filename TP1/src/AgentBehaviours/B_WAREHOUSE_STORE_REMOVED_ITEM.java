@@ -1,5 +1,6 @@
 package AgentBehaviours;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,6 +41,7 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
         ACLMessage msg = this.warehouse.receive(mt);
 
         if (msg != null) {
+        	String clientId = msg.getContent();
             try {
                 Hashtable<String, Integer> requests = (Hashtable<String, Integer>)msg.getContentObject();
 
@@ -59,17 +61,20 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
                         ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 
                         AID dest = msg.getSender();
-
+                        res.setContent(clientId);
+                        res.setContentObject(requests);
+                        
                         res.addReceiver(dest);
                         this.warehouse.send(res);
                         System.out.println("[Warehouse] [Sent the confirmation]");
 
-                    } catch (NoStockException | ItemDoesntExist e) {
+                    } catch (NoStockException | ItemDoesntExist | IOException e) {
 
                         ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
                         System.out.println("BIG OH NO");
                         AID dest = msg.getSender();
-
+                        
+                        res.setContent(clientId);
                         res.addReceiver(dest);
                         this.warehouse.send(res);
 
