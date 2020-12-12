@@ -56,22 +56,23 @@ public class B_WAREHOUSE_STORE_REMOVED_ITEM extends CyclicBehaviour {
                     try {
                         warehouse.removeItemFromStock(entry.getKey(), entry.getValue());
                         System.out.println("[Warehouse] [The item exists, deleting it now]");
-                        ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+                        //ACLMessage res = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 
-                        AID dest = msg.getSender();
+                        /*AID dest = msg.getSender();
 
                         res.addReceiver(dest);
                         this.warehouse.send(res);
-                        System.out.println("[Warehouse] [Sent the confirmation]");
+                        System.out.println("[Warehouse] [Sent the confirmation]");*/
 
                     } catch (NoStockException | ItemDoesntExist e) {
 
-                        ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
-                        System.out.println("BIG OH NO");
+                    	System.out.println("BIG OH NO");
+                        /*ACLMessage res = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
+                        
                         AID dest = msg.getSender();
 
                         res.addReceiver(dest);
-                        this.warehouse.send(res);
+                        this.warehouse.send(res);*/
 
                     }
 

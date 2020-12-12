@@ -32,15 +32,16 @@ public class Store extends Agent {
 	
 	final int CHEAPEST = 0;
 	final int MOST_EXPENSIVE = 1;
-	final int IN_PROMOTION = 2;
-	final int RAREST = 3;
-	final int COMMON = 4;
+	final int RAREST = 2;
+	final int COMMON = 3;
+	final int IN_PROMOTION = 4;
 	
 	public boolean has_inventory = false;
 
 	private double profit;
 	private int n_customers;
 	private int store_id;
+	private int sales = 0;
 	private String area;
 	private String strategy1;
 	
@@ -100,7 +101,7 @@ public class Store extends Agent {
 		addBehaviour(new C_STORE_WAREHOUSE_REQUEST_INVENTORY(this));
 		addBehaviour(new C_STORE_WAREHOUSE_RECEIVE_INVENTORY(this));
 		
-		setTimeout(() -> addBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this)), 1000);
+		setTimeout(() -> addBehaviour(new A_STORE_CLIENT_PRESENT_PRODUCT_OFFER(this)), 500);
 		
 		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
@@ -149,7 +150,7 @@ public class Store extends Agent {
 		ArrayList<Item> returnItems = null;
 		
 		
-		int strategy = (int) (Math.random() * 4);
+		int strategy = (int) (Math.random() * 3);
 		
 		
 			
@@ -530,6 +531,14 @@ public class Store extends Agent {
 
 	public void setClients(ArrayList<Client> clients) {
 		this.clients = clients;
+	}
+
+	public int getSales() {
+		return sales;
+	}
+
+	public void setSales(int sales) {
+		this.sales = sales;
 	}
 
 	

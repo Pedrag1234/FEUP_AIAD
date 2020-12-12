@@ -60,7 +60,8 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			//add profits here instead of on confirmation
 			System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
 			this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-			System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+			this.store.setSales(this.store.getSales()+1);
+			System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$] [Items sold: "+ this.store.getSales()+"]" );
 
 			
 			
@@ -116,7 +117,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 				
 				////////////////////////////////////////////////////////////
 			
-				
+				/*
 				MessageTemplate test = MessageTemplate.or(MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL), MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL));
 			
 				ACLMessage res = this.store.receive(test);
@@ -162,7 +163,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					}
 				
 				}
-			
+			*/
 			} catch (FIPAException e) {
 				e.printStackTrace();
 			}
@@ -170,7 +171,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 
 			
 			this.complete = true;
-		
+			
 		}
 		
 	}

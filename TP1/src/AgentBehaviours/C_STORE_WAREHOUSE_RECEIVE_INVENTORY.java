@@ -71,6 +71,7 @@ public class C_STORE_WAREHOUSE_RECEIVE_INVENTORY extends Behaviour{
 				//System.out.println("ending StoreRequestInventory");
 				this.complete = true;
 				this.store.setOffering(this.store.generateProducts2Offer());
+				System.out.println("[Store " + this.store.getStore_id() + "]" + " [Strategy choosen: " +this.store.getStrategy1()+"]");
 				this.store.has_inventory = true;
 				
 			}
