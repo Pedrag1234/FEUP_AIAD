@@ -57,6 +57,13 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			}
 			
 			
+			//add profits here instead of on confirmation
+			System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+			this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
+			System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+
+			
+			
 			ACLMessage confirmation = new ACLMessage(ACLMessage.REQUEST);
 			
 			Hashtable<String, Integer> MessageContents = new Hashtable<>();
@@ -129,9 +136,9 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 						
 						this.store.send(msgReply);
 						
-						System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
-						this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-						System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
+						//System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+						//this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
+						//System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
 						break;
 					}
 					
@@ -141,7 +148,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 						msgReply.addReceiver(senderID);
 						msgReply.setContent("PurchaseComplete");
 						this.store.send(msgReply);
-						System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
+						//System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
 						
 						break;
 					}
@@ -151,7 +158,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 						msgReply.addReceiver(senderID);
 						msgReply.setContent("PurchaseComplete");
 						this.store.send(msgReply);
-						System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
+						//System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
 					}
 				
 				}
