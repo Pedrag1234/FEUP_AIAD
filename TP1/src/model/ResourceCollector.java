@@ -42,5 +42,15 @@ public class ResourceCollector extends Agent{
 		}
 		
 	}
+	
+	public void printData(){
+		for(Integer i : this.stores.keySet()) {
+			System.out.println("Store_" + i + " has a profit of " + this.stores.get(i) + " $.");
+		}
+	}
+	
+	public boolean isEmpty() {
+		return (this.stores.size() == 0);
+	}
 
 }
