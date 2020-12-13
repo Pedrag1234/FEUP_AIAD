@@ -7,8 +7,9 @@ import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 import model.ResourceCollector;
 import sajas.core.behaviours.Behaviour;
+import sajas.core.behaviours.CyclicBehaviour;
 
-public class E_RESOURCE_LISTEN_RESPONSE extends Behaviour{
+public class E_RESOURCE_LISTEN_RESPONSE extends CyclicBehaviour{
 	
 	private ResourceCollector rsc;
 	private boolean complete = false;
@@ -29,12 +30,11 @@ public class E_RESOURCE_LISTEN_RESPONSE extends Behaviour{
 			try {
 				HashMap<Integer, Float> msgContent = (HashMap<Integer, Float>) msg.getContentObject();
 				
-				
+				System.out.println("[Resource Collector received info from store sale]");
 				for(Integer i : msgContent.keySet()) {
 					this.rsc.updateValues(i, msgContent.get(i));				
 				}
 				
-				this.complete = true;
 				
 				
 			} catch (UnreadableException e) {
@@ -45,10 +45,6 @@ public class E_RESOURCE_LISTEN_RESPONSE extends Behaviour{
 		
 	}
 
-	@Override
-	public boolean done() {
 
-		return this.complete;
-	}
 
 }

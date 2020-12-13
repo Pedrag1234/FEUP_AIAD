@@ -2,6 +2,7 @@ package AgentBehaviours;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Stack;
 
@@ -61,6 +62,50 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
 			this.store.setSales(this.store.getSales()+1);
 			System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$] [Items sold: "+ this.store.getSales()+"]" );
+			
+			
+			
+			ACLMessage res = new ACLMessage(ACLMessage.INFORM);
+			
+			HashMap<Integer, Float> MessageContents1 = new HashMap<>();
+			
+			MessageContents1.put(this.store.getStore_id(),(float) this.store.getProfit());
+			
+			DFAgentDescription dfd1 = new DFAgentDescription();
+			ServiceDescription sd1 = new ServiceDescription();
+			
+			
+			sd1.setType("ResourceCollector");
+			dfd1.addServices(sd1);
+			
+			try {
+				DFAgentDescription[] result1 = DFService.search(this.store, dfd1);
+				
+				
+				for (int i = 0; i < result1.length; i++) {
+					
+					AID dest = result1[i].getName();
+					res.addReceiver(dest);
+				
+					try {
+						res.setContentObject(MessageContents1);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					this.store.send(res);
+					
+					//System.out.println("ending storereqitem2warehouse");
+					
+					
+				}
+				
+				
+			} catch (FIPAException e) {
+				e.printStackTrace();
+			}
+			
+			
 
 			
 			
@@ -115,55 +160,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 					
 				}
 				
-				////////////////////////////////////////////////////////////
-			
-				/*
-				MessageTemplate test = MessageTemplate.or(MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL), MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL));
-			
-				ACLMessage res = this.store.receive(test);
 				
-				if(res != null) {
-				
-					System.out.println("[Store " + this.store.getStore_id() + "] [Received Message]");
-					
-					switch (res.getPerformative()) {
-					
-					case ACLMessage.ACCEPT_PROPOSAL: {
-						
-						ACLMessage msgReply = new ACLMessage(ACLMessage.INFORM);
-						msgReply.setContent("PurchaseComplete");
-						msgReply.addReceiver(senderID);
-						
-						
-						this.store.send(msgReply);
-						
-						//System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
-						//this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
-						//System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$]" );
-						break;
-					}
-					
-					case ACLMessage.REJECT_PROPOSAL: {
-						
-						ACLMessage msgReply = new ACLMessage(ACLMessage.REFUSE);
-						msgReply.addReceiver(senderID);
-						msgReply.setContent("PurchaseComplete");
-						this.store.send(msgReply);
-						//System.out.println("[Store " + this.store.getStore_id() + "] [Denied purchase from  " + msg.getSender().getLocalName() + "]" );
-						
-						break;
-					}
-					
-					default:
-						ACLMessage msgReply = new ACLMessage(ACLMessage.FAILURE);
-						msgReply.addReceiver(senderID);
-						msgReply.setContent("PurchaseComplete");
-						this.store.send(msgReply);
-						//System.out.println("[Store " + this.store.getStore_id() + "] [Failure purchase from  " + msg.getSender().getLocalName() + "]" );
-					}
-				
-				}
-			*/
 			} catch (FIPAException e) {
 				e.printStackTrace();
 			}

@@ -13,6 +13,8 @@ import sajas.wrapper.AgentController;
 import sajas.wrapper.ContainerController;
 import uchicago.src.sim.engine.SimInit;
 import jade.wrapper.StaleProxyException;
+import model.ResourceCollector;
+
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -75,6 +77,11 @@ public class JADELauncher extends Repast3Launcher{
 			
 			
 			start_clients(cc);	
+			
+			ResourceCollector rsc = new ResourceCollector(this.stores.size());
+			AgentController ac4;
+			ac4 = cc.acceptNewAgent("ResourceCollector", rsc);
+			ac4.start();
 			
 		}catch (StaleProxyException e) {
 			// TODO Auto-generated catch block

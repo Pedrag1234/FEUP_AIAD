@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
+import AgentBehaviours.E_RESOURCE_LISTEN_RESPONSE;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import sajas.core.Agent;
@@ -26,8 +28,23 @@ public class ResourceCollector extends Agent{
 	public void setup(){
 		this.register();
 		
+	
+		
+		setTimeout(() -> addBehaviour(new E_RESOURCE_LISTEN_RESPONSE(this)), 2500);
+		
 		
 	}
+	
+	 public static void setTimeout(Runnable runnable, int delay) {
+	        new Thread(() -> {
+	            try {
+	                Thread.sleep(delay);
+	                runnable.run();
+	            } catch (Exception e) {
+	                System.err.println(e);
+	            }
+	        }).start();
+	   }
 	
 	public void register() {
 		
