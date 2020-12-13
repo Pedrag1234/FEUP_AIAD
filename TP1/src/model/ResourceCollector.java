@@ -75,6 +75,16 @@ public class ResourceCollector extends Agent{
 		}
 	}
 	
+	public int get_total_profit(){
+		int sum = 0;
+		
+		for(Integer i : this.storesResults.keySet()) {
+			sum += this.storesResults.get(i);
+		}
+		
+		return sum;
+	}
+	
 	public boolean isEmpty() {
 		return (this.storesResults.size() == 0);
 	}

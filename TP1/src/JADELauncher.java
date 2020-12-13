@@ -11,6 +11,9 @@ import sajas.core.Runtime;
 import sajas.sim.repast3.Repast3Launcher;
 import sajas.wrapper.AgentController;
 import sajas.wrapper.ContainerController;
+import uchicago.src.sim.analysis.OpenSequenceGraph;
+import uchicago.src.sim.analysis.Sequence;
+import uchicago.src.sim.engine.Schedule;
 import uchicago.src.sim.engine.SimInit;
 import jade.wrapper.StaleProxyException;
 import model.ResourceCollector;
@@ -31,10 +34,15 @@ import amazon.Store;
 
 public class JADELauncher extends Repast3Launcher{
 	
-	private ContainerController cc;
+	public static final boolean SEPARATE_CONTAINERS = false;
+	private ContainerController mainContainer;
+	private ContainerController agentContainer;
 	private ArrayList<Client> clients = new ArrayList<Client>();
 	private ArrayList<Store> stores = new ArrayList<Store>();
 	private MainWarehouse mainWarehouse;
+	private ResourceCollector rsc;
+	private OpenSequenceGraph plot;
+	private OpenSequenceGraph plot2;
 	
 	
 	public static void main(String[] args) {
@@ -50,11 +58,18 @@ public class JADELauncher extends Repast3Launcher{
 		
 		Runtime rt = Runtime.instance();
 		Profile p = new ProfileImpl(true);
-		cc = rt.createMainContainer(p);
+		mainContainer = rt.createMainContainer(p);
 		
 		get_stores();
 		
 		get_clients();
+		
+		if(SEPARATE_CONTAINERS) {
+			Profile p2 = new ProfileImpl();
+			agentContainer = rt.createAgentContainer(p2);
+		} else {
+			agentContainer = mainContainer;
+		}
 		
 		launchAgents();
 		
@@ -68,19 +83,19 @@ public class JADELauncher extends Repast3Launcher{
 			
 			MainWarehouse m = new MainWarehouse(this.stores.size());
 			AgentController ac3;
-			ac3 = cc.acceptNewAgent("WareHouse", m);
+			ac3 = agentContainer.acceptNewAgent("WareHouse", m);
 			ac3.start();
 			System.out.println("[MainWarehouse] Created");
 			
-			start_stores(cc);
+			start_stores(agentContainer);
 			
 			
 			
-			start_clients(cc);	
+			start_clients(agentContainer);	
 			
-			ResourceCollector rsc = new ResourceCollector(this.stores.size());
+			rsc = new ResourceCollector(this.stores.size());
 			AgentController ac4;
-			ac4 = cc.acceptNewAgent("ResourceCollector", rsc);
+			ac4 = mainContainer.acceptNewAgent("ResourceCollector", rsc);
 			ac4.start();
 			
 		}catch (StaleProxyException e) {
@@ -99,6 +114,49 @@ public class JADELauncher extends Repast3Launcher{
 	public String getName() {
 		// TODO Auto-generated method stub
 		return "Welcome to the Sales Simulation";
+	}
+	
+	public void begin() {
+		super.begin();
+		buildDisplay();
+		buildSchedule();
+	}
+	
+	private void buildDisplay() {
+
+
+		// graph
+		if (plot != null) plot.dispose();
+		plot = new OpenSequenceGraph("Total profit", this);
+		plot.setAxisTitles("time", "total profit");
+        // plot number of different existing colors
+		plot.addSequence("Total profit", new Sequence() {
+			public double getSValue() {
+				return rsc.get_total_profit();
+			}
+		});
+
+		plot.display();
+		
+		
+		// graph
+				if (plot2 != null) plot2.dispose();
+				plot2 = new OpenSequenceGraph("Total profit", this);
+				plot2.setAxisTitles("time", "total profit");
+		        // plot number of different existing colors
+				plot2.addSequence("Total profit", new Sequence() {
+					public double getSValue() {
+						return rsc.get_total_profit();
+					}
+				});
+
+				plot2.display();
+		
+	}
+	
+	private void buildSchedule() {
+		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.LAST);
+		getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.LAST);
 	}
 	
 	
