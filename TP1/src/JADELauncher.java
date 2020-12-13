@@ -46,7 +46,11 @@ public class JADELauncher extends Repast3Launcher{
 	private ResourceCollector rsc;
 	private OpenSequenceGraph plot;
 	private OpenSequenceGraph plot2;
+	private Schedule schedule;
 	private OpenHistogram bar;
+	private int NumberOfClients = 50;
+	private int NumberOfStores = 5;
+	private int StoresPerClient = 2;
 	
 	public static void main(String[] args) {
 
@@ -110,7 +114,7 @@ public class JADELauncher extends Repast3Launcher{
 		
 	@Override
 	public String[] getInitParam() {
-		return new String[0];
+		return new String[] {"NumberOfClients", "NumberOfStores", "StoresPerClient"};
 	}
 	
 	@Override
@@ -123,6 +127,14 @@ public class JADELauncher extends Repast3Launcher{
 		super.begin();
 		buildDisplay();
 		buildSchedule();
+	}
+	
+	@Override
+	public void setup() {
+		super.setup();  // crucial!
+		schedule = new Schedule();
+		// property descriptors
+		// ...
 	}
 	
 	private void buildDisplay() {
@@ -155,9 +167,9 @@ public class JADELauncher extends Repast3Launcher{
 		plot2.setAxisTitles("time", "Profit");
 		// plot number of different existing colors
 		for (int i = 0; i < this.stores.size(); i++) {
-			String name = "Store_" + i;
+			String name = "Store_" + i + " [" + this.stores.get(i).getStrategy1() + "]";
 			final int j = i;
-			plot2.addSequence("Store_0", new Sequence() {
+			plot2.addSequence(name, new Sequence() {
 				public double getSValue() {
 					return rsc.get_individual_profit(j);
 				}
@@ -222,15 +234,16 @@ public class JADELauncher extends Repast3Launcher{
 	
 	public int get_clients() {
 		
-		String csvFile = "./docs/Clients_50.csv";
+		String csvFile = "./docs/Clients.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
-
+        int counter = 0;
+        
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && counter <= this.NumberOfClients) {
 
                 // use comma as separator
                 String[] client = line.split(",(?=(?:[^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);
@@ -240,6 +253,7 @@ public class JADELauncher extends Repast3Launcher{
                 Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
                 		
                 clients.add(temp);
+                counter++;
 
             }
 
@@ -261,23 +275,24 @@ public class JADELauncher extends Repast3Launcher{
 	
 	public int get_stores() {
 		
-		String csvFile = "./docs/Stores_5.csv";
+		String csvFile = "./docs/Stores.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
+        int counter = 0;
 
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && counter <= this.NumberOfStores) {
 
                 // use comma as separator
                 String[] store = line.split(cvsSplitBy);
                 
                 Store temp = new Store(Integer.parseInt(store[0])-1,Integer.parseInt(store[1]),Integer.parseInt(store[2]),Integer.parseInt(store[3]),store[4]);
-                		
+                			
                 stores.add(temp);
-
+                counter++;
             }
 
         } catch (FileNotFoundException e) {
@@ -295,6 +310,32 @@ public class JADELauncher extends Repast3Launcher{
         }
         return 0;    
 	}
+
+	public int getNumberOfClients() {
+		return NumberOfClients;
+	}
+
+	public void setNumberOfClients(int numberOfClients) {
+		NumberOfClients = numberOfClients;
+	}
+
+	public int getNumberOfStores() {
+		return NumberOfStores;
+	}
+
+	public void setNumberOfStores(int numberOfStores) {
+		NumberOfStores = numberOfStores;
+	}
+
+	public int getStoresPerClient() {
+		return StoresPerClient;
+	}
+
+	public void setStoresPerClient(int storesPerClient) {
+		StoresPerClient = storesPerClient;
+	}
+	
+	
 	
 
 }

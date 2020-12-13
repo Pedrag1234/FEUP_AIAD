@@ -1,10 +1,1000 @@
-1,Idaho,237,0,0,0,"Wine - Red, Pinot Noir, Chateau",1
-2,Washington,562,1,1,1,Island Oasis - Magarita Mix,0
-3,Georgia,778,0,0,1,Mix - Cocktail Strawberry Daiquiri,0
-4,Florida,460,0,0,1,Chocolate - Liqueur Cups With Foil,1
-5,Delaware,878,1,1,0,Bread - Raisin Walnut Pull,0
-6,Iowa,395,1,0,0,Bacardi Limon,1
-7,Maryland,196,1,0,1,Table Cloth 120 Round White,0
-8,South Carolina,738,0,1,0,"Tomatoes - Diced, Canned",0
-9,Utah,640,1,0,0,Beer - Moosehead,0
-10,Texas,899,0,1,0,Island Oasis - Magarita Mix,1
+1,Pennsylvania,367.61,0.69,0.31,0.36,"Apple - Delicious, Red",0.85
+2,California,805.25,0.11,0.41,0.77,Steam Pan - Half Size Deep,0.1
+3,Texas,807.47,0.34,0.18,0.52,Spring Roll Veg Mini,0.7
+4,California,132.33,0.8,0.15,0.35,Bagels Poppyseed,0.81
+5,Virginia,695.89,0.48,0.41,0.01,"Stock - Veal, White",0.66
+6,Pennsylvania,768.61,0.4,0.6,0.69,Cilantro / Coriander - Fresh,0.56
+7,Virginia,356.63,0.97,0.25,0.45,Egg - Salad Premix,0.73
+8,New York,826.91,0.11,0.46,0.69,Wine - Pinot Noir Pond Haddock,0.23
+9,Colorado,542.93,0.28,0.18,0.77,Wasabi Powder,0.46
+10,Nevada,584.26,0.24,0.89,0.57,Lettuce - Lolla Rosa,0.07
+11,Kansas,868.87,0.18,0.66,0.13,Cookie Dough - Double,0.4
+12,Arizona,726.81,0.04,0.32,0.18,Dr. Pepper - 355ml,0.88
+13,Kansas,991.83,0.22,0.98,0.73,Rappini - Andy Boy,0.12
+14,Maryland,942.42,0.24,0.93,0.18,Arctic Char - Fillets,0.92
+15,Georgia,976.76,0.2,0.42,0.06,Island Oasis - Lemonade,0.84
+16,New York,455.97,0.55,0.38,0.96,"Wine - Red, Lurton Merlot De",0.03
+17,Florida,507.55,0.77,0.67,0.03,Lentils - Green Le Puy,0.02
+18,Kentucky,553.06,0.12,0.15,0.75,"Shrimp - 16/20, Iqf, Shell On",0.37
+19,Ohio,731.81,0.49,0.63,0.28,Wine - Winzer Krems Gruner,0.32
+20,Virginia,968.46,0.42,0.43,0.2,Cookies - Assorted,0.4
+21,District of Columbia,813.09,0.74,0.32,0.03,"Olives - Green, Pitted",0.12
+22,Minnesota,773.38,0.68,0.12,0.66,Aspic - Clear,0.17
+23,South Dakota,622.14,0.81,0.95,0.47,Beer - Creemore,0.52
+24,Louisiana,331.98,0.87,0.88,0.07,"Pepper - Red, Finger Hot",0.56
+25,Texas,615.4,0.41,0.45,0.23,Noodles - Steamed Chow Mein,0.95
+26,California,850.09,0.7,0.99,0.93,Potatoes - Mini White 3 Oz,0.36
+27,Texas,305.91,0.85,0.83,0.08,Wine - Pinot Noir Stoneleigh,0.75
+28,Indiana,395.5,0.24,0.13,0.85,Grapes - Green,0.68
+29,Tennessee,651.89,0.58,0.63,0.57,Bagel - 12 Grain Preslice,0.55
+30,District of Columbia,777.38,0.14,0.53,0.01,Bread Base - Toscano,0.95
+31,California,242.73,0.07,0.41,0.88,Milk - Chocolate 250 Ml,0.43
+32,Florida,522.22,0.11,0.85,0.43,Dc Hikiage Hira Huba,0.88
+33,California,318.85,0.51,0.17,0.4,Snapple Lemon Tea,0.74
+34,Tennessee,429.06,0.15,0.26,0.06,"Wine - Bourgogne 2002, La",0.81
+35,Illinois,312.45,0.42,0.26,0.11,Longos - Penne With Pesto,0.71
+36,Florida,683.99,0.04,0.14,0.14,Wine - Chardonnay Mondavi,0.62
+37,Ohio,858.25,0.16,0.25,0.09,"Coffee - Colombian, Portioned",0.54
+38,Indiana,585.23,0.57,0.88,0.1,"Nut - Chestnuts, Whole",0.17
+39,New York,651.08,0.66,0.0,0.59,Foil Cont Round,0.05
+40,District of Columbia,720.74,0.17,0.64,0.72,Peach - Halves,0.53
+41,New York,807.19,0.76,0.26,0.42,"Shrimp - Baby, Cold Water",0.72
+42,Delaware,328.85,0.12,0.53,0.24,"Artichoke - Hearts, Canned",0.56
+43,District of Columbia,924.81,0.19,0.11,0.61,Flour - Bread,0.24
+44,Pennsylvania,356.95,0.87,0.1,0.34,Chicken - Tenderloin,0.98
+45,New York,542.44,0.34,0.21,0.33,Wine - Cousino Macul Antiguas,0.09
+46,Indiana,196.1,0.38,1.0,0.55,"Carrots - Purple, Organic",0.68
+47,Texas,736.28,0.63,0.84,0.87,Glass Clear 7 Oz Xl,0.87
+48,California,209.66,0.93,0.28,0.13,Bread Bowl Plain,0.48
+49,District of Columbia,970.44,0.17,0.01,0.79,Cheese - Marble,0.18
+50,Maryland,909.71,0.52,0.15,0.93,Pastry - Banana Tea Loaf,0.99
+51,District of Columbia,425.6,0.64,0.5,0.1,Cake Sheet Combo Party Pack,0.67
+52,New York,702.0,0.32,0.55,0.52,"Salmon - Atlantic, Skin On",0.3
+53,District of Columbia,556.13,0.75,0.08,0.58,Cookies - Assorted,0.18
+54,Missouri,350.04,0.38,0.63,0.9,"Crush - Orange, 355ml",0.95
+55,Illinois,999.64,0.87,0.02,0.07,Chip - Potato Dill Pickle,0.2
+56,Georgia,157.64,0.89,0.67,0.95,Wine - Fontanafredda Barolo,0.8
+57,Texas,737.77,0.07,0.39,0.28,"Rum - White, Gg White",0.96
+58,Indiana,985.83,0.97,0.11,0.57,Sponge Cake Mix - Chocolate,0.65
+59,Florida,284.09,0.48,0.78,0.31,"Turkey - Breast, Double",0.12
+60,Nevada,228.86,0.49,0.79,0.44,"Hickory Smoke, Liquid",0.86
+61,Nebraska,481.12,0.39,0.99,0.37,Blueberries,0.7
+62,California,802.64,0.5,0.21,0.2,Pork - Ham Hocks - Smoked,0.81
+63,Ohio,397.43,0.36,0.59,0.08,Bread - Onion Focaccia,0.35
+64,Florida,777.78,0.55,0.44,0.54,Burger Veggie,0.51
+65,Iowa,238.2,0.42,0.07,0.65,Spinach - Baby,0.62
+66,Maryland,276.41,0.87,0.35,0.93,Wine - Toasted Head,0.67
+67,Florida,614.28,0.91,0.31,0.21,Oven Mitts - 15 Inch,0.03
+68,District of Columbia,762.82,0.53,0.78,0.39,"Water - Mineral, Carbonated",0.86
+69,Kentucky,916.23,0.03,0.93,0.2,Puree - Pear,0.22
+70,Delaware,493.41,0.55,0.68,0.8,"Juice - Orange, Concentrate",0.62
+71,South Dakota,126.54,0.46,0.47,0.71,Bar - Granola Trail Mix Fruit Nut,0.9
+72,Florida,574.55,0.49,0.08,0.85,Longos - Chicken Curried,0.87
+73,North Carolina,830.27,0.24,0.38,0.83,Wine - Stoneliegh Sauvignon,0.55
+74,Arizona,826.82,0.67,0.54,0.2,Wine - Duboeuf Beaujolais,0.51
+75,Texas,719.29,0.4,0.77,0.14,Truffle - Peelings,0.8
+76,Ohio,853.31,0.37,0.59,0.55,"Soup - Beef, Base Mix",0.32
+77,Missouri,162.9,0.57,0.92,0.76,Curry Paste - Green Masala,0.27
+78,North Carolina,744.7,0.48,0.39,0.96,Salt - Seasoned,0.85
+79,Ohio,673.97,0.13,0.67,0.82,Truffle Cups - White Paper,0.6
+80,Missouri,460.89,0.95,0.92,0.56,Mince Meat - Filling,0.76
+81,District of Columbia,690.26,0.13,0.52,0.46,"Yogurt - Cherry, 175 Gr",0.19
+82,Michigan,923.88,0.79,0.32,0.86,"Marsala - Sperone, Fine, D.o.c.",0.45
+83,Florida,109.56,0.65,0.36,0.0,"Pasta - Penne Primavera, Single",0.82
+84,New York,782.5,0.93,0.64,0.95,"Salt - Rock, Course",0.89
+85,Illinois,722.8,0.56,0.8,0.77,Veal - Nuckle,0.01
+86,Virginia,486.98,0.01,0.39,0.92,Sausage - Blood Pudding,0.3
+87,Ohio,531.51,0.9,0.52,0.42,"Shrimp - 16/20, Iqf, Shell On",0.73
+88,Texas,354.05,0.94,0.69,0.08,Strawberries - California,0.7
+89,Texas,440.5,0.4,0.64,0.63,Puree - Pear,0.49
+90,District of Columbia,328.36,0.18,0.4,0.51,Beer - Steamwhistle,0.16
+91,Tennessee,288.6,0.25,0.24,0.17,Gherkin,0.36
+92,Oregon,405.59,0.85,0.34,0.96,Cake - Cheese Cake 9 Inch,0.92
+93,District of Columbia,792.48,0.69,0.24,0.26,Wine - Malbec Trapiche Reserve,0.52
+94,Virginia,611.46,0.87,0.89,0.33,"Crab - Claws, 26 - 30",0.12
+95,Louisiana,944.97,0.42,0.02,0.71,"Soup - Beef, Base Mix",0.03
+96,Texas,973.04,0.58,0.46,0.6,Bread - Raisin,0.26
+97,Wisconsin,579.16,0.79,0.53,0.23,Tomato - Peeled Italian Canned,0.07
+98,Utah,633.02,0.65,0.57,0.54,Calvados - Boulard,0.2
+99,Oklahoma,644.43,0.21,0.12,0.4,Pasta - Cheese / Spinach Bauletti,0.68
+100,Iowa,784.76,0.09,0.45,0.51,Flour - Bread,0.54
+101,Texas,454.01,0.97,0.45,0.8,Table Cloth 62x114 Colour,0.77
+102,Kentucky,560.22,0.02,0.37,0.79,Beer - Maudite,0.43
+103,Texas,265.4,0.06,0.32,0.62,"Chocolate - Pistoles, Lactee, Milk",0.05
+104,Hawaii,769.92,0.24,0.9,0.67,Wine - Cava Aria Estate Brut,0.46
+105,West Virginia,315.99,0.19,0.39,0.16,Foil - Round Foil,0.1
+106,Kansas,381.7,0.04,0.85,0.31,Cheese - Swiss Sliced,0.76
+107,Rhode Island,738.76,0.88,0.64,0.75,Cup Translucent 9 Oz,0.62
+108,Massachusetts,785.82,0.67,0.35,0.24,"Soup - Campbells, Butternut",0.58
+109,Florida,274.33,0.87,0.21,0.32,"Crab - Claws, 26 - 30",0.33
+110,Pennsylvania,674.17,0.86,0.4,0.99,Fork - Plastic,0.99
+111,Arizona,356.74,0.66,0.95,0.56,Glove - Cutting,0.92
+112,Ohio,744.17,0.94,0.82,0.7,Sping Loaded Cup Dispenser,0.73
+113,Ohio,322.35,0.25,0.32,0.8,Chinese Foods - Thick Noodles,0.64
+114,West Virginia,723.94,0.48,0.06,0.53,Mudslide,0.6
+115,Idaho,827.37,0.38,0.65,0.55,Tomatoes - Yellow Hot House,0.17
+116,Missouri,427.39,0.25,0.48,0.87,Jerusalem Artichoke,0.89
+117,California,200.68,0.67,0.11,0.86,Pike - Frozen Fillet,0.1
+118,Indiana,682.37,0.97,0.44,0.25,"Basil - Dry, Rubbed",0.86
+119,Indiana,260.18,0.18,0.07,0.21,Coffee - Dark Roast,0.91
+120,Alabama,139.4,0.03,0.91,0.42,Pie Filling - Pumpkin,0.98
+121,Tennessee,793.81,0.12,0.75,0.44,Magnotta Bel Paese Red,0.98
+122,Ohio,228.89,0.85,0.45,0.9,Latex Rubber Gloves Size 9,0.54
+123,Nebraska,725.82,0.58,0.28,0.94,Pepper - Cayenne,0.48
+124,North Carolina,714.18,0.07,0.23,0.28,"Chicken - Wings, Tip Off",0.44
+125,Hawaii,363.99,0.28,0.25,0.65,Beer - Original Organic Lager,0.02
+126,New York,504.04,0.45,0.66,0.26,Tea - Honey Green Tea,0.3
+127,Florida,645.58,0.19,0.69,0.52,Pastry - Raisin Muffin - Mini,0.8
+128,Louisiana,682.23,0.99,0.84,0.43,"Mushroom - Porcini, Dry",0.35
+129,Georgia,831.79,0.88,0.02,0.91,Iced Tea Concentrate,0.58
+130,California,382.15,0.76,0.67,0.14,Apple - Royal Gala,0.27
+131,Colorado,773.99,0.56,0.68,0.6,Mushroom Morel Fresh,0.37
+132,Florida,963.57,0.84,0.77,0.25,Food Colouring - Green,0.38
+133,Missouri,900.51,0.77,0.35,0.98,Mcguinness - Blue Curacao,0.79
+134,California,226.23,0.17,0.11,0.78,The Pop Shoppe - Root Beer,0.68
+135,Washington,624.45,0.09,0.0,0.61,Lotus Leaves,0.89
+136,Ohio,964.54,0.94,0.5,0.77,Lumpfish Black,0.1
+137,North Dakota,953.0,0.25,0.38,0.92,Grapes - Red,0.27
+138,Washington,264.92,0.43,0.11,0.26,Honey - Liquid,0.4
+139,Ohio,559.77,0.02,0.49,0.07,Bread - White Epi Baguette,0.67
+140,Colorado,873.73,0.91,0.12,0.55,Tart - Pecan Butter Squares,0.07
+141,Kentucky,382.06,0.38,0.39,0.91,Dried Cherries,0.65
+142,Kentucky,288.1,0.47,0.27,0.49,Salt - Celery,0.46
+143,Alabama,477.99,0.72,0.94,0.99,Soup - Campbells - Chicken Noodle,0.11
+144,Florida,586.12,0.51,0.62,0.69,"Lentils - Red, Dry",0.77
+145,Kentucky,510.31,0.78,0.37,0.22,Truffle Cups - Brown,0.82
+146,Indiana,681.98,0.56,0.73,0.88,"Bread - Pullman, Sliced",0.2
+147,Texas,772.13,0.61,0.04,0.56,Truffle Cups - White Paper,0.32
+148,Minnesota,327.97,0.6,0.57,0.45,Tumeric,0.65
+149,Illinois,727.38,0.25,0.78,0.13,Onions - White,0.21
+150,Arizona,610.48,0.75,0.81,0.83,"Wine - White, Riesling, Henry Of",0.39
+151,New York,771.23,0.62,0.98,0.09,Dragon Fruit,0.01
+152,California,779.53,0.95,0.72,0.53,Lid - 16 Oz And 32 Oz,0.05
+153,Minnesota,625.43,0.19,0.29,0.71,Beef Cheek Fresh,0.09
+154,Illinois,561.76,0.28,0.28,0.48,Dr. Pepper - 355ml,0.35
+155,Delaware,860.89,0.35,0.58,0.34,Beef - Rib Eye Aaa,0.48
+156,Texas,460.44,0.92,0.19,0.98,Table Cloth 54x54 Colour,0.43
+157,Hawaii,682.92,0.84,0.06,0.28,Wine - Magnotta - Cab Sauv,0.37
+158,Tennessee,344.21,0.62,0.25,0.92,"Fish - Scallops, Cold Smoked",0.13
+159,Iowa,117.48,0.19,0.57,0.21,Rosemary - Fresh,0.74
+160,Idaho,549.32,0.74,0.84,0.77,Cookies Almond Hazelnut,0.7
+161,Alabama,654.34,0.25,0.3,0.27,Mahi Mahi,0.71
+162,Texas,304.54,0.1,0.08,0.17,"Cheese - Woolwich Goat, Log",0.96
+163,Florida,156.43,0.95,0.15,0.02,Melon - Cantaloupe,0.5
+164,Iowa,239.23,0.55,0.65,0.5,Lettuce - Arugula,0.42
+165,North Carolina,620.6,0.59,0.44,0.66,Wine - Baron De Rothschild,0.69
+166,Massachusetts,359.75,0.95,0.57,0.82,"Nut - Cashews, Whole, Raw",0.9
+167,Texas,415.02,0.24,0.84,0.09,Ice Cream - Chocolate,0.72
+168,Virginia,120.29,0.27,0.77,0.05,Ginger - Fresh,0.68
+169,California,542.43,0.09,0.06,0.29,Turkey Leg With Drum And Thigh,0.94
+170,Texas,451.7,0.12,0.47,0.42,"Asparagus - White, Canned",0.75
+171,California,690.23,0.94,0.75,0.18,"Water - Mineral, Natural",0.32
+172,Pennsylvania,463.87,0.02,0.41,0.39,The Pop Shoppe - Lime Rickey,0.56
+173,California,327.57,0.45,0.88,0.87,Yogurt - Plain,0.97
+174,Texas,738.52,0.12,0.42,0.98,Sole - Iqf,0.55
+175,Georgia,725.43,0.9,0.73,0.89,Veal - Knuckle,0.94
+176,Illinois,233.29,0.98,0.18,0.7,"Doilies - 8, Paper",0.46
+177,Georgia,267.59,0.34,0.36,0.3,Spinach - Spinach Leaf,0.41
+178,Iowa,173.42,0.64,0.27,0.19,Wine - Riesling Alsace Ac 2001,0.18
+179,Florida,192.9,0.36,0.51,0.99,Bagelers - Cinn / Brown Sugar,0.73
+180,Kentucky,902.55,0.79,0.77,0.62,Danishes - Mini Cheese,0.9
+181,Texas,163.7,0.03,0.59,0.41,"Pasta - Bauletti, Chicken White",0.34
+182,California,598.59,0.39,0.9,0.86,"Coffee - Colombian, Portioned",0.49
+183,Louisiana,292.01,0.89,0.51,0.83,Truffle - Peelings,0.9
+184,Arizona,208.43,0.09,0.13,0.42,Flour Dark Rye,0.52
+185,Michigan,959.68,0.61,0.25,0.7,Tomato - Tricolor Cherry,0.38
+186,Virginia,807.46,0.03,0.16,0.99,Bouq All Italian - Primerba,0.51
+187,Washington,762.52,0.66,0.52,0.49,"Onions - Dried, Chopped",0.08
+188,Kentucky,813.48,0.55,0.9,0.79,Skirt - 29 Foot,0.28
+189,Arizona,559.41,0.55,0.42,0.21,Wine - Ruffino Chianti Classico,0.34
+190,Florida,238.15,0.89,0.82,0.41,Longos - Grilled Salmon With Bbq,0.81
+191,Louisiana,165.88,0.26,0.77,0.21,"Beef - Outside, Round",0.4
+192,Texas,622.68,0.82,0.6,0.64,Pasta - Fusili Tri - Coloured,0.58
+193,Colorado,734.68,0.66,0.19,0.91,French Kiss Vanilla,0.62
+194,New Mexico,492.7,0.12,0.4,0.13,Pasta - Ravioli,0.28
+195,New York,365.63,0.95,0.26,0.7,"Juice - Cranberry, 341 Ml",0.89
+196,District of Columbia,187.67,0.65,0.3,0.82,Bandage - Fexible 1x3,0.03
+197,Utah,723.22,0.29,0.78,0.98,Pate - Cognac,0.88
+198,Arizona,404.34,0.18,0.88,0.41,Crackers - Trio,0.5
+199,Utah,645.44,0.96,0.77,0.14,Liquid Aminios Acid - Braggs,0.98
+200,Texas,614.09,0.94,0.31,0.35,Tomato Puree,0.81
+201,New York,806.72,0.41,0.62,0.88,"Olives - Black, Pitted",0.61
+202,Virginia,820.47,0.89,0.9,1.0,Coffee - Frthy Coffee Crisp,0.34
+203,California,227.4,0.4,0.51,0.91,"Crab - Blue, Frozen",0.67
+204,Ohio,926.04,0.42,0.48,0.6,Cheese - Pied De Vents,0.84
+205,New Jersey,148.92,0.68,0.14,0.3,Appetizer - Seafood Assortment,0.26
+206,Illinois,208.79,0.27,0.29,0.07,Island Oasis - Pina Colada,0.46
+207,Michigan,110.22,0.69,0.69,0.88,Danishes - Mini Raspberry,0.16
+208,Indiana,613.28,0.14,0.79,0.55,Island Oasis - Cappucino Mix,0.69
+209,California,701.49,0.47,0.52,0.17,Muskox - French Rack,0.87
+210,Pennsylvania,572.85,0.63,0.68,0.55,Tea - Jasmin Green,0.1
+211,Ohio,151.9,0.27,0.47,0.48,Garlic - Elephant,0.95
+212,California,991.47,0.19,0.24,0.87,"Soup - Campbells, Butternut",0.01
+213,New Mexico,961.26,0.74,0.1,0.25,Bar Mix - Lemon,0.27
+214,New York,210.6,0.16,0.54,0.24,Buttons,0.03
+215,Oklahoma,204.91,0.15,0.96,0.57,Ginger - Fresh,0.75
+216,California,746.59,0.42,0.28,0.89,Carroway Seed,0.06
+217,New York,585.63,0.73,0.71,0.68,Table Cloth 81x81 Colour,0.32
+218,Pennsylvania,256.46,0.74,0.24,0.96,Turkey - Oven Roast Breast,0.24
+219,Wisconsin,957.86,0.7,0.97,0.51,Egg Patty Fried,0.48
+220,Florida,410.47,0.37,0.98,0.51,Carbonated Water - Blackberry,0.88
+221,Texas,430.96,0.96,0.34,0.1,Cheese - Cottage Cheese,0.67
+222,Texas,252.66,0.66,0.69,0.64,Chutney Sauce,0.92
+223,Massachusetts,630.18,0.45,0.14,0.86,Towels - Paper / Kraft,0.66
+224,Ohio,522.92,0.18,0.32,0.57,Nantucket Orange Juice,0.78
+225,Georgia,608.5,0.02,0.0,0.15,Chambord Royal,0.85
+226,Minnesota,291.82,0.72,0.38,0.51,Appetizer - Escargot Puff,0.81
+227,California,840.78,0.21,0.81,0.69,Bowl 12 Oz - Showcase 92012,0.73
+228,Maryland,486.74,0.63,0.21,0.57,Lettuce - Curly Endive,0.52
+229,California,658.08,0.48,0.61,0.13,Coconut - Whole,0.55
+230,Texas,779.99,0.57,0.94,0.57,"Turkey - Breast, Bone - In",0.11
+231,Colorado,351.33,0.12,0.22,0.11,Appetizer - Southwestern,0.78
+232,Oklahoma,965.99,0.7,0.19,0.74,Napkin White,0.4
+233,Texas,473.39,0.44,0.65,0.96,Cheese - Camembert,0.02
+234,Michigan,347.84,0.44,0.97,0.05,Vinegar - Cider,0.58
+235,New York,280.91,0.12,0.6,0.58,Brandy - Bar,0.19
+236,Michigan,667.15,0.12,0.46,0.28,Broom - Push,0.39
+237,Ohio,999.98,0.61,0.37,0.95,Sour Puss - Tangerine,0.01
+238,Minnesota,793.08,0.13,0.8,0.96,Cookie Dough - Peanut Butter,0.59
+239,Virginia,153.79,0.37,0.32,0.31,"Pasta - Lasagne, Fresh",0.87
+240,California,663.24,0.94,0.6,0.86,Sauce - Demi Glace,0.39
+241,New York,240.71,0.1,0.68,0.11,Ginsing - Fresh,0.33
+242,Arizona,182.06,0.84,0.06,0.91,Sachet,0.02
+243,Florida,319.41,0.72,0.95,0.26,Puree - Strawberry,0.49
+244,Florida,903.29,0.42,0.29,0.24,Pork - Smoked Kassler,0.88
+245,Texas,708.54,0.99,0.35,0.81,Tequila - Sauza Silver,0.69
+246,District of Columbia,629.13,0.33,0.85,0.21,Ham - Cooked Bayonne Tinned,0.35
+247,Illinois,495.4,0.29,0.6,0.6,Longos - Greek Salad,0.45
+248,Oklahoma,880.74,0.91,0.2,0.77,Muffin Batt - Choc Chk,0.33
+249,Kentucky,449.37,0.34,0.32,0.59,Dragon Fruit,0.1
+250,Indiana,904.6,0.84,0.97,0.06,Wine - Domaine Boyar Royal,0.71
+251,Virginia,319.63,0.84,0.03,0.44,"Pork - Sausage, Medium",0.95
+252,Georgia,869.11,0.6,0.07,0.61,"Vodka - Hot, Lnferno",0.36
+253,Connecticut,749.95,0.5,0.51,0.64,Thyme - Dried,0.32
+254,Colorado,872.9,0.61,0.71,0.33,"Chilli Paste, Ginger Garlic",0.83
+255,Wisconsin,340.96,0.63,0.06,0.6,"Pasta - Bauletti, Chicken White",0.28
+256,Georgia,694.52,0.76,0.9,0.83,Tart - Butter Plain Squares,0.03
+257,West Virginia,768.3,0.99,0.68,0.61,Wine - Toasted Head,0.63
+258,Tennessee,179.55,0.89,0.66,0.49,Appetizer - Mushroom Tart,0.55
+259,District of Columbia,144.45,0.17,0.25,0.25,Tofu - Soft,0.9
+260,Louisiana,682.87,0.23,0.05,0.6,Lid - 0090 Clear,0.32
+261,Ohio,680.37,0.09,0.18,0.82,"Plate - Foam, Bread And Butter",0.1
+262,Texas,563.55,0.21,0.85,0.19,Pepper - Pablano,0.17
+263,Massachusetts,413.42,0.08,0.4,0.06,"Bread - Roll, Whole Wheat",0.12
+264,Colorado,125.9,0.91,0.32,0.05,Appetizer - Asian Shrimp Roll,0.55
+265,New York,676.64,0.74,0.04,0.07,Croissants Thaw And Serve,0.1
+266,Texas,599.72,0.17,0.99,0.08,Lime Cordial - Roses,0.78
+267,Texas,578.69,0.51,0.76,0.23,Pancetta,0.65
+268,Louisiana,402.32,0.74,0.23,0.22,"Pork - Bacon,back Peameal",0.44
+269,Massachusetts,909.21,0.29,0.89,0.14,Ostrich - Fan Fillet,0.31
+270,New Jersey,686.09,0.48,0.68,0.27,"Fish - Atlantic Salmon, Cold",0.25
+271,Virginia,916.99,0.96,0.55,0.78,Container - Hngd Cll Blk 7x7x3,0.93
+272,Florida,269.17,0.98,0.99,0.56,Lettuce - Romaine,0.73
+273,Florida,179.44,0.15,0.41,0.66,Pike - Frozen Fillet,0.53
+274,Alaska,139.38,0.72,0.75,0.4,Bouq All Italian - Primerba,0.54
+275,Washington,940.54,0.03,0.81,0.92,Wine - Sauvignon Blanc,0.38
+276,Alabama,357.29,0.85,0.71,0.32,Carbonated Water - Blackcherry,0.29
+277,Louisiana,906.82,0.28,0.07,0.35,Lemon Pepper,0.61
+278,North Carolina,312.04,0.04,0.74,0.89,Plasticforkblack,0.47
+279,Florida,357.87,0.39,0.95,0.97,Miso - Soy Bean Paste,0.19
+280,New York,797.92,0.42,0.77,0.88,Veal - Liver,0.47
+281,California,957.41,0.33,0.8,0.62,Pate Pans Yellow,0.41
+282,Pennsylvania,407.21,0.4,0.23,0.29,Bread - Italian Roll With Herbs,0.91
+283,Florida,864.09,0.19,0.35,0.6,Soup - Campbells Asian Noodle,0.79
+284,Missouri,780.62,0.63,0.3,0.23,"Lentils - Red, Dry",0.95
+285,Florida,159.46,0.59,0.15,0.31,"Beans - Fava, Canned",0.19
+286,Utah,803.28,0.26,0.77,0.08,Cauliflower,0.13
+287,Virginia,991.96,0.77,0.98,0.33,Cheese - Ricotta,0.27
+288,West Virginia,747.34,0.55,0.88,0.96,Wine - Chardonnay Mondavi,0.5
+289,Alabama,891.6,0.44,0.81,0.09,Arctic Char - Fillets,0.77
+290,California,277.5,0.99,0.31,0.03,Plastic Arrow Stir Stick,0.96
+291,Texas,722.38,0.51,0.66,0.27,Chips Potato Swt Chilli Sour,0.42
+292,District of Columbia,465.68,0.58,0.7,0.77,"Beef - Kindney, Whole",0.43
+293,Ohio,788.75,0.36,0.42,0.37,"Tarragon - Primerba, Paste",0.32
+294,Texas,535.76,0.57,0.99,0.75,Magnotta - Bel Paese White,0.33
+295,Ohio,438.9,0.44,0.06,0.52,Table Cloth 81x81 White,0.13
+296,Texas,979.65,0.54,0.14,0.08,Chinese Foods - Chicken Wing,0.48
+297,District of Columbia,158.52,0.75,0.08,0.73,Tuna - Fresh,0.32
+298,California,717.48,0.56,0.28,0.85,Puree - Pear,0.59
+299,Colorado,809.97,0.87,0.33,0.71,Cucumber - Pickling Ontario,0.13
+300,Georgia,788.08,0.39,0.55,0.01,Durian Fruit,0.28
+301,Texas,100.42,0.97,0.35,0.94,"Chicken - Leg, Boneless",0.38
+302,Delaware,455.64,0.05,0.47,0.65,Mushroom - Chanterelle Frozen,0.61
+303,Arizona,703.28,0.5,0.11,0.23,Bonito Flakes - Toku Katsuo,0.44
+304,Indiana,754.03,0.56,0.25,0.36,Peas Snow,0.46
+305,Kentucky,481.74,0.42,0.74,0.82,Bagelers - Cinn / Brown,0.34
+306,New York,262.27,0.92,0.33,0.88,Coffee Cup 8oz 5338cd,0.06
+307,Tennessee,295.96,0.54,0.71,0.05,Bread - Sour Batard,0.44
+308,Alabama,637.66,0.73,0.46,0.01,Salmon - Canned,0.04
+309,New Jersey,755.68,0.63,0.68,0.27,Table Cloth 54x54 Colour,0.22
+310,Missouri,464.12,0.89,0.8,0.46,Cookies - Englishbay Oatmeal,0.28
+311,Louisiana,910.99,0.54,0.12,0.64,Bandage - Finger Cots,0.1
+312,New York,399.13,0.85,0.33,0.41,"Beans - Long, Chinese",0.24
+313,West Virginia,227.57,0.88,0.27,0.36,Paper Towel Touchless,0.17
+314,California,712.3,0.63,0.84,0.83,"Soup - Campbells, Creamy",0.73
+315,Florida,458.32,0.06,0.86,0.51,"Water, Tap",0.35
+316,California,854.93,0.0,0.74,0.63,Table Cloth 120 Round White,0.41
+317,Texas,290.03,0.36,0.07,0.12,Scallops - In Shell,0.45
+318,Washington,871.93,0.79,0.38,0.56,Pasta - Fusili Tri - Coloured,0.22
+319,Kentucky,292.88,0.89,0.06,0.49,"Doilies - 12, Paper",0.14
+320,Texas,608.1,0.48,0.26,0.4,Foil Cont Round,0.16
+321,Indiana,133.42,0.23,0.54,0.06,Energy Drink - Franks Pineapple,0.71
+322,Georgia,403.11,0.54,0.86,0.32,Pastry - Chocolate Chip Muffin,0.11
+323,Ohio,466.97,0.89,0.52,0.8,Tarragon - Fresh,0.46
+324,Georgia,126.4,0.7,0.13,0.84,"Wine - White, Schroder And Schyl",0.18
+325,Alabama,621.88,0.47,0.56,0.68,"Yogurt - Peach, 175 Gr",0.6
+326,South Dakota,691.66,0.96,0.82,0.24,Jerusalem Artichoke,0.26
+327,Texas,572.16,0.55,0.47,0.21,Horseradish - Prepared,0.23
+328,Florida,850.79,0.3,0.87,0.24,"Carrots - Mini, Stem On",0.39
+329,California,199.47,0.94,0.06,0.4,Lamb Leg - Bone - In Nz,0.27
+330,Kentucky,350.91,0.04,0.11,0.36,Strawberries,0.84
+331,Florida,433.88,0.01,0.71,0.04,Truffle Cups - Red,0.73
+332,Texas,423.78,0.03,0.82,0.45,Peppercorns - Green,0.67
+333,Louisiana,712.96,0.61,0.42,0.12,Wine - Vidal Icewine Magnotta,0.37
+334,Missouri,381.1,0.67,0.9,0.38,"Veal - Insides, Grains",0.04
+335,Florida,697.86,0.08,0.03,0.51,Table Cloth 54x72 Colour,0.91
+336,California,421.97,0.81,0.24,0.82,"Radish - Black, Winter, Organic",0.21
+337,California,531.67,0.32,0.24,0.77,Flavouring - Rum,0.4
+338,Missouri,530.5,0.9,0.71,0.95,Cranberry Foccacia,0.69
+339,New Jersey,129.02,0.05,0.79,0.41,Smoked Paprika,0.98
+340,Pennsylvania,889.34,0.47,0.11,0.89,Wine - Coteaux Du Tricastin Ac,0.4
+341,Georgia,282.15,0.66,0.48,0.2,Pastry - Cherry Danish - Mini,0.76
+342,New York,645.76,0.54,0.58,0.25,Oxtail - Cut,0.17
+343,New Jersey,227.57,0.03,0.57,0.39,Bread - Multigrain Oval,0.89
+344,Alaska,526.72,0.03,0.3,0.69,Ice Cream Bar - Drumstick,0.35
+345,Pennsylvania,290.57,0.75,0.31,0.33,Chocolate Eclairs,0.16
+346,Illinois,353.19,0.86,0.1,0.51,"Beans - Kidney, Red Dry",0.46
+347,Oklahoma,370.36,0.31,0.48,0.47,Bread - Raisin Walnut Pull,0.37
+348,Alabama,441.53,0.9,0.19,0.72,Creme De Banane - Marie,0.58
+349,Virginia,239.45,0.66,0.59,0.54,"Water - Spring Water, 355 Ml",0.65
+350,California,223.95,0.74,0.97,1.0,"Apple - Delicious, Golden",0.25
+351,Maryland,140.24,0.45,0.16,0.01,Lid Coffee Cup 8oz Blk,0.23
+352,California,915.25,0.49,0.99,0.96,Quinoa,0.38
+353,Texas,211.5,0.04,0.69,0.77,Ham - Cooked Italian,0.39
+354,Connecticut,133.34,0.4,0.8,0.42,Rhubarb,0.45
+355,Virginia,285.85,0.6,0.95,0.14,Lobster - Cooked,0.23
+356,California,425.24,0.32,0.7,0.91,Shichimi Togarashi Peppeers,0.26
+357,Ohio,737.39,0.74,0.1,0.92,Cod - Black Whole Fillet,0.68
+358,Arizona,337.61,0.99,0.88,0.15,Foil Wrap,0.95
+359,Alabama,979.84,0.76,0.29,0.94,Shiratamako - Rice Flour,0.35
+360,Virginia,582.53,0.96,0.65,0.26,Mini - Vol Au Vents,0.27
+361,Texas,218.96,0.9,0.49,0.8,Lettuce - Boston Bib - Organic,0.36
+362,Virginia,967.68,0.66,0.36,0.9,Cheese - Shred Cheddar / Mozza,0.73
+363,Ohio,467.23,0.53,0.17,0.17,Wine - Valpolicella Masi,0.16
+364,Illinois,400.04,0.6,0.13,0.46,Tobasco Sauce,0.12
+365,Montana,276.31,0.74,0.15,0.8,"Pasta - Lasagna, Dry",0.14
+366,District of Columbia,926.02,0.7,0.68,0.93,"Tart Shells - Savory, 3",0.26
+367,New York,467.85,0.87,0.63,0.56,"Water - Mineral, Carbonated",0.98
+368,North Carolina,697.06,0.36,0.06,0.46,Ice Cream Bar - Hageen Daz To,0.09
+369,Pennsylvania,749.87,0.92,0.24,0.21,"Pasta - Cappellini, Dry",0.77
+370,Alabama,723.06,0.03,0.95,0.49,Cheese - Grie Des Champ,0.53
+371,Virginia,199.04,0.1,0.02,0.95,Beef - Short Loin,0.56
+372,New York,323.5,0.22,1.0,0.2,Longos - Grilled Salmon With Bbq,0.82
+373,Louisiana,614.5,0.04,0.6,0.9,"Beans - Kidney, Red Dry",0.58
+374,North Carolina,160.12,0.09,0.57,0.36,Tea - Decaf Lipton,0.48
+375,Pennsylvania,337.96,0.37,0.14,0.61,Wine - Stoneliegh Sauvignon,0.1
+376,Hawaii,988.44,0.51,0.02,0.56,Wine - Alsace Riesling Reserve,0.29
+377,Michigan,212.43,0.52,0.73,0.75,Bread Ww Cluster,0.21
+378,Texas,211.95,0.92,0.81,0.48,Ice Cream - Strawberry,0.77
+379,Texas,407.66,0.98,0.34,0.12,Gherkin - Sour,0.27
+380,California,263.22,0.38,0.06,0.66,Saskatoon Berries - Frozen,0.28
+381,Texas,862.49,0.89,0.42,0.72,Muffin Mix - Corn Harvest,0.9
+382,Hawaii,414.56,0.5,0.46,0.74,Flower - Dish Garden,0.57
+383,Washington,895.85,0.04,0.69,0.55,"Bread - White, Sliced",0.84
+384,Maryland,997.87,0.08,0.03,0.47,Cucumber - Pickling Ontario,0.8
+385,North Carolina,925.41,0.11,0.93,0.42,Food Colouring - Blue,0.49
+386,Texas,146.04,0.05,0.84,0.79,Wine - Alsace Gewurztraminer,0.67
+387,Kentucky,795.19,0.36,0.71,0.14,Sprouts - Corn,0.69
+388,Maryland,531.33,0.56,0.57,0.38,Coffee Cup 8oz 5338cd,0.6
+389,Pennsylvania,466.63,0.46,0.38,0.57,Roe - White Fish,0.72
+390,Oklahoma,117.99,0.48,0.27,0.43,Huck Towels White,0.39
+391,Washington,226.82,0.33,0.35,0.56,Beef - Montreal Smoked Brisket,0.26
+392,New York,688.51,0.2,0.27,0.71,Napkin White - Starched,0.45
+393,Pennsylvania,447.34,0.25,0.07,0.14,Thermometer Digital,0.42
+394,New York,939.49,0.82,0.21,0.09,Bag - Clear 7 Lb,0.6
+395,Texas,221.66,0.32,0.53,0.52,Crackers - Soda / Saltins,0.2
+396,New York,450.92,0.17,0.95,0.12,"Juice - Cranberry, 341 Ml",0.64
+397,Colorado,188.43,0.23,0.35,0.21,Gatorade - Orange,0.23
+398,North Carolina,317.18,0.87,0.01,0.09,Truffle Cups - White Paper,0.75
+399,Colorado,938.79,0.05,0.53,0.02,Cheese - Colby,0.68
+400,Washington,545.16,0.6,0.01,0.32,Salt - Seasoned,0.54
+401,Ohio,814.5,0.69,0.63,0.82,Wine - Peller Estates Late,0.45
+402,Missouri,855.37,0.18,0.54,0.67,Magnotta - Bel Paese White,0.73
+403,Ohio,326.58,0.04,0.17,0.14,Soup - Campbells Bean Medley,0.43
+404,New York,944.14,0.14,0.69,0.7,Squid - U 5,0.57
+405,Texas,904.48,0.81,0.15,0.47,Sauce - Plum,0.49
+406,Texas,501.85,0.7,0.36,0.97,"Corn - Cream, Canned",0.25
+407,South Carolina,834.51,0.65,0.98,0.93,Clams - Canned,0.94
+408,New York,973.34,0.33,0.06,0.89,Butcher Twine 4r,0.5
+409,Kentucky,152.22,0.62,0.07,0.02,"Juice - Orange, 341 Ml",0.83
+410,New York,585.46,0.11,0.76,0.46,Greens Mustard,0.93
+411,Kansas,327.02,0.79,0.83,0.2,Piping Jelly - All Colours,0.75
+412,New York,643.24,0.76,0.18,0.84,Cake - Box Window 10x10x2.5,0.81
+413,Washington,724.36,0.52,0.76,0.79,Cherries - Fresh,0.54
+414,Maryland,879.5,0.24,0.24,0.98,Mushroom Morel Fresh,0.72
+415,Pennsylvania,671.67,0.67,0.87,0.73,Bacardi Breezer - Strawberry,0.83
+416,Alabama,864.68,0.13,0.1,0.95,"Sauce - White, Mix",0.74
+417,Minnesota,113.85,0.35,0.46,0.43,Foam Espresso Cup Plain White,0.43
+418,Florida,538.86,0.55,0.51,0.53,"Nut - Peanut, Roasted",0.47
+419,Colorado,719.43,0.96,0.08,0.26,"Mushroom - Enoki, Dry",0.25
+420,Georgia,650.23,0.09,0.07,0.41,Hersey Shakes,0.87
+421,Florida,145.08,0.92,0.62,0.56,Muffin Orange Individual,0.21
+422,Texas,592.55,0.35,0.29,0.12,Pears - Fiorelle,0.69
+423,New York,233.35,0.21,0.58,0.75,Ham - Black Forest,0.21
+424,Indiana,262.8,0.26,0.36,0.15,Greens Mustard,0.95
+425,District of Columbia,909.71,0.05,0.27,0.99,Tea - Honey Green Tea,0.69
+426,Arizona,324.66,0.5,0.96,0.74,"Pork - Back, Long Cut, Boneless",0.75
+427,California,968.87,0.39,0.84,0.45,Blackberries,0.94
+428,New York,632.58,0.17,0.41,0.97,Table Cloth 62x120 Colour,0.41
+429,District of Columbia,701.04,1.0,0.49,0.21,"Stock - Veal, Brown",0.18
+430,Virginia,848.93,0.51,0.27,0.16,Flour - All Purpose,0.95
+431,Colorado,721.59,0.84,0.48,0.47,"Stock - Chicken, White",0.06
+432,Florida,644.8,0.78,0.25,0.31,Water - San Pellegrino,0.92
+433,Kansas,114.08,0.88,0.94,0.41,Coffee - 10oz Cup 92961,0.7
+434,Kentucky,438.2,0.33,0.34,0.37,Beans - Yellow,0.59
+435,Hawaii,428.95,0.73,0.7,0.69,"Pepper - Julienne, Frozen",0.99
+436,Georgia,612.52,0.89,0.64,0.93,Pasta - Canelloni,0.41
+437,Texas,457.83,0.62,0.88,0.04,Cleaner - Lime Away,0.69
+438,Ohio,723.82,0.56,0.31,0.52,"Lemonade - Kiwi, 591 Ml",0.14
+439,Kansas,808.53,0.97,0.73,0.55,Truffle Cups - Brown,0.21
+440,Oklahoma,532.84,0.01,0.01,0.93,"Wine - Magnotta, Merlot Sr Vqa",0.62
+441,California,275.77,0.22,0.39,0.37,"Shrimp - Baby, Warm Water",0.15
+442,Texas,291.2,0.2,0.23,0.05,Dragon Fruit,0.32
+443,California,688.16,0.64,0.71,0.66,Eggwhite Frozen,0.55
+444,Missouri,746.07,0.22,0.38,0.85,Wine - Lou Black Shiraz,0.95
+445,Florida,697.74,0.93,0.38,0.39,Chips Potato Salt Vinegar 43g,0.97
+446,Nevada,134.07,0.62,0.92,0.82,Table Cloth 144x90 White,0.02
+447,Nevada,386.29,0.7,0.12,0.75,"Garlic - Primerba, Paste",0.74
+448,Florida,932.62,0.62,0.1,0.45,"Wine - Red, Cabernet Merlot",0.07
+449,Colorado,416.74,0.45,0.7,0.09,Ham - Cooked,0.65
+450,Nebraska,624.93,0.28,0.36,0.51,Crackers - Water,0.81
+451,Kansas,808.6,0.07,0.72,0.36,Veal - Eye Of Round,0.36
+452,Georgia,461.66,0.46,0.25,0.38,"Soup - Beef, Base Mix",0.48
+453,Oregon,673.33,0.44,1.0,0.35,Onions - White,0.93
+454,Tennessee,485.68,0.55,0.64,0.34,Cod - Fillets,0.39
+455,Ohio,464.86,0.3,0.83,0.04,Beer - Molson Excel,0.15
+456,Kansas,726.32,0.9,0.57,0.6,Bacardi Breezer - Tropical,0.27
+457,Florida,248.6,0.26,0.08,0.43,Capers - Ox Eye Daisy,0.2
+458,New York,611.07,0.68,0.56,0.06,Wine - Ruffino Chianti Classico,0.18
+459,Florida,346.68,0.16,0.9,0.94,Magnotta Bel Paese Red,0.93
+460,Florida,416.28,0.0,0.9,0.84,Beer - Sleemans Honey Brown,0.91
+461,Connecticut,430.72,0.37,0.44,0.41,"Veal - Leg, Provimi - 50 Lb Max",0.61
+462,Missouri,935.12,0.7,0.58,0.02,Bagel - Ched Chs Presliced,0.2
+463,Massachusetts,905.36,0.74,0.74,0.55,"Soup - Beef, Base Mix",0.98
+464,Texas,912.53,0.61,0.6,0.41,V8 Splash Strawberry Kiwi,0.11
+465,Michigan,980.39,0.59,0.37,0.25,Muffin Batt - Blueberry Passion,0.95
+466,Minnesota,963.86,0.7,0.18,0.71,Turnip - Mini,0.75
+467,Louisiana,878.29,0.09,0.2,0.96,Turkey - Oven Roast Breast,0.94
+468,California,313.16,0.21,0.1,0.1,Chicken - Bones,0.0
+469,Wisconsin,485.74,0.74,0.55,0.43,"Beef - Ox Tongue, Pickled",0.3
+470,Idaho,894.65,0.92,0.95,0.3,Plate Foam Laminated 9in Blk,0.91
+471,Utah,439.57,0.78,0.01,0.68,"Stock - Beef, Brown",0.53
+472,Louisiana,444.15,0.08,0.89,0.24,Carrots - Mini Red Organic,0.38
+473,Georgia,582.12,0.01,0.17,0.67,Clam - Cherrystone,0.37
+474,Maryland,299.46,0.44,0.75,0.64,Vinegar - Red Wine,0.92
+475,Colorado,724.1,0.7,0.72,0.56,Wine - Remy Pannier Rose,0.77
+476,Colorado,227.54,0.34,0.31,0.85,Beets,0.44
+477,Tennessee,899.33,0.82,0.41,0.2,Fireball Whisky,0.9
+478,West Virginia,947.99,0.96,0.65,0.19,Cheese - Stilton,0.48
+479,Georgia,213.97,0.54,1.0,0.81,"Doilies - 12, Paper",0.07
+480,Virginia,723.59,0.64,0.76,0.65,Spinach - Packaged,1.0
+481,Minnesota,144.07,0.64,0.85,0.69,Appetizer - Sausage Rolls,0.88
+482,Texas,835.59,0.38,0.7,0.59,Lumpfish Black,0.97
+483,Alaska,713.98,0.26,0.05,0.61,Wine - Blue Nun Qualitatswein,0.72
+484,Florida,427.87,0.2,0.66,0.3,Yogurt - Assorted Pack,0.36
+485,Illinois,837.84,0.95,0.39,0.06,Tart - Butter Plain Squares,0.47
+486,Oklahoma,884.75,0.94,0.33,0.1,Grapefruit - White,0.19
+487,Oklahoma,386.22,0.7,0.48,0.23,Mcguinness - Blue Curacao,0.25
+488,Georgia,166.21,0.71,0.92,0.3,Syrup - Kahlua Chocolate,0.32
+489,California,793.34,0.62,0.39,0.71,Sprouts - Alfalfa,0.37
+490,California,621.94,0.01,0.2,0.43,Salami - Genova,0.83
+491,Kentucky,908.07,0.34,0.19,0.41,Rye Special Old,0.18
+492,Minnesota,404.03,0.52,0.03,0.59,Beef - Rib Eye Aaa,0.37
+493,Texas,929.05,0.13,0.7,0.39,"Turnip - White, Organic",0.82
+494,Missouri,867.68,0.22,0.04,0.1,Oyster - In Shell,0.0
+495,California,220.2,0.98,0.04,0.26,Tea - Earl Grey,0.17
+496,Utah,888.11,0.32,0.92,0.01,Cattail Hearts,0.27
+497,Massachusetts,912.93,0.43,0.52,0.87,"Lentils - Red, Dry",0.44
+498,Texas,318.05,0.21,0.07,0.81,Cake - Cake Sheet Macaroon,0.72
+499,Florida,961.96,0.34,0.89,0.37,Savory,0.47
+500,New York,290.36,0.75,0.37,0.44,Lemon Tarts,0.27
+501,Utah,503.79,0.16,0.24,0.91,Tea - Vanilla Chai,0.39
+502,Arizona,797.64,0.43,0.97,0.9,Shrimp - Tiger 21/25,0.32
+503,Washington,408.72,0.86,0.1,0.6,Snapple - Iced Tea Peach,0.08
+504,Alaska,550.08,0.97,0.68,0.52,Veal - Knuckle,0.99
+505,Ohio,326.56,0.96,0.03,0.05,Scallops - In Shell,0.33
+506,Oklahoma,836.8,0.62,0.91,0.19,"Lemonade - Kiwi, 591 Ml",0.09
+507,Arizona,702.41,0.74,0.79,0.21,Sole - Fillet,0.13
+508,Oklahoma,456.87,0.21,0.86,0.8,Onions - Spanish,0.97
+509,Pennsylvania,439.75,0.62,0.0,0.88,Wine - Cave Springs Dry Riesling,0.46
+510,Illinois,656.86,0.17,0.08,0.02,Baking Soda,0.17
+511,Minnesota,280.35,0.23,0.28,0.09,Dried Figs,0.85
+512,California,357.96,0.76,0.54,0.77,Extract - Almond,0.6
+513,Pennsylvania,290.36,0.73,0.17,0.84,Crackers - Melba Toast,0.28
+514,Iowa,833.82,0.92,0.51,0.42,Kumquat,0.56
+515,Delaware,216.56,0.5,0.7,0.76,Wine - Chablis 2003 Champs,0.67
+516,Texas,714.58,0.51,0.39,0.44,"Beans - Black Bean, Preserved",0.35
+517,Texas,774.33,0.45,0.16,0.9,Cleaner - Bleach,0.64
+518,Ohio,978.57,0.36,0.49,0.64,Flour - Semolina,0.72
+519,Connecticut,882.15,0.41,0.37,0.57,"Beans - Long, Chinese",0.11
+520,Missouri,344.5,0.71,0.99,0.68,Salt - Sea,0.4
+521,Florida,176.23,0.45,0.32,0.37,Versatainer Nc - 888,0.87
+522,Oregon,989.42,0.45,0.65,0.18,Prunes - Pitted,0.6
+523,Missouri,305.12,0.57,0.52,0.36,Danishes - Mini Cheese,0.31
+524,Missouri,106.32,0.58,0.15,0.05,"Wine - Red, Gallo, Merlot",0.27
+525,Pennsylvania,829.49,0.18,0.46,0.53,Macaroons - Two Bite Choc,0.36
+526,Tennessee,951.78,0.45,0.83,0.73,Cheese - Cambozola,0.66
+527,Arizona,436.78,0.34,0.35,0.47,Corn - On The Cob,0.78
+528,Utah,255.36,0.06,0.11,0.26,"Mushroom - Shitake, Dry",0.29
+529,Texas,852.63,0.59,0.21,0.26,Food Colouring - Red,0.52
+530,Arizona,891.93,0.09,0.89,0.41,Otomegusa Dashi Konbu,0.09
+531,Virginia,356.28,0.02,0.45,0.97,"Lamb - Racks, Frenched",0.18
+532,Washington,944.39,0.32,0.31,0.59,Pork Loin Bine - In Frenched,0.81
+533,Texas,421.63,0.39,0.86,0.04,Lamb Leg - Bone - In Nz,0.95
+534,California,243.38,0.54,0.24,0.39,Pants Custom Dry Clean,0.08
+535,Maryland,224.97,0.66,0.78,0.34,"Beets - Candy Cane, Organic",0.59
+536,Missouri,739.69,0.55,0.17,0.78,Flour Pastry Super Fine,0.46
+537,New York,976.4,0.3,0.45,0.26,Beer - Sleemans Honey Brown,0.31
+538,Iowa,349.28,0.31,0.22,0.83,Shrimp - 150 - 250,0.42
+539,New York,811.82,0.66,0.93,0.38,"Potatoes - Instant, Mashed",0.9
+540,Washington,710.7,0.56,0.56,0.73,Beer - Sleeman Fine Porter,0.72
+541,Michigan,708.42,0.93,0.75,0.2,Tea - Lemon Scented,0.77
+542,Minnesota,816.95,0.39,0.55,0.76,"Chicken - Wings, Tip Off",0.18
+543,Texas,323.44,0.57,0.64,0.29,Grouper - Fresh,0.48
+544,Kentucky,954.87,0.49,0.5,0.72,Longos - Grilled Salmon With Bbq,0.93
+545,California,790.26,0.17,0.22,0.92,Bread - Ciabatta Buns,0.88
+546,California,434.82,0.24,0.77,0.63,Table Cloth 81x81 White,0.79
+547,Texas,521.97,0.58,0.8,0.76,Breadfruit,0.55
+548,California,766.71,0.53,0.56,0.16,Compound - Mocha,0.08
+549,Ohio,133.9,0.68,0.37,0.27,Pears - Fiorelle,0.21
+550,Alabama,533.72,0.68,0.65,0.74,"Pasta - Rotini, Dry",0.13
+551,North Carolina,143.68,0.27,0.59,0.11,Bandage - Finger Cots,0.54
+552,Utah,231.85,0.12,0.96,0.13,"Chestnuts - Whole,canned",0.06
+553,Connecticut,867.7,0.78,0.93,0.44,Puree - Passion Fruit,0.66
+554,Missouri,461.67,0.34,0.22,0.39,Sugar - White Packet,0.47
+555,Florida,490.7,0.27,0.75,0.71,"Brandy - Orange, Mc Guiness",0.32
+556,Oklahoma,277.19,0.59,0.62,0.38,Garam Marsala,0.19
+557,District of Columbia,675.92,0.05,0.25,0.81,Tomatoes - Orange,0.12
+558,Mississippi,252.63,0.49,0.49,0.12,Godiva White Chocolate,0.19
+559,California,811.8,0.51,0.93,0.41,Russian Prince,0.43
+560,California,584.02,0.59,0.06,0.01,"Shrimp - 16/20, Iqf, Shell On",0.85
+561,West Virginia,789.91,0.71,0.58,0.12,Dried Cherries,0.35
+562,Florida,872.84,0.42,0.04,0.62,Beans - Kidney White,0.32
+563,Colorado,531.86,0.62,0.47,0.48,Apple - Macintosh,0.51
+564,Ohio,876.19,0.95,0.48,0.2,Bandage - Finger Cots,0.02
+565,Pennsylvania,686.37,0.38,0.98,0.64,Food Colouring - Pink,0.41
+566,Tennessee,695.38,0.73,0.15,0.96,Maple Syrup,0.63
+567,Arkansas,859.89,0.12,0.99,0.97,Sea Urchin,0.25
+568,California,828.3,0.29,0.64,0.84,Puree - Blackcurrant,0.83
+569,Alabama,804.29,0.86,0.57,0.05,Cheese - Parmesan Cubes,0.3
+570,North Carolina,285.75,0.65,0.69,0.91,Garlic - Peeled,0.95
+571,California,601.23,0.18,0.9,0.58,Sauce - Sesame Thai Dressing,0.1
+572,Texas,674.38,0.25,0.43,0.31,Wine La Vielle Ferme Cote Du,0.94
+573,Kansas,200.9,0.69,0.57,0.18,Milk - Condensed,0.63
+574,Florida,664.18,0.23,0.54,0.59,Flavouring Vanilla Artificial,0.29
+575,Illinois,748.06,0.37,0.97,0.53,Soup - Campbells - Tomato,0.98
+576,Alabama,408.39,0.94,0.53,0.34,Ginger - Crystalized,0.39
+577,Iowa,418.96,0.75,0.46,0.93,Ham - Cooked Italian,0.31
+578,California,642.75,0.96,0.04,0.36,Table Cloth 53x53 White,0.42
+579,New York,581.18,0.94,0.3,0.49,Flour - Strong Pizza,0.41
+580,Texas,801.77,0.86,0.47,0.58,Wine - Chenin Blanc K.w.v.,0.34
+581,Washington,207.88,0.38,0.52,1.0,Beef Flat Iron Steak,0.0
+582,Massachusetts,846.88,0.21,0.21,0.36,Beef - Flank Steak,0.69
+583,Texas,104.23,0.77,0.87,0.08,Pancetta,0.78
+584,Florida,941.04,0.01,0.64,0.0,Pears - Anjou,0.07
+585,Missouri,774.85,0.77,0.66,0.2,Lamb Tenderloin Nz Fr,0.04
+586,Illinois,163.81,0.79,0.56,0.7,"Wine - Red, Concha Y Toro",0.62
+587,Missouri,120.65,0.38,0.42,0.39,Beef Flat Iron Steak,0.74
+588,Arizona,223.8,0.36,0.31,0.61,"Wine - White, Pelee Island",0.3
+589,Virginia,850.9,0.56,0.86,0.45,Oneshot Automatic Soap System,0.53
+590,Oklahoma,740.64,0.02,0.19,0.89,"Juice - Pineapple, 48 Oz",0.5
+591,Iowa,958.23,0.6,0.91,0.23,Russian Prince,0.58
+592,Iowa,290.82,0.32,0.54,0.99,"Wine - Niagara,vqa Reisling",0.56
+593,Texas,291.38,0.63,0.99,0.88,Stainless Steel Cleaner Vision,0.79
+594,Georgia,175.73,0.08,0.84,0.32,Vaccum Bag - 14x20,0.99
+595,Alabama,264.42,0.01,0.35,0.96,Pork - Bacon Cooked Slcd,0.17
+596,Nevada,890.33,0.64,0.71,0.99,"Asparagus - White, Canned",0.53
+597,Oklahoma,817.25,0.65,0.6,0.86,Sultanas,0.63
+598,Georgia,419.81,0.96,0.16,0.12,Glass - Juice Clear 5oz 55005,0.8
+599,Massachusetts,933.39,0.07,0.11,0.16,Beer - True North Lager,0.95
+600,Tennessee,442.57,0.84,0.89,0.16,"Rum - Coconut, Malibu",0.36
+601,Oklahoma,446.99,0.83,0.75,0.17,Squid - U 5,0.35
+602,Alabama,419.72,0.55,0.09,0.73,Savory,0.94
+603,California,703.47,0.38,0.42,0.46,Wheat - Soft Kernal Of Wheat,0.23
+604,Texas,730.16,0.53,0.0,0.52,Truffle - Whole Black Peeled,0.71
+605,Maryland,337.47,0.65,0.18,0.05,Wine - Soave Folonari,0.88
+606,Pennsylvania,787.03,0.17,0.07,0.74,Vinegar - Tarragon,0.99
+607,Kentucky,656.5,0.9,0.84,0.61,Beef - Short Ribs,0.43
+608,Ohio,294.2,0.75,0.62,0.49,Scrubbie - Scotchbrite Hand Pad,0.2
+609,Tennessee,426.38,0.77,0.56,0.44,Bacardi Breezer - Tropical,0.1
+610,Michigan,841.46,1.0,0.3,0.14,Artichoke - Fresh,0.11
+611,Tennessee,829.4,0.94,0.44,0.25,Sping Loaded Cup Dispenser,0.6
+612,Oklahoma,100.8,0.48,0.09,0.76,Jagermeister,0.85
+613,New York,825.17,0.91,0.12,0.71,Muffin Batt - Carrot Spice,0.16
+614,Missouri,501.0,0.95,0.15,0.6,Beer - Pilsner Urquell,0.51
+615,Washington,960.34,0.75,0.75,0.79,Beer - Moosehead,0.23
+616,Oklahoma,273.89,0.7,0.6,0.02,"Cheese - Brie, Cups 125g",0.24
+617,Missouri,443.9,0.37,0.85,0.91,Pepper - Chilli Seeds Mild,0.42
+618,Georgia,845.73,0.35,0.04,0.14,Puree - Mango,0.17
+619,Nevada,753.51,0.19,0.02,0.28,Squid U5 - Thailand,0.93
+620,California,497.27,0.9,0.11,0.21,Cassis,0.75
+621,Minnesota,843.93,0.95,0.26,0.51,Flavouring - Orange,0.21
+622,Alabama,827.72,0.61,0.44,0.54,Tia Maria,0.04
+623,Kansas,983.04,0.66,0.91,0.72,Schnappes Peppermint - Walker,0.27
+624,Texas,910.22,0.4,0.4,0.76,"Crab - Dungeness, Whole",0.48
+625,Texas,614.63,0.97,0.59,0.36,Goulash Seasoning,0.8
+626,Rhode Island,742.4,0.93,0.9,0.44,Table Cloth 54x72 White,0.53
+627,California,229.4,0.24,0.95,0.58,Ham Black Forest,0.98
+628,California,792.66,0.64,0.62,0.93,"Pineapple - Canned, Rings",0.77
+629,Texas,341.29,0.65,0.42,0.37,"Wine - White, Colubia Cresh",0.29
+630,Texas,780.13,0.29,0.6,0.66,Cookies - Englishbay Chochip,0.75
+631,California,505.51,0.79,0.92,0.72,Chinese Foods - Chicken Wing,0.59
+632,Texas,792.98,0.53,0.23,0.23,Uniform Linen Charge,0.6
+633,Florida,351.19,0.93,0.84,0.91,Filo Dough,0.47
+634,California,825.17,0.32,0.9,0.89,Beef - Sushi Flat Iron Steak,0.95
+635,Alabama,606.89,0.52,0.31,0.8,Milk Powder,0.38
+636,District of Columbia,506.03,0.01,0.97,0.08,Salt And Pepper Mix - White,0.24
+637,Louisiana,759.68,0.76,0.77,0.81,"Bread - Bagels, Mini",0.53
+638,Arizona,422.24,0.15,0.11,0.46,Pork - Smoked Kassler,0.18
+639,California,178.24,0.9,1.0,0.01,Lamb - Sausage Casings,0.44
+640,District of Columbia,152.21,0.37,0.83,0.63,Food Colouring - Pink,0.28
+641,California,487.53,0.24,0.16,0.9,Appetizer - Mango Chevre,0.53
+642,Utah,784.32,0.01,0.23,0.14,Pastry - Cherry Danish - Mini,0.8
+643,California,771.0,0.67,0.29,0.96,Container - Hngd Cll Blk 7x7x3,0.74
+644,Oklahoma,829.58,0.69,0.88,0.1,Mountain Dew,0.1
+645,Ohio,161.51,0.38,0.63,0.73,Venison - Ground,0.8
+646,District of Columbia,178.0,0.29,0.71,0.22,Cranberries - Dry,0.65
+647,Texas,343.88,0.43,0.45,0.69,Wine - Jafflin Bourgongone,0.86
+648,Colorado,412.29,0.82,0.76,0.27,Bagel - Ched Chs Presliced,0.05
+649,Florida,374.93,0.18,0.86,0.89,Chocolate - Dark Callets,0.92
+650,Minnesota,812.13,0.1,0.39,0.5,Pancetta,0.43
+651,California,532.43,0.75,0.74,0.74,Pizza Pizza Dough,0.88
+652,Wisconsin,799.61,0.65,0.95,0.24,Olives - Kalamata,0.29
+653,Illinois,999.42,0.11,0.72,0.87,"Ecolab - Orange Frc, Cleaner",0.67
+654,New York,284.25,0.11,0.64,0.57,Mayonnaise,0.95
+655,West Virginia,107.15,0.87,0.18,0.32,Hog / Sausage Casing - Pork,0.11
+656,Illinois,483.04,0.27,0.95,0.89,Cheese - Cottage Cheese,0.17
+657,Louisiana,421.7,0.92,0.36,0.27,Sachet,0.52
+658,Maryland,269.09,0.8,0.69,0.6,"Ranchero - Primerba, Paste",0.22
+659,California,793.11,0.14,0.93,0.25,Kellogs Cereal In A Cup,0.96
+660,Iowa,462.41,0.0,0.24,0.26,Bagel - Whole White Sesame,0.51
+661,Florida,981.31,0.52,0.74,0.12,Wine - Riesling Alsace Ac 2001,0.85
+662,South Carolina,913.7,0.91,0.73,0.15,Soap - Hand Soap,0.55
+663,California,624.22,0.49,0.73,0.14,Butter - Salted,0.24
+664,Kentucky,649.71,0.9,0.64,0.45,Cucumber - Pickling Ontario,0.39
+665,Ohio,729.75,0.56,0.49,0.76,Lettuce - Treviso,0.84
+666,Oregon,995.12,0.84,0.18,0.96,Rabbit - Legs,0.18
+667,Illinois,177.57,0.56,0.46,0.48,Muffin Batt - Ban Dream Zero,0.2
+668,North Carolina,865.54,0.17,0.19,0.48,Coffee Caramel Biscotti,0.38
+669,Texas,712.09,0.52,0.23,0.52,Bagel - Whole White Sesame,0.6
+670,Tennessee,499.69,0.12,0.07,0.91,Cake - Bande Of Fruit,0.63
+671,Pennsylvania,656.65,0.13,0.78,0.77,Daikon Radish,0.39
+672,Louisiana,945.54,0.73,0.85,0.41,Yeast Dry - Fleischman,0.64
+673,Florida,404.15,0.56,0.77,0.36,Okra,0.66
+674,Washington,871.02,0.75,0.09,0.28,"Pasta - Shells, Medium, Dry",0.29
+675,Georgia,744.3,0.52,0.62,0.58,"Rice Pilaf, Dry,package",0.24
+676,Texas,125.45,0.89,0.4,0.82,Tomatoes - Roma,0.83
+677,Michigan,124.97,0.06,0.53,0.33,Cinnamon - Ground,0.23
+678,Illinois,838.64,0.5,0.12,0.2,Bread Foccacia Whole,0.11
+679,Indiana,406.59,0.66,0.14,0.01,Pepper - Yellow Bell,0.94
+680,California,856.94,0.19,0.19,0.3,"Clams - Littleneck, Whole",0.61
+681,California,627.76,0.48,0.09,0.4,Watercress,0.37
+682,California,404.41,0.15,0.56,0.86,Soup Campbells - Tomato Bisque,0.12
+683,Indiana,475.72,0.46,0.33,0.67,Pastry - Choclate Baked,0.77
+684,California,423.4,0.17,0.31,0.93,"Juice - Grapefruit, 341 Ml",1.0
+685,Texas,211.08,0.06,0.06,0.93,Pastry - Mini French Pastries,0.13
+686,Colorado,182.38,0.23,0.41,0.67,Chicken - Soup Base,0.82
+687,Ohio,732.52,0.93,0.4,0.54,"Jam - Marmalade, Orange",0.77
+688,District of Columbia,371.22,0.54,0.7,0.37,Sauce - Mint,0.61
+689,Alaska,845.76,0.08,0.2,0.84,Sausage - Meat,0.84
+690,North Carolina,585.52,0.28,0.63,0.87,Crackers - Melba Toast,0.91
+691,Kentucky,887.2,0.26,0.61,0.36,"Pasta - Bauletti, Chicken White",0.94
+692,Pennsylvania,197.42,0.6,0.1,0.38,Lamb - Shoulder,0.23
+693,Michigan,574.07,0.45,0.67,0.37,Milk - Homo,0.01
+694,California,926.95,0.13,0.8,0.07,Lidsoupcont Rp12dn,0.37
+695,South Carolina,450.15,0.68,0.51,0.57,Alize Gold Passion,0.99
+696,Texas,348.15,0.74,0.42,0.91,Paper Towel Touchless,0.65
+697,Texas,390.57,0.85,0.43,0.64,Poppy Seed,0.38
+698,Georgia,651.14,0.25,0.81,0.63,"Soup - Knorr, Chicken Noodle",0.06
+699,Massachusetts,887.58,0.4,0.67,0.29,"Beer - Alexander Kieths, Pale Ale",0.94
+700,New York,276.8,0.83,0.6,1.0,"Marjoram - Dried, Rubbed",0.92
+701,Arizona,108.15,0.12,0.29,0.5,Pears - Anjou,0.62
+702,Maryland,722.78,0.57,0.1,0.06,"Beans - Black Bean, Preserved",0.79
+703,Florida,358.36,0.89,0.59,0.5,Muffin Batt - Ban Dream Zero,0.98
+704,Maryland,424.15,0.89,0.54,0.3,Beef - Flank Steak,0.24
+705,Washington,716.44,0.05,0.46,0.52,Cassis,0.82
+706,Arizona,409.59,0.67,0.21,0.36,Sausage - Chorizo,0.91
+707,Texas,711.11,0.1,0.65,0.9,Sprouts - Baby Pea Tendrils,0.47
+708,Virginia,783.77,0.87,0.12,0.66,Wine - Beringer Founders Estate,0.57
+709,California,399.62,0.71,0.5,0.65,Brandy Cherry - Mcguinness,0.95
+710,New York,799.4,0.31,0.78,0.06,Duck - Whole,0.71
+711,Nevada,374.53,0.39,0.6,0.9,Macaroons - Homestyle Two Bit,0.05
+712,Florida,609.97,0.78,0.64,0.17,Mace,0.12
+713,Georgia,292.82,0.84,0.63,0.8,Capon - Whole,0.69
+714,Utah,510.38,0.04,0.06,0.47,Shrimp - 100 / 200 Cold Water,0.78
+715,South Carolina,410.68,0.32,0.33,0.3,"Seedlings - Mix, Organic",0.57
+716,Texas,610.85,0.01,0.23,0.41,Appetizer - Veg Assortment,0.46
+717,New Mexico,295.82,0.11,0.18,0.73,Pork - Ground,0.54
+718,California,636.44,0.88,0.25,0.28,Tea - Herbal Sweet Dreams,0.89
+719,Texas,520.55,0.37,0.59,0.76,Pectin,0.36
+720,New York,801.02,0.02,0.87,0.17,Calypso - Black Cherry Lemonade,0.6
+721,Florida,988.32,0.57,0.99,0.13,"Pasta - Bauletti, Chicken White",0.8
+722,Arizona,485.94,0.3,0.72,0.64,Bread - Wheat Baguette,0.43
+723,North Carolina,645.87,0.84,0.17,0.1,"Lamb - Shoulder, Boneless",0.58
+724,Colorado,987.71,0.46,0.1,0.29,Lentils - Green Le Puy,0.4
+725,Virginia,611.62,0.14,0.16,0.66,Tea - Herbal - 6 Asst,0.7
+726,Louisiana,521.47,0.01,0.91,0.54,Cream - 35%,0.44
+727,California,578.46,0.37,0.98,0.33,Carbonated Water - Orange,0.76
+728,Michigan,621.69,0.02,0.34,0.5,Bag - Clear 7 Lb,0.07
+729,Illinois,181.38,0.35,0.68,0.74,Chicken - Ground,0.96
+730,Florida,223.91,0.22,0.11,0.19,Sauce - Chili,0.76
+731,Arizona,699.11,0.51,0.48,0.44,Sprouts - Baby Pea Tendrils,0.4
+732,Virginia,395.66,0.54,0.45,0.3,"Water, Tap",0.55
+733,Iowa,646.65,0.11,0.6,0.49,Oil - Grapeseed Oil,0.53
+734,Georgia,374.96,0.98,0.87,0.26,Puree - Strawberry,0.48
+735,West Virginia,164.35,0.19,0.06,0.38,Tea - Grapefruit Green Tea,0.72
+736,Texas,326.46,0.93,0.32,0.83,Dried Apple,0.47
+737,California,690.84,0.6,0.09,0.48,Barley - Pearl,0.89
+738,Arkansas,813.01,0.17,0.78,0.96,Shrimp - Tiger 21/25,0.74
+739,Florida,911.78,0.87,0.43,0.53,Gloves - Goldtouch Disposable,0.26
+740,Texas,740.41,0.05,0.12,0.06,Truffle Cups Green,0.04
+741,District of Columbia,679.51,0.5,0.91,0.7,Wine - Two Oceans Cabernet,0.36
+742,Wisconsin,645.21,0.02,0.34,0.88,"Vinegar - Balsamic, White",0.97
+743,California,383.2,0.89,0.92,0.59,Pea - Snow,0.93
+744,Wisconsin,824.79,0.29,0.4,0.13,Mayonnaise - Individual Pkg,0.96
+745,Texas,749.68,0.27,0.35,0.7,Scallops - In Shell,0.23
+746,Texas,619.38,0.57,0.15,0.21,"Ranchero - Primerba, Paste",0.97
+747,New York,883.03,0.18,0.64,0.28,"Juice - Apple, 500 Ml",0.81
+748,Massachusetts,488.17,0.78,0.3,0.69,Fork - Plastic,0.51
+749,Pennsylvania,948.97,0.01,0.44,0.81,"Stock - Beef, Brown",0.86
+750,Oklahoma,228.9,0.44,0.67,0.24,"Cherries - Maraschino,jar",0.51
+751,Texas,483.37,0.01,0.56,0.76,Bay Leaf Ground,0.02
+752,Florida,227.87,0.48,0.08,0.63,"Marjoram - Dried, Rubbed",0.22
+753,Pennsylvania,516.35,0.04,0.33,0.79,Veal - Sweetbread,0.81
+754,Texas,805.69,0.66,0.8,0.4,Salami - Genova,0.19
+755,New Hampshire,489.36,0.09,0.2,0.59,Salt - Seasoned,0.94
+756,Ohio,720.17,0.45,0.82,0.86,Ham - Virginia,0.38
+757,Massachusetts,920.47,0.26,0.96,0.54,Liners - Baking Cups,0.5
+758,Pennsylvania,890.25,0.87,0.54,0.43,Puree - Raspberry,0.15
+759,Florida,119.73,0.86,0.22,0.95,Milk Powder,0.06
+760,Tennessee,326.28,0.34,0.88,0.15,Energy Drink Red Bull,0.5
+761,Kentucky,145.2,0.93,0.76,0.73,"Lamb - Shoulder, Boneless",0.94
+762,Texas,305.89,0.88,0.45,0.46,Heavy Duty Dust Pan,0.99
+763,Wisconsin,297.86,0.8,0.42,0.36,Glycerine,0.69
+764,Tennessee,605.12,0.34,0.64,0.25,Wine - Beaujolais Villages,0.36
+765,Arizona,559.29,0.21,1.0,0.87,Wine - Magnotta - Pinot Gris Sr,0.65
+766,Kansas,189.56,0.41,0.78,0.79,Icecream Bar - Del Monte,0.75
+767,Texas,770.97,0.78,0.48,0.32,Cardamon Seed / Pod,0.06
+768,South Carolina,458.68,0.05,0.8,0.45,Juice - Cranberry 284ml,0.05
+769,Kentucky,155.64,0.11,0.33,0.69,Towel - Roll White,0.38
+770,Florida,439.93,0.68,0.33,0.27,Apples - Spartan,0.55
+771,North Carolina,922.66,0.79,0.59,0.92,Muffin - Mix - Creme Brule 15l,0.81
+772,California,296.93,0.83,0.88,0.9,"Cake Circle, Paprus",0.18
+773,Pennsylvania,977.6,0.26,0.1,0.7,"Split Peas - Green, Dry",0.22
+774,California,475.34,0.86,0.32,0.68,Pork - Inside,0.42
+775,Louisiana,457.91,0.61,0.43,0.8,Pork - Smoked Kassler,0.31
+776,Kansas,724.94,0.2,0.52,0.61,Allspice - Jamaican,0.29
+777,Indiana,366.18,0.31,0.36,0.85,"Split Peas - Yellow, Dry",0.55
+778,Florida,605.14,0.96,0.85,0.33,Flavouring - Raspberry,0.32
+779,Texas,369.32,0.42,0.07,0.85,Flour - Teff,0.29
+780,Florida,585.43,0.52,0.47,0.46,Taro Leaves,0.46
+781,Florida,628.93,0.04,0.7,0.16,Pepper - Red Thai,0.95
+782,North Carolina,750.73,0.72,0.11,0.66,Orange Roughy 4/6 Oz,0.91
+783,Texas,988.11,0.36,0.47,0.75,Cake - Lemon Chiffon,0.19
+784,Minnesota,287.45,0.77,0.17,0.2,Milk - Homo,0.47
+785,California,135.27,0.61,0.58,0.94,Ocean Spray - Kiwi Strawberry,0.95
+786,Florida,783.54,0.82,0.2,0.85,"Chicken - Leg, Boneless",0.42
+787,New York,752.21,0.59,0.69,0.07,Wine - Rosso Del Veronese Igt,0.79
+788,Texas,737.82,0.85,0.1,0.37,Sauce - Rosee,0.67
+789,Kentucky,374.85,0.77,0.92,0.77,Garlic - Elephant,0.87
+790,Ohio,389.78,0.94,0.84,0.25,Pur Value,0.11
+791,Ohio,487.46,0.76,1.0,0.66,Versatainer Nc - 9388,0.3
+792,Florida,371.39,0.38,0.05,0.3,Bagelers - Cinn / Brown Sugar,0.85
+793,Colorado,576.24,0.25,0.16,0.8,Cleaner - Pine Sol,0.92
+794,Washington,508.85,0.33,0.93,0.14,Wine - Alsace Riesling Reserve,0.02
+795,Texas,535.43,0.99,0.2,0.32,Wine - Penfolds Koonuga Hill,0.18
+796,California,876.86,0.17,0.69,0.75,Wine - Vineland Estate Semi - Dry,0.56
+797,North Carolina,271.44,0.62,0.03,0.48,Duck - Breast,0.85
+798,Texas,853.4,0.52,0.29,0.12,Monkfish - Fresh,0.53
+799,Texas,930.98,0.95,0.16,0.51,Jack Daniels,0.56
+800,Pennsylvania,817.64,0.66,0.73,0.02,French Pastries,0.68
+801,Georgia,524.08,0.31,0.09,0.54,Sauce - Caesar Dressing,0.95
+802,Missouri,527.4,0.62,0.32,0.7,Bread - Pain Au Liat X12,0.89
+803,Indiana,259.91,0.69,0.05,0.91,Wine - Vovray Sec Domaine Huet,0.3
+804,Virginia,651.64,0.96,0.66,0.79,Wine - Fino Tio Pepe Gonzalez,0.18
+805,Texas,493.69,0.89,0.8,0.89,"Pasta - Penne, Lisce, Dry",0.49
+806,New York,695.7,0.58,0.38,0.14,Beer - Muskoka Cream Ale,0.68
+807,California,385.28,0.56,0.07,0.85,"Sugar - Sweet N Low, Individual",0.91
+808,Indiana,779.0,0.59,0.6,0.82,Cheese - St. Paulin,0.62
+809,California,137.96,0.14,0.89,0.43,Food Colouring - Green,0.97
+810,Connecticut,314.41,0.64,0.13,0.19,Yoplait Drink,0.87
+811,Florida,386.08,0.46,0.13,0.27,Sauce - Caesar Dressing,0.33
+812,North Carolina,941.8,0.35,0.61,0.07,Shortbread - Cookie Crumbs,0.69
+813,Oklahoma,630.24,0.93,0.1,0.34,Icecream - Dibs,0.73
+814,California,949.98,0.11,0.82,0.42,Momiji Oroshi Chili Sauce,0.19
+815,New York,696.17,0.84,0.23,0.38,"Wine - White, Ej Gallo",0.31
+816,Indiana,307.33,0.38,0.16,0.44,Cilantro / Coriander - Fresh,0.07
+817,Georgia,267.3,0.3,0.83,0.85,Mushroom - Morel Frozen,0.07
+818,Virginia,465.89,0.1,0.66,0.82,Cookie Dough - Peanut Butter,0.57
+819,New York,294.2,0.63,1.0,0.29,Kumquat,0.2
+820,New York,830.6,0.48,0.23,0.44,"Coconut - Creamed, Pure",0.68
+821,Indiana,397.48,0.12,0.54,0.72,Miso - Soy Bean Paste,0.81
+822,District of Columbia,297.07,0.4,0.98,0.53,Mustard - Individual Pkg,0.44
+823,New York,625.94,0.13,0.69,0.48,Hog / Sausage Casing - Pork,0.98
+824,Colorado,749.24,0.36,0.67,0.96,Wine - Rubyport,0.36
+825,Connecticut,522.08,0.68,0.74,0.7,Island Oasis - Cappucino Mix,0.59
+826,Tennessee,932.68,0.02,0.07,0.88,Beer - Sleemans Honey Brown,0.59
+827,California,512.49,0.93,0.55,0.3,Monkfish Fresh - Skin Off,0.76
+828,Indiana,682.38,0.39,0.08,0.85,"Tart Shells - Savory, 2",0.05
+829,Kansas,320.09,0.86,1.0,0.13,Truffle - Whole Black Peeled,0.88
+830,New Jersey,938.48,0.77,0.97,0.75,Magnotta - Bel Paese White,0.58
+831,Illinois,361.45,0.21,0.77,0.51,Syrup - Kahlua Chocolate,0.34
+832,Georgia,706.23,0.02,0.11,0.88,Pop Shoppe Cream Soda,0.81
+833,Washington,348.59,0.16,0.35,0.43,Coffee Guatemala Dark,0.53
+834,Texas,447.67,0.03,0.06,0.99,"Club Soda - Schweppes, 355 Ml",0.97
+835,Florida,311.2,0.84,0.28,0.31,Cheese - Cheddar With Claret,0.9
+836,Michigan,837.9,0.97,0.58,0.38,Longos - Cheese Tortellini,0.01
+837,Indiana,967.29,0.74,0.58,0.36,"Lamb - Shoulder, Boneless",0.09
+838,Alabama,829.28,0.56,0.77,0.08,Soho Lychee Liqueur,0.96
+839,Tennessee,278.8,0.21,0.98,0.93,Ham - Cooked,0.2
+840,Texas,629.32,0.98,0.2,0.07,Monkfish Fresh - Skin Off,0.17
+841,California,714.75,0.12,0.16,0.5,"Melon - Watermelon, Seedless",0.71
+842,Texas,882.42,0.38,0.42,0.86,Pomegranates,0.68
+843,North Carolina,781.56,0.11,0.58,0.03,Cocoa Feuilletine,0.25
+844,Alaska,418.9,0.38,0.97,0.83,Cheese - Grana Padano,0.1
+845,Texas,741.08,0.58,0.78,0.35,Goat - Whole Cut,0.78
+846,Illinois,278.16,0.64,0.62,0.66,"Roe - Lump Fish, Red",0.04
+847,Virginia,888.52,0.78,0.8,0.1,"Beans - Navy, Dry",0.18
+848,New York,124.4,0.03,0.28,0.36,Beans - Fine,0.48
+849,Texas,288.67,0.98,0.84,0.76,Sword Pick Asst,0.21
+850,Colorado,800.94,0.89,0.54,0.61,"Red Snapper - Fillet, Skin On",0.7
+851,Florida,980.48,0.8,0.13,0.34,Lettuce - Green Leaf,0.88
+852,Kansas,243.37,0.79,0.49,0.0,Parsley - Dried,0.85
+853,California,477.71,0.15,0.9,0.47,Wine - Magnotta - Bel Paese White,0.16
+854,Nevada,633.6,0.17,0.38,0.38,"Ice - Clear, 300 Lb For Carving",0.8
+855,District of Columbia,806.42,0.7,0.43,0.43,"Soup - Knorr, Veg / Beef",0.76
+856,Florida,733.4,0.02,0.97,0.45,Dried Apple,0.98
+857,New York,503.05,0.93,0.35,0.72,The Pop Shoppe - Cream Soda,0.8
+858,California,989.33,0.3,0.33,0.78,Wine - Chianti Classico Riserva,0.3
+859,Indiana,492.99,0.49,0.9,0.98,Sandwich Wrap,0.81
+860,Texas,571.7,0.03,0.03,0.53,"Lemonade - Mandarin, 591 Ml",0.04
+861,Texas,586.74,0.62,0.64,0.74,"Artichoke - Hearts, Canned",0.63
+862,Texas,760.45,0.53,0.96,0.23,"Pasta - Fett Alfredo, Single Serve",0.47
+863,Texas,673.47,0.8,0.09,0.57,Clams - Canned,0.96
+864,Alabama,481.88,0.07,0.75,0.7,Petit Baguette,0.01
+865,Illinois,748.2,0.59,0.02,0.6,Jam - Apricot,0.18
+866,Texas,659.98,0.93,0.12,0.36,Spinach - Packaged,0.09
+867,California,649.43,0.13,0.72,0.15,"Sauce - Soya, Light",0.21
+868,Florida,768.44,0.24,0.15,0.66,Bread - French Stick,0.3
+869,Utah,360.77,0.75,0.77,0.35,Oil - Shortening - All - Purpose,0.65
+870,New York,940.87,0.86,0.55,0.97,"Pasta - Fett Alfredo, Single Serve",0.01
+871,Texas,214.31,0.03,0.59,0.34,"Split Peas - Green, Dry",0.33
+872,Missouri,137.27,0.81,0.07,0.69,Wine - Shiraz South Eastern,0.49
+873,Texas,532.26,0.2,0.34,0.21,Cake - Cheese Cake 9 Inch,0.72
+874,South Dakota,554.37,0.01,0.42,0.39,Pepper - Cubanelle,0.75
+875,Georgia,229.72,0.06,0.25,0.96,Tea - Decaf Lipton,0.39
+876,Indiana,680.11,0.35,0.6,0.22,"Salmon - Atlantic, Skin On",0.9
+877,Minnesota,693.11,0.45,0.96,0.22,Wine - Rhine Riesling Wolf Blass,0.55
+878,Maryland,549.22,0.33,0.89,0.08,Beef - Rib Eye Aaa,1.0
+879,Massachusetts,473.42,0.88,0.47,0.36,Curry Powder,0.53
+880,California,453.46,0.73,0.28,0.96,Steamers White,0.82
+881,Kansas,498.32,0.43,0.0,0.65,Bonito Flakes - Toku Katsuo,0.07
+882,California,314.23,0.19,0.56,0.83,"Nut - Walnut, Pieces",0.29
+883,Texas,268.88,0.44,0.54,0.94,Onions - Cooking,0.04
+884,Alabama,858.99,0.57,0.8,0.13,Numi - Assorted Teas,0.6
+885,Ohio,789.87,0.49,0.69,0.56,"Mushroom - Enoki, Dry",0.25
+886,Texas,440.36,0.92,0.59,0.09,Apple - Northern Spy,0.29
+887,Arizona,175.27,0.36,0.02,0.26,Cheese - Stilton,0.1
+888,California,214.3,0.46,0.34,0.57,Sprouts - Alfalfa,0.49
+889,California,580.57,0.52,0.54,0.6,Chocolate Liqueur - Godet White,0.59
+890,Washington,354.85,0.83,0.45,0.17,Tea - English Breakfast,0.23
+891,Virginia,723.04,0.39,0.57,0.61,"Pasta - Cappellini, Dry",0.98
+892,Texas,500.48,0.37,0.79,0.25,Wine - Barossa Valley Estate,0.67
+893,Florida,902.33,0.37,0.99,0.42,Onions - Spanish,0.03
+894,Ohio,547.48,0.42,0.09,0.12,Honey - Lavender,0.82
+895,Ohio,840.61,0.03,0.66,0.8,Sea Urchin,0.65
+896,Michigan,889.93,0.5,0.92,0.22,Vinegar - Cider,0.59
+897,Texas,780.81,0.51,0.77,0.48,Cheese - Valancey,0.99
+898,Indiana,581.94,0.29,0.04,0.05,Lime Cordial - Roses,0.4
+899,California,756.68,0.24,0.61,0.87,"Pepsi, 355 Ml",0.16
+900,Oklahoma,723.74,0.69,0.2,0.26,Beef - Striploin Aa,0.31
+901,Illinois,233.2,0.47,0.36,0.41,Cheese - Mix,0.34
+902,California,776.48,0.62,0.56,0.82,"Tart Shells - Savory, 3",0.25
+903,Nevada,781.87,0.15,0.28,0.46,"Carrots - Purple, Organic",0.18
+904,Oklahoma,292.4,0.8,0.63,0.25,Onions - Cooking,0.17
+905,North Dakota,524.02,0.93,0.94,0.9,True - Vue Containers,0.67
+906,California,221.02,0.78,0.66,0.69,Pants Custom Dry Clean,0.95
+907,Arizona,944.76,0.08,0.74,0.17,"Lamb - Whole, Fresh",0.22
+908,Iowa,735.25,0.81,0.28,0.45,Lid Coffeecup 12oz D9542b,0.16
+909,Pennsylvania,669.42,0.18,0.58,0.72,Tea - Earl Grey,0.6
+910,Delaware,587.21,0.38,0.95,0.09,"Fish - Artic Char, Cold Smoked",0.57
+911,California,608.32,0.43,0.76,0.43,"Pasta - Penne Primavera, Single",0.17
+912,California,958.38,0.45,0.6,0.19,Beef - Inside Round,0.22
+913,California,907.37,0.73,0.88,0.43,Tea - Honey Green Tea,0.5
+914,New York,795.68,0.25,0.4,0.52,"Veal - Inside, Choice",0.27
+915,New York,347.46,0.01,0.61,0.44,Squash - Acorn,0.06
+916,New York,792.01,0.73,0.19,0.06,Corn - On The Cob,0.89
+917,Texas,492.35,0.69,0.27,0.04,Soy Protein,0.55
+918,Ohio,177.62,0.69,0.19,0.4,Sprouts - Corn,0.29
+919,California,757.18,0.35,0.01,0.36,Crab Brie In Phyllo,0.52
+920,Nevada,593.76,0.19,0.14,0.63,Spic And Span All Purpose,0.54
+921,New York,451.68,0.15,0.5,0.28,Water - Perrier,0.72
+922,Delaware,113.44,0.28,0.05,0.72,Pork - Kidney,0.21
+923,Michigan,283.02,0.83,0.7,0.71,Bread - Rosemary Focaccia,0.83
+924,Oklahoma,453.37,0.6,0.83,0.25,Shopper Bag - S - 4,0.16
+925,Florida,942.62,0.26,0.26,0.52,"Nut - Almond, Blanched, Ground",0.4
+926,District of Columbia,608.59,0.29,0.8,0.81,Mackerel Whole Fresh,0.63
+927,Illinois,310.58,0.8,0.47,0.61,Artichokes - Jerusalem,0.63
+928,Pennsylvania,981.72,0.44,0.01,0.08,Sausage - Meat,0.44
+929,Minnesota,293.7,0.79,0.86,0.66,Glove - Cutting,0.3
+930,Florida,493.58,0.74,0.36,0.07,"Juice - Tomato, 10 Oz",0.45
+931,South Carolina,342.02,0.72,0.29,0.65,Muffin Carrot - Individual,0.41
+932,California,389.1,0.46,0.1,0.19,Wine - Charddonnay Errazuriz,0.81
+933,Texas,600.91,0.3,0.49,0.5,Bread Ww Cluster,0.86
+934,California,492.12,0.32,0.13,0.53,Beef - Short Loin,0.02
+935,California,727.26,0.86,0.53,0.08,Soup Campbells Split Pea And Ham,0.95
+936,Texas,500.77,0.15,0.27,0.48,Wine - Charddonnay Errazuriz,0.97
+937,Texas,684.17,0.53,0.63,0.63,Mushroom Morel Fresh,0.07
+938,District of Columbia,479.09,0.08,0.22,0.63,Milk - 1%,0.37
+939,Texas,495.87,0.17,0.34,0.59,"Bread - Pumpernickle, Rounds",0.05
+940,Louisiana,229.73,0.02,0.27,0.99,"Mop Head - Cotton, 24 Oz",0.89
+941,Tennessee,819.52,0.41,0.94,0.53,Chivas Regal - 12 Year Old,0.18
+942,Wisconsin,311.5,0.2,0.57,0.26,Sugar - Icing,0.73
+943,Pennsylvania,571.48,0.75,0.67,0.01,Lettuce - Boston Bib,0.3
+944,Nevada,566.38,0.6,0.65,0.44,"Chicken - Base, Ultimate",0.39
+945,Texas,764.02,0.23,0.07,0.5,Container - Foam Dixie 12 Oz,0.81
+946,Arizona,471.43,0.02,0.06,0.56,Soup - Base Broth Chix,0.37
+947,Missouri,393.98,0.92,0.91,0.04,Grapes - Red,0.07
+948,Texas,527.93,0.32,0.94,0.95,Sun - Dried Tomatoes,0.72
+949,California,239.32,0.9,0.49,0.99,Scallops 60/80 Iqf,0.24
+950,New York,152.44,0.84,0.39,0.3,White Baguette,0.68
+951,Texas,808.06,0.52,0.93,0.34,Mountain Dew,0.93
+952,Arizona,126.55,0.65,0.23,0.67,Bread - White Epi Baguette,0.53
+953,Florida,122.47,0.19,0.42,0.88,Shrimp - Black Tiger 8 - 12,0.24
+954,Connecticut,371.69,0.28,0.69,0.83,"Cheese - Brie, Triple Creme",0.86
+955,Maryland,558.48,0.04,0.37,0.98,"Seedlings - Mix, Organic",0.38
+956,Arizona,424.0,0.23,0.94,0.55,Persimmons,0.6
+957,Indiana,727.77,0.28,0.87,0.86,Squid - Tubes / Tenticles 10/20,0.74
+958,Florida,835.12,0.32,0.47,0.71,Sherbet - Raspberry,0.02
+959,Arizona,449.88,0.16,0.51,0.29,Coffee - Dark Roast,0.94
+960,Utah,378.62,0.25,0.63,0.17,Squash - Acorn,0.73
+961,Nevada,896.97,0.01,0.35,0.87,Clam Nectar,0.59
+962,Ohio,916.16,0.77,0.79,0.26,"Brownies - Two Bite, Chocolate",0.03
+963,Texas,928.84,0.77,0.21,0.78,Sherry - Dry,0.49
+964,Florida,195.7,0.86,0.15,0.83,Orange - Tangerine,0.76
+965,Pennsylvania,107.35,0.65,0.15,0.28,Pastry - French Mini Assorted,0.04
+966,South Carolina,345.59,0.25,0.54,0.41,Spice - Peppercorn Melange,0.83
+967,Texas,788.01,0.95,0.37,0.82,Banana - Green,0.87
+968,Wisconsin,381.77,0.17,0.32,0.23,Table Cloth 62x120 Colour,0.81
+969,California,191.74,0.4,0.84,0.64,Cucumber - Pickling Ontario,0.11
+970,Nevada,270.67,0.02,0.58,0.18,Beef - Sushi Flat Iron Steak,0.41
+971,Alabama,442.35,0.82,0.15,0.77,Jolt Cola,0.17
+972,Ohio,751.15,0.52,0.04,0.73,Bagel - Whole White Sesame,0.33
+973,Texas,644.66,0.43,0.31,0.37,"Chocolate - Pistoles, Lactee, Milk",0.88
+974,Florida,112.98,0.49,0.54,0.18,Lettuce - Arugula,0.76
+975,Nevada,793.0,0.5,0.16,0.76,"Wine - Red, Colio Cabernet",0.68
+976,Florida,526.06,0.11,0.65,0.44,"Oil - Truffle, White",0.39
+977,California,789.08,0.69,0.6,0.05,Chocolate - Dark,0.98
+978,New York,581.51,0.23,0.95,0.97,"Artichoke - Bottom, Canned",0.1
+979,Texas,789.92,0.02,0.06,0.35,Ginger - Fresh,0.86
+980,Texas,107.55,0.51,0.05,0.76,Appetizer - Mushroom Tart,0.57
+981,Michigan,917.63,0.94,0.35,0.91,Cardamon Seed / Pod,0.32
+982,Florida,909.62,0.91,0.99,0.78,Cabbage - Savoy,0.7
+983,Tennessee,702.43,0.62,0.58,0.51,"Wine - Mas Chicet Rose, Vintage",0.01
+984,Mississippi,852.2,0.44,0.45,0.36,Carroway Seed,0.67
+985,Tennessee,388.65,0.48,0.3,0.08,Wine - Gewurztraminer Pierre,0.85
+986,California,750.82,0.95,0.59,0.95,Container - Clear 16 Oz,0.1
+987,Kansas,557.28,0.29,0.47,0.55,Chicken - Wieners,0.59
+988,California,590.04,0.48,0.07,0.1,Bread - Focaccia Quarter,0.89
+989,Maryland,576.88,0.13,0.72,0.06,Pear - Halves,0.45
+990,Missouri,539.28,0.17,0.44,0.89,Puff Pastry - Slab,0.56
+991,California,998.88,0.81,0.63,0.21,V8 - Tropical Blend,0.29
+992,Alabama,486.22,0.24,0.91,0.01,Beef Flat Iron Steak,0.52
+993,Texas,918.3,0.89,0.66,0.95,Vodka - Moskovskaya,0.11
+994,Tennessee,886.88,0.39,0.23,0.97,Aspic - Clear,0.29
+995,Indiana,270.36,0.35,0.93,0.98,Magnotta Bel Paese Red,0.63
+996,New York,492.84,0.29,0.52,0.06,"Coconut - Shredded, Unsweet",0.14
+997,West Virginia,694.14,0.84,0.63,0.16,Syrup - Pancake,0.35
+998,Illinois,815.65,0.3,0.36,0.85,Longos - Penne With Pesto,0.89
+999,Hawaii,250.02,0.07,0.34,0.71,Sultanas,0.04
+1000,Illinois,241.16,0.13,0.11,0.92,Pork - Bones,0.74

@@ -1,0 +1,8 @@
+Timestamp: 13/12/2020, 19:18:24
+NumberOfClients: 50
+NumberOfStores: 5
+StoresPerClient: 2
+
+
+"run","tick","RngSeed","NumberOfClients","NumberOfStores","StoresPerClient"
+1,137.0,1607887104296,50.0,5.0,2.0
