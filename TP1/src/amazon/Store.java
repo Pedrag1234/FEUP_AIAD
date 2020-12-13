@@ -18,6 +18,7 @@ import AgentBehaviours.A_STORE_CLIENT_PRESENT_PRODUCT_OFFER;
 import AgentBehaviours.C_STORE_WAREHOUSE_REQUEST_INVENTORY;
 
 import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
+import AgentBehaviours.E_STORE_RESOURCE_TERMINATION;
 import sajas.core.Agent;
 import sajas.core.behaviours.SequentialBehaviour;
 import sajas.domain.DFService;
@@ -104,6 +105,7 @@ public class Store extends Agent {
 		
 		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
+		setTimeout(() -> addBehaviour(new E_STORE_RESOURCE_TERMINATION(this)), 50000);
 		
 		setTimeout(() -> this.doDelete(), 50000);
 
