@@ -57,7 +57,7 @@ public class Client extends Agent{
 
 
 
-	public Client(int id, String area, double money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available) {
+	public Client(int id, String area, double money_to_spend, double buy_Local, double spender, double suscetible, HashMap<String, Double> needs, ArrayList<Store> stores_available, int storesToCheckPerClient) {
 		this.id = id;
 		this.area = area;
 		this.money_to_spend = money_to_spend;
@@ -66,6 +66,7 @@ public class Client extends Agent{
 		this.suscetible = suscetible;
 		this.needs = needs;
 		this.stores_available = stores_available;
+		this.storesToCheckPerClient = storesToCheckPerClient;
 		this.setProposals(new HashMap<Item, Integer>());
 		decide_which_stores_to_contact();
 

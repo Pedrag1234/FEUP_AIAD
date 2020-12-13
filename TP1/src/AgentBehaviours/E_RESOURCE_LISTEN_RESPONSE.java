@@ -67,6 +67,7 @@ public class E_RESOURCE_LISTEN_RESPONSE extends SimpleBehaviour{
 			try {
 				System.out.println("[Saving Data and Shutting Down]");
 				this.rsc.getF().append("\n");
+				
 				this.rsc.getF().append("Total Profit = " + this.rsc.get_total_profit() + ".\n");
 				this.rsc.getF().append("Average Profit = " + this.rsc.get_total_profit()/this.rsc.get_number_stores() + ".\n");
 				

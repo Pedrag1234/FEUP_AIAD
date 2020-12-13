@@ -1,0 +1,8 @@
+
+Total Profit = 12248.
+Average Profit = 2449.
+Store_0 Profit = 348.89.
+Store_1 Profit = 4101.42.
+Store_2 Profit = 931.88.
+Store_3 Profit = 3301.41.
+Store_4 Profit = 3567.82.

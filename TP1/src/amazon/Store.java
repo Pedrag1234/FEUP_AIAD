@@ -89,6 +89,33 @@ public class Store extends Agent {
 		this.currItemOrder = new Stack<>();
 		this.order = 0;
 		
+		int strategy = (int) (Math.random() * 3);
+		
+		switch (strategy) {
+			case CHEAPEST: {
+				this.strategy1 = "Cheapest";
+				break;
+			}
+			case MOST_EXPENSIVE: {
+				this.strategy1 = "Most Expensive";
+				break;
+			}
+			case IN_PROMOTION: {
+				this.strategy1 = "In Promotion";
+				break;
+			}
+			case RAREST: {
+				this.strategy1 = "Rarest";
+				break;
+			}
+			case COMMON: {
+				this.strategy1 = "Common";
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + strategy);
+		}
+		
 	}
 	
 	@Override
@@ -151,32 +178,25 @@ public class Store extends Agent {
 		
 		
 		int strategy = (int) (Math.random() * 3);
-		
-		
-			
-		switch (strategy) {
-			case CHEAPEST: {
-				this.strategy1 = "Cheapest";
+				
+		switch (this.strategy1) {
+			case "Cheapest": {
 				returnItems = getCheapestItems(); 
 				break;
 			}
-			case MOST_EXPENSIVE: {
-				this.strategy1 = "Most Expensive";
+			case "Most Expensive": {
 				returnItems = getMostExpensiveItems(); 
 				break;
 			}
-			case IN_PROMOTION: {
-				this.strategy1 = "In Promotion";
+			case "In Promotion": {
 				returnItems = getItemsInPromotion(); 
 				break;
 			}
-			case RAREST: {
-				this.strategy1 = "Rarest";
+			case "Rarest": {
 				returnItems = getRarestItems(); 
 				break;
 			}
-			case COMMON: {
-			//	System.out.println("Most Common");
+			case "Common": {
 				returnItems = getMostCommonItems(); 
 				break;
 			}

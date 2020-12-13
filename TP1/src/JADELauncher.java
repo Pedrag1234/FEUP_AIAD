@@ -46,6 +46,7 @@ public class JADELauncher extends Repast3Launcher{
 	private ResourceCollector rsc;
 	private OpenSequenceGraph plot;
 	private OpenSequenceGraph plot2;
+	private OpenSequenceGraph plot3;
 	private Schedule schedule;
 	private OpenHistogram bar;
 	private int NumberOfClients = 50;
@@ -146,7 +147,10 @@ public class JADELauncher extends Repast3Launcher{
 
 		// graph
 		if (plot != null) plot.dispose();
+		
 		plot = new OpenSequenceGraph("Total profit", this);
+		plot.setYRange(0, 1000.0);
+		plot.setXRange(0, 150.0);
 		plot.setAxisTitles("time", "total profit");
         // plot number of different existing colors
 		plot.addSequence("Total profit", new Sequence() {
@@ -168,6 +172,8 @@ public class JADELauncher extends Repast3Launcher{
 		
 		if (plot2 != null) plot2.dispose();
 		plot2 = new OpenSequenceGraph("Profits of individual stores", this);
+		plot2.setYRange(0, 1000.0);
+		plot2.setXRange(0, 150.0);
 		plot2.setAxisTitles("time", "Profit");
 		// plot number of different existing colors
 		for (int i = 0; i < this.stores.size(); i++) {
@@ -181,8 +187,28 @@ public class JADELauncher extends Repast3Launcher{
 			
 		}
 
-
 		plot2.display();
+		
+		
+		
+		if (plot3 != null) plot3.dispose();
+		plot3 = new OpenSequenceGraph("Items sold per store", this);
+		plot3.setYRange(0, 30);
+		plot3.setXRange(0, 150.0);
+		plot3.setAxisTitles("time", "Profit");
+		// plot number of different existing colors
+		for (int i = 0; i < this.stores.size(); i++) {
+			String name = "Store_" + i + " [" + this.stores.get(i).getStrategy1() + "]";
+			final int j = i;
+			plot3.addSequence(name, new Sequence() {
+				public double getSValue() {
+					return rsc.get_products_counter(j);
+				}
+			});
+			
+		}
+
+		plot3.display();
 				
 		///////////////////////////////////
 /*		bar = new OpenHistogram("Agent Wealth Distribution", 10, 0);
@@ -203,7 +229,7 @@ public class JADELauncher extends Repast3Launcher{
 	private void buildSchedule() {
 		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.CONCURRENT);
 		getSchedule().scheduleActionAtInterval(0.1, plot2, "step", Schedule.CONCURRENT);
-	//	getSchedule().scheduleActionAtInterval(1, bar, "step", Schedule.CONCURRENT);
+		getSchedule().scheduleActionAtInterval(0.1, plot3, "step", Schedule.CONCURRENT);
 	}
 	
 	
@@ -254,7 +280,7 @@ public class JADELauncher extends Repast3Launcher{
                 HashMap<String, Double> needs_temp = new HashMap<String, Double>();
                 needs_temp.put(client[6].replace("\"", ""), Double.parseDouble(client[7]));
                 
-                Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores);
+                Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores,StoresPerClient);
                 		
                 clients.add(temp);
                 counter++;

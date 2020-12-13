@@ -19,6 +19,7 @@ import sajas.domain.DFService;
 public class ResourceCollector extends Agent{
 	
 	private HashMap<Integer,Float> storesResults;
+	private HashMap<Integer,Integer> storesItemCounter;
 	private ArrayList<Integer> storeIds;
 	private Writer f;
 	
@@ -26,6 +27,7 @@ public class ResourceCollector extends Agent{
 	
 	public ResourceCollector(Integer number_of_Ids) {
 		this.storesResults = new HashMap<>();
+		this.storesItemCounter = new HashMap<>();
 		this.storeIds = new ArrayList<>();
 		for (int i = 0; i < number_of_Ids; i++) {
 			this.storeIds.add(i);
@@ -119,6 +121,24 @@ public class ResourceCollector extends Agent{
 		else {
 			this.storesResults.remove(i);
 			this.storesResults.put(i,s);
+		}
+		
+		
+		if(this.storesItemCounter.get(i) == null) {
+			this.storesItemCounter.put(i,1);
+		}
+		else {
+			
+			this.storesItemCounter.put(i,storesItemCounter.get(i)+1);
+		}
+	}
+	
+	public int get_products_counter(int i) {
+		if(this.storesItemCounter.get(i) == null) {
+			return 0;
+		}
+		else {
+			return this.storesItemCounter.get(i);
 		}
 	}
 
