@@ -3,6 +3,7 @@ package amazon;
 import sajas.core.Agent;
 import sajas.core.behaviours.SequentialBehaviour;
 import sajas.domain.DFService;
+import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
@@ -21,11 +22,11 @@ import StockExceptions.*;
 public class MainWarehouse extends Agent {
 
 	private static final long serialVersionUID = 4363918672967765440L;
-	
+
 	private DFAgentDescription dfd;
-	
+
 	private int numberOfStores;
-	
+
 	private static final String[] types = {
 			"Pen",
 			"Book",
@@ -42,7 +43,7 @@ public class MainWarehouse extends Agent {
 			"Laundry Machine",
 			"Kitchen Utensils"
 	};
-	
+
 	private static final double[] prices = {
 			5.99,
 			10.99,
@@ -59,37 +60,37 @@ public class MainWarehouse extends Agent {
 			289.00,
 			26.00,	
 	};
-	
-	
+
+
 	public void register() {
 		ServiceDescription sd = new ServiceDescription();
-		
+
 		sd.setName(getLocalName());
 		sd.setType("MainWarehouse");
-		
+
 		this.dfd = new DFAgentDescription();
 		dfd.setName(getAID());
 		dfd.addServices(sd);
-		
+
 		try {
 			DFService.register(this, this.dfd);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private WareHouse wares;
-	
+
 	public MainWarehouse(int numberOfStores){
-		
+
 		this.setNumberOfStores(numberOfStores);
 		wares = new WareHouse();
-		
+
 		this.generateWareHouseStock();
 	}
-	
+
 	private void generateWareHouseStock() {
-		
+
 		for(int i = 0; i < types.length; i++) {
 			try {
 				wares.addNewItemStock(new Item(types[i],prices[i]),100000);
@@ -97,68 +98,68 @@ public class MainWarehouse extends Agent {
 				// TODO: handle exception
 			}
 		}
-		
+
 	}
-	
+
 	public Integer getItemStock(Item s) throws ItemDoesntExist {
 		return wares.getItemStock(s);
 	}
-	
+
 	public void print() {
 		this.wares.printStock();
-		
+
 	}
-	
+
 	public void removeItemFromStock(String itemName, int number) throws NoStockException, ItemDoesntExist {
-		
+
 		Set<Map.Entry<Item, Integer>> entries = this.wares.getStock().entrySet();
 		Iterator<Map.Entry<Item, Integer>> itr = entries.iterator();
-		
+
 		Entry<Item, Integer> entry = null;
-		
+
 		while (itr.hasNext()) {
-			
+
 			entry = itr.next();
-			
+
 			if(entry.getKey().getType().equals(itemName)) {
 				this.wares.removeStock(entry.getKey(), number);
 			}
-			
+
 		}
-		
+
 		//this.print();
 	}
-	
+
 	public Hashtable<Item,Integer> getStock() {
 		Hashtable<Item,Integer> stock = new Hashtable<Item,Integer>();
 
 
 		stock = this.wares.getStock();
-		
+
 		return stock;
 	}
-	
+
 	protected void setup() {
-		
+
 		this.register();
-	
-	
+
+
 
 		addBehaviour(new C_WAREHOUSE_STORE_RETURN_INVENTORY(this));
-		
-	
+
+
 	}
-	
+
 	public static void setTimeout(Runnable runnable, int delay) {
-        new Thread(() -> {
-            try {
-                Thread.sleep(delay);
-                runnable.run();
-            } catch (Exception e) {
-                System.err.println(e);
-            }
-        }).start();
-   }
+		new Thread(() -> {
+			try {
+				Thread.sleep(delay);
+				runnable.run();
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		}).start();
+	}
 
 	public WareHouse getWares() {
 		return wares;
@@ -175,4 +176,16 @@ public class MainWarehouse extends Agent {
 	public void setNumberOfStores(int numberOfStores) {
 		this.numberOfStores = numberOfStores;
 	}
-}
+
+	// método takeDown
+	protected void takeDown() {
+		System.out.println("Funcionou mainwarehouse");
+		// retira registo no DF
+		try {
+			DFService.deregister(this);
+		} catch(FIPAException e) {
+			e.printStackTrace();
+		}
+	}
+} // fim da classe MainWareHouse
+

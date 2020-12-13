@@ -6,6 +6,7 @@ import amazon.Store;
 import amazon.Client;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
+import sajas.core.Agent;
 import sajas.core.Runtime;
 import sajas.sim.repast3.Repast3Launcher;
 import sajas.wrapper.AgentController;
@@ -54,6 +55,8 @@ public class JADELauncher extends Repast3Launcher{
 		get_clients();
 		
 		launchAgents();
+		
+
 	}
 	
 	private void launchAgents() {

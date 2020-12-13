@@ -41,7 +41,6 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 		ACLMessage msg = this.store.receive(mt);
 		
 		
-		
 		if (msg != null) 
 		{
 			AID senderID = msg.getSender();

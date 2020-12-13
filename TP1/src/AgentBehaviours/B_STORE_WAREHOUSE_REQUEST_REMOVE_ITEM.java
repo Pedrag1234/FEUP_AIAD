@@ -88,7 +88,6 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 				this.store.send(msg);
 				
 				//System.out.println("ending storereqitem2warehouse");
-				this.complete = true;
 				
 			}
 			
@@ -98,6 +97,8 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 		} catch (FIPAException e) {
 			e.printStackTrace();
 		}
+		this.complete = true;
+
 
 		
 	}
@@ -114,7 +115,6 @@ public class B_STORE_WAREHOUSE_REQUEST_REMOVE_ITEM extends SimpleBehaviour {
 
 	@Override
 	public boolean done() {
-		// TODO Auto-generated method stub
 		return this.complete;
 	}
 

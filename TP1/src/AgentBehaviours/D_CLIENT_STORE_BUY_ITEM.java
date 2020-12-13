@@ -73,7 +73,6 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 					
 					this.client.send(msg);
 					System.out.println("[Client " + this.client.getId() +"] [MSG SEND; Want to purchase " + i.getType() + " from Store_"+ buy_list.get(i) + "]");
-					this.complete = true;
 				}
 
 			} catch (FIPAException e) {
@@ -85,6 +84,7 @@ public class D_CLIENT_STORE_BUY_ITEM extends SimpleBehaviour{
 		}
 		
 		this.complete = true;
+		this.client.doDelete();
 
 
 

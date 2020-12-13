@@ -23,6 +23,7 @@ import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
 import sajas.core.Agent;
 import sajas.core.behaviours.SequentialBehaviour;
 import sajas.domain.DFService;
+import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
@@ -105,7 +106,7 @@ public class Store extends Agent {
 		
 		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
-		
+		setTimeout(() -> this.doDelete(), 50000);
 
 
 		
@@ -542,7 +543,15 @@ public class Store extends Agent {
 	}
 
 	
+	// método takeDown
+	protected void takeDown() {
+		System.out.println("Funcionou store");
 
-
-
-}
+		// retira registo no DF
+		try {
+			DFService.deregister(this);
+		} catch(FIPAException e) {
+			e.printStackTrace();
+		}
+	}
+} // fim da classe Store
