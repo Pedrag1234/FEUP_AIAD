@@ -155,8 +155,8 @@ public class JADELauncher extends Repast3Launcher{
 	}
 	
 	private void buildSchedule() {
-		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.LAST);
-		getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.LAST);
+		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.CONCURRENT);
+		getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.CONCURRENT);
 	}
 	
 	
