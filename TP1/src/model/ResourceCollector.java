@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import AgentBehaviours.D_STORE_CLIENT_CONFIRM_PURCHASE;
@@ -31,8 +32,11 @@ public class ResourceCollector extends Agent{
 			this.storesResults.put(i, (float) 0);
 		}
 		
+		Date g = new Date();
+		long s = g.getTime();
 		try {
-			setF(new BufferedWriter(new FileWriter("Outputtxt.txt", true)));
+			String asssss = "Output_" + s + ".txt";
+			setF(new BufferedWriter(new FileWriter(asssss, true)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
