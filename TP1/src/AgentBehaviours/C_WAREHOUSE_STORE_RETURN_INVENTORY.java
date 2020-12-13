@@ -84,7 +84,6 @@ public class C_WAREHOUSE_STORE_RETURN_INVENTORY extends SimpleBehaviour{
 	public boolean done() {
 		if(storeCounter == this.warehouse.getNumberOfStores())
 		{
-			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			this.warehouse.doDelete();
 		}
 		

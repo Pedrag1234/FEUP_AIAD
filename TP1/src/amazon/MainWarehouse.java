@@ -177,9 +177,8 @@ public class MainWarehouse extends Agent {
 		this.numberOfStores = numberOfStores;
 	}
 
-	// método takeDown
+	// mï¿½todo takeDown
 	protected void takeDown() {
-		System.out.println("Funcionou mainwarehouse");
 		// retira registo no DF
 		try {
 			DFService.deregister(this);

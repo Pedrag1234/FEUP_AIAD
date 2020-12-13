@@ -280,6 +280,7 @@ public class JADELauncher extends Repast3Launcher{
                 HashMap<String, Double> needs_temp = new HashMap<String, Double>();
                 needs_temp.put(client[6].replace("\"", ""), Double.parseDouble(client[7]));
                 
+                
                 Client temp = new Client(Integer.parseInt(client[0]),client[1],Double.parseDouble(client[2]),Double.parseDouble(client[3]),Double.parseDouble(client[4]),Double.parseDouble(client[5]),needs_temp,stores,StoresPerClient);
                 		
                 clients.add(temp);

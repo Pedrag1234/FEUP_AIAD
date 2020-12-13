@@ -59,6 +59,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			
 			//add profits here instead of on confirmation
 			System.out.println("[Store " + this.store.getStore_id() + "] [Confirmed purchase from  " + msg.getSender().getLocalName() + "]" );
+			
 			this.store.setProfit(this.store.getProfit() + this.items_sent.getCurrentPrice());
 			this.store.setSales(this.store.getSales()+1);
 			System.out.println("[Store " + this.store.getStore_id() + " " + this.store.getStrategy1() +  "] [Current profit of store is  " + this.store.getProfit() + "$] [Items sold: "+ this.store.getSales()+"]" );
@@ -115,6 +116,7 @@ public class D_STORE_CLIENT_CONFIRM_PURCHASE extends CyclicBehaviour{
 			
 			
 			try {
+				
 				Stack<Item> i = this.store.getCurrItemOrder();
 				
 				while(i.size() > 0) {

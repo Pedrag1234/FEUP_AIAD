@@ -404,7 +404,6 @@ public class Client extends Agent{
 
 	public void takeDown()
 	{
-		System.out.println("Funcionou cliente");
 
 		// retira registo no DF
 		try {

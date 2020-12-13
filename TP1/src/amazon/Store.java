@@ -562,9 +562,8 @@ public class Store extends Agent {
 	}
 
 	
-	// método takeDown
+	// mï¿½todo takeDown
 	protected void takeDown() {
-		System.out.println("Funcionou store");
 
 		// retira registo no DF
 		try {
