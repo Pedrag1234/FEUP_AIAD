@@ -25,10 +25,13 @@ public class ResourceCollector extends Agent{
 		}
 	}
 	
+	public int get_number_stores() {
+		return this.storeIds.size();
+	}
+	
 	public void setup(){
 		this.register();
 		
-	
 		
 		setTimeout(() -> addBehaviour(new E_RESOURCE_LISTEN_RESPONSE(this)), 2500);
 		
