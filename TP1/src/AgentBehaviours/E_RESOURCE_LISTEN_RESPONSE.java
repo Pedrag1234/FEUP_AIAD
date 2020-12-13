@@ -64,6 +64,7 @@ public class E_RESOURCE_LISTEN_RESPONSE extends SimpleBehaviour{
 		
 		if(this.rsc.get_number_stores() == counter) {
 			try {
+				System.out.println("Killing Container");
 				this.rsc.getContainerController().getPlatformController().kill();
 			} catch (ControllerException e) {
 				// TODO Auto-generated catch block

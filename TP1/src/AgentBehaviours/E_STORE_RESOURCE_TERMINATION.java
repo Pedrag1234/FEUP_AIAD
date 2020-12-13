@@ -38,14 +38,16 @@ public class E_STORE_RESOURCE_TERMINATION extends SimpleBehaviour{
 		try {
 			DFAgentDescription[] result1 = DFService.search(this.st, dfd1);
 			
+			System.out.println("Result length: " + result1.length);
 			
 			for (int i = 0; i < result1.length; i++) {
 				
 				AID dest = result1[i].getName();
 				res.addReceiver(dest);
-			
+				System.out.println("Killing myself");
 
 				this.st.send(res);
+				this.st.doDelete();
 				
 			}
 			

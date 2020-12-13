@@ -105,10 +105,8 @@ public class Store extends Agent {
 		
 		setTimeout(() -> addBehaviour(new D_STORE_CLIENT_CONFIRM_PURCHASE(this)), 2500);
 		
-		setTimeout(() -> addBehaviour(new E_STORE_RESOURCE_TERMINATION(this)), 50000);
+		setTimeout(() -> addBehaviour(new E_STORE_RESOURCE_TERMINATION(this)), 45000);
 		
-		setTimeout(() -> this.doDelete(), 50000);
-
 
 		
 		
