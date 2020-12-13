@@ -52,5 +52,15 @@ public class ResourceCollector extends Agent{
 	public boolean isEmpty() {
 		return (this.stores.size() == 0);
 	}
+	
+	public void updateValues(Integer i, Float s) {
+		if(this.stores.get(i) == null) {
+			this.stores.put(i,s);
+		}
+		else {
+			this.stores.remove(i);
+			this.stores.put(i,s);
+		}
+	}
 
 }
