@@ -67,6 +67,9 @@ public class JADELauncher extends Repast3Launcher{
 		Profile p = new ProfileImpl(true);
 		mainContainer = rt.createMainContainer(p);
 		
+		clients = new ArrayList<Client>();
+		stores = new ArrayList<Store>();
+		
 		get_stores();
 		
 		get_clients();
@@ -85,6 +88,7 @@ public class JADELauncher extends Repast3Launcher{
 	
 	private void launchAgents() {
 		boolean condition = false;
+		
 		
 		try {
 			
@@ -284,7 +288,7 @@ public class JADELauncher extends Repast3Launcher{
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null && counter <= this.NumberOfStores) {
+            while ((line = br.readLine()) != null && counter < this.NumberOfStores) {
 
                 // use comma as separator
                 String[] store = line.split(cvsSplitBy);
