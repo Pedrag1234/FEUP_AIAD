@@ -11,6 +11,8 @@ import sajas.core.Runtime;
 import sajas.sim.repast3.Repast3Launcher;
 import sajas.wrapper.AgentController;
 import sajas.wrapper.ContainerController;
+import uchicago.src.sim.analysis.BinDataSource;
+import uchicago.src.sim.analysis.OpenHistogram;
 import uchicago.src.sim.analysis.OpenSequenceGraph;
 import uchicago.src.sim.analysis.Sequence;
 import uchicago.src.sim.engine.Schedule;
@@ -39,11 +41,12 @@ public class JADELauncher extends Repast3Launcher{
 	private ContainerController agentContainer;
 	private ArrayList<Client> clients = new ArrayList<Client>();
 	private ArrayList<Store> stores = new ArrayList<Store>();
+	private ArrayList<Agent> store_agents = new ArrayList<Agent>();
 	private MainWarehouse mainWarehouse;
 	private ResourceCollector rsc;
 	private OpenSequenceGraph plot;
 	private OpenSequenceGraph plot2;
-	
+	private OpenHistogram bar;
 	
 	public static void main(String[] args) {
 
@@ -135,11 +138,17 @@ public class JADELauncher extends Repast3Launcher{
 				return rsc.get_total_profit();
 			}
 		});
+		
+		plot.addSequence("Average profit per store", new Sequence() {
+			public double getSValue() {
+				return rsc.get_total_profit()/(stores.size());
+			}
+		});
 
 		plot.display();
 		
 		
-		// graph
+	/*	// graph
 				if (plot2 != null) plot2.dispose();
 				plot2 = new OpenSequenceGraph("Average profit per store", this);
 				plot2.setAxisTitles("time", "Average profit");
@@ -150,13 +159,28 @@ public class JADELauncher extends Repast3Launcher{
 					}
 				});
 
-				plot2.display();
+				plot2.display();*/
+				
+		///////////////////////////////////
+/*		bar = new OpenHistogram("Agent Wealth Distribution", 10, 0);
+
+		bar.setYRange(-1, 500.0);
 		
+		BinDataSource source = new BinDataSource()  {
+			public double getBinValue(Object o) {
+				Store agent = (Store)o;
+				return (agent.getProfit());
+		}
+		};
+
+		bar.createHistogramItem("Wealth", rsc.getStoresResults(), source);
+		bar.display();*/
 	}
 	
 	private void buildSchedule() {
 		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.CONCURRENT);
-		getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.CONCURRENT);
+	//	getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.CONCURRENT);
+	//	getSchedule().scheduleActionAtInterval(1, bar, "step", Schedule.CONCURRENT);
 	}
 	
 	
@@ -167,6 +191,7 @@ public class JADELauncher extends Repast3Launcher{
 			AgentController ac2;
 			ac2 = cc.acceptNewAgent("Store" + i.getStore_id(), i);
 			System.out.println("[Store_" + i.getStore_id() + "] Created");
+		
 			ac2.start();
 		
 		}
