@@ -74,6 +74,11 @@ public class ResourceCollector extends Agent{
 			System.out.println("Store_" + i + " has a profit of " + this.storesResults.get(i) + " $.");
 		}
 	}
+
+	public float get_individual_profit(Integer i){
+		
+		return this.storesResults.get(i);
+	}
 	
 	public int get_total_profit(){
 		int sum = 0;

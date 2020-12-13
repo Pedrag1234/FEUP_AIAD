@@ -141,12 +141,12 @@ public class JADELauncher extends Repast3Launcher{
 		
 		// graph
 				if (plot2 != null) plot2.dispose();
-				plot2 = new OpenSequenceGraph("Total profit", this);
-				plot2.setAxisTitles("time", "total profit");
+				plot2 = new OpenSequenceGraph("Average profit per store", this);
+				plot2.setAxisTitles("time", "Average profit");
 		        // plot number of different existing colors
-				plot2.addSequence("Total profit", new Sequence() {
+				plot2.addSequence("Average profit per store", new Sequence() {
 					public double getSValue() {
-						return rsc.get_total_profit();
+						return rsc.get_total_profit()/(stores.size());
 					}
 				});
 
