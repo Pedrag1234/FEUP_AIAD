@@ -144,22 +144,29 @@ public class JADELauncher extends Repast3Launcher{
 				return rsc.get_total_profit()/(stores.size());
 			}
 		});
+		
 
 		plot.display();
 		
 		
-	/*	// graph
-				if (plot2 != null) plot2.dispose();
-				plot2 = new OpenSequenceGraph("Average profit per store", this);
-				plot2.setAxisTitles("time", "Average profit");
-		        // plot number of different existing colors
-				plot2.addSequence("Average profit per store", new Sequence() {
-					public double getSValue() {
-						return rsc.get_total_profit()/(stores.size());
-					}
-				});
+		
+		if (plot2 != null) plot2.dispose();
+		plot2 = new OpenSequenceGraph("Profits of individual stores", this);
+		plot2.setAxisTitles("time", "Profit");
+		// plot number of different existing colors
+		for (int i = 0; i < this.stores.size(); i++) {
+			String name = "Store_" + i;
+			final int j = i;
+			plot2.addSequence("Store_0", new Sequence() {
+				public double getSValue() {
+					return rsc.get_individual_profit(j);
+				}
+			});
+			
+		}
 
-				plot2.display();*/
+
+		plot2.display();
 				
 		///////////////////////////////////
 /*		bar = new OpenHistogram("Agent Wealth Distribution", 10, 0);
@@ -179,7 +186,7 @@ public class JADELauncher extends Repast3Launcher{
 	
 	private void buildSchedule() {
 		getSchedule().scheduleActionAtInterval(0.1, plot, "step", Schedule.CONCURRENT);
-	//	getSchedule().scheduleActionAtInterval(1, plot2, "step", Schedule.CONCURRENT);
+		getSchedule().scheduleActionAtInterval(0.1, plot2, "step", Schedule.CONCURRENT);
 	//	getSchedule().scheduleActionAtInterval(1, bar, "step", Schedule.CONCURRENT);
 	}
 	

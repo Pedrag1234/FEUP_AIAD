@@ -22,6 +22,7 @@ public class ResourceCollector extends Agent{
 		this.storeIds = new ArrayList<>();
 		for (int i = 0; i < number_of_Ids; i++) {
 			this.storeIds.add(i);
+			this.storesResults.put(i, (float) 0);
 		}
 	}
 	
