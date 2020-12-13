@@ -1,5 +1,6 @@
 package AgentBehaviours;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import jade.lang.acl.ACLMessage;
@@ -64,9 +65,17 @@ public class E_RESOURCE_LISTEN_RESPONSE extends SimpleBehaviour{
 		
 		if(this.rsc.get_number_stores() == counter) {
 			try {
-				System.out.println("Killing Container");
+				System.out.println("[Saving Data and Shutting Down]");
+				this.rsc.getF().append("\n");
+				this.rsc.getF().append("Total Profit = " + this.rsc.get_total_profit() + ".\n");
+				this.rsc.getF().append("Average Profit = " + this.rsc.get_total_profit()/this.rsc.get_number_stores() + ".\n");
+				
+				for (int i = 0; i < this.rsc.get_number_stores(); i++) {
+					this.rsc.getF().append("Store_" + i + " Profit = " + this.rsc.get_individual_profit(i) + ".\n");
+				}
+				this.rsc.getF().close();
 				this.rsc.getContainerController().getPlatformController().kill();
-			} catch (ControllerException e) {
+			} catch (ControllerException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

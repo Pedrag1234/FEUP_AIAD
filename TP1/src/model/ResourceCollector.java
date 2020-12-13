@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,6 +19,7 @@ public class ResourceCollector extends Agent{
 	
 	private HashMap<Integer,Float> storesResults;
 	private ArrayList<Integer> storeIds;
+	private Writer f;
 	
 	private DFAgentDescription dfd;
 	
@@ -23,6 +29,13 @@ public class ResourceCollector extends Agent{
 		for (int i = 0; i < number_of_Ids; i++) {
 			this.storeIds.add(i);
 			this.storesResults.put(i, (float) 0);
+		}
+		
+		try {
+			setF(new BufferedWriter(new FileWriter("Outputtxt.txt", true)));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -111,6 +124,14 @@ public class ResourceCollector extends Agent{
 
 	public void setStoreIds(ArrayList<Integer> storeIds) {
 		this.storeIds = storeIds;
+	}
+
+	public Writer getF() {
+		return f;
+	}
+
+	public void setF(Writer f) {
+		this.f = f;
 	}
 
 }
