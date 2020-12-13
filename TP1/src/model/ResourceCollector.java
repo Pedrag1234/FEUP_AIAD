@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -9,12 +10,17 @@ import sajas.domain.DFService;
 
 public class ResourceCollector extends Agent{
 	
-	private HashMap<Integer,Float> stores;
+	private HashMap<Integer,Float> storesResults;
+	private ArrayList<Integer> storeIds;
 	
 	private DFAgentDescription dfd;
 	
-	public ResourceCollector() {
-		this.stores = new HashMap<>();
+	public ResourceCollector(Integer number_of_Ids) {
+		this.storesResults = new HashMap<>();
+		this.storeIds = new ArrayList<>();
+		for (int i = 0; i < number_of_Ids; i++) {
+			this.storeIds.add(i);
+		}
 	}
 	
 	public void setup(){
@@ -44,23 +50,31 @@ public class ResourceCollector extends Agent{
 	}
 	
 	public void printData(){
-		for(Integer i : this.stores.keySet()) {
-			System.out.println("Store_" + i + " has a profit of " + this.stores.get(i) + " $.");
+		for(Integer i : this.storesResults.keySet()) {
+			System.out.println("Store_" + i + " has a profit of " + this.storesResults.get(i) + " $.");
 		}
 	}
 	
 	public boolean isEmpty() {
-		return (this.stores.size() == 0);
+		return (this.storesResults.size() == 0);
 	}
 	
 	public void updateValues(Integer i, Float s) {
-		if(this.stores.get(i) == null) {
-			this.stores.put(i,s);
+		if(this.storesResults.get(i) == null) {
+			this.storesResults.put(i,s);
 		}
 		else {
-			this.stores.remove(i);
-			this.stores.put(i,s);
+			this.storesResults.remove(i);
+			this.storesResults.put(i,s);
 		}
+	}
+
+	public ArrayList<Integer> getStoreIds() {
+		return storeIds;
+	}
+
+	public void setStoreIds(ArrayList<Integer> storeIds) {
+		this.storeIds = storeIds;
 	}
 
 }
